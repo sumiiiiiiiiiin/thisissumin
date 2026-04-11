@@ -116,7 +116,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 
 .coocup #research .bgBox  .img {width: 6rem; margin: 1rem auto 0;}
 .coocup #process video {width: 40%;}
-.coocup #branding .flex .box {flex: 0 0 calc(50% - 0.5rem);}
+.coocup #branding .flex .box {flex: 0 0 calc(50% - 0.5rem); background: #faf7e6;}
 
 
 @media (min-width: 2500px) {
