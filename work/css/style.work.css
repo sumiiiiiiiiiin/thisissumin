@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {margin:0;  padding:0; box-sizing: border-box;}
+
+html {font: 18px/1.6 "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; letter-spacing: -0.01em; color: #111; 
+  background-color:#fafafa; overflow-x: hidden; scroll-behavior: smooth;}
+
+li {list-style: none; }
+a {text-decoration:none; color:inherit;}
+img {width: 100%;}
+img, video {user-select: none; pointer-events: none;}
+
+.wrap {width: 90%; max-width: 1100px; margin: 0 auto;}
+
+#nav {width: 100%; height: 3rem; position: fixed; top: 0; left: 0; z-index: 100; background: #fafafa; color: #666; font-size: 0.9rem; line-height: 3rem;}
+#nav .wrap {display: flex; justify-content: space-between;}
+#nav .nav01 {display: flex; align-items: center; height: 3rem;}
+#nav .nav01 li.svg {width: 4.2rem; margin-top: 10px;}
+#nav .nav02 {display: flex; align-items: center; height: 3rem;}
+#nav .nav02 li {padding-left: 2rem; text-align: right;}
+
+#nav .nav01 li.svg:hover .i {fill: #111!important;}
+
+footer {color: #666; font-size: 0.9rem; padding: 2.5rem 0;}
+footer .wrap {display: flex; justify-content: space-between; align-items:last baseline;}
+footer .img {width: 4.2rem;}
+footer ul {display: flex; align-items: center; height: 3rem;}
+footer ul li {padding-left: 2rem; text-align: right;}
+
+.fadeBox {opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;}
+.fadeBox.visible {opacity: 1; transform: translateY(0);}
+
+#sideNav {position: fixed; top: 5rem; left: calc(50% - 550px); width: 200px;}
+.project {font-size: 0.9rem; font-weight: 400; color: #999;}
+.project li {position: relative; padding-left: 1rem;}
+.project li.click {font-weight: 500; color: #111;}
+.project li::after {content: ""; display: block; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 0.45rem; height: 0.45rem; background: #999;}
+
+.sideNav {font-size: 0.75rem; font-weight: 500; letter-spacing: 0.075rem; color: #999;}
+.sideNav li {padding: 0.5rem 0;}
+.sideNav a.active {font-weight: 600; color: #111;}
+
+#content {display: flex; flex-direction: row-reverse;}
+.workWrap {width: 100%; max-width: 900px;}
+
+section {padding: 5rem 0 3rem 0;}
+
+h1 {font-size: 2rem; font-weight: 700;}
+h2 {font-size: 0.75rem; font-weight: 500; letter-spacing: 0.075rem; color: #999; margin-bottom: 1rem;}
+h3 {font-size: 1.25rem; font-weight: 500;}
+h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
+
+.title {font-size: 0.75rem; font-weight: 500; letter-spacing: 0.075rem; color: #999; margin-bottom: 0.25rem;}
+.bold {font-weight: 500;}
+.underline {text-decoration: underline;}
+.lineThrough {text-decoration:line-through;}
+.italic {font-style: italic;}
+.tag {display: inline-block; padding: 0.25rem 1rem; font-size: 0.75rem; background: #eee; color: #666; margin-left: 0.25rem; margin-bottom: 0.5rem; border-radius: 50px;}
+
+.fontW100 {font-weight: 100;}
+.fontW300 {font-weight: 300;}
+.fontW500 {font-weight: 500;}
+.fontW600 {font-weight: 600;}
+.fontW700 {font-weight: 700;}
+
+.textL {text-align: left;}
+.textR {text-align: right;}
+
+.dot {position: relative; padding-left: 1rem;}
+.dot::after {content: ""; display: block; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 0.3rem; height: 0.3rem; background: #111;}
+
+.brW {display: block;}
+.brM {display: none;}
+
+.marginT1 {margin-top: 1rem;}
+.marginT2 {margin-top: 2rem;}
+.marginT3 {margin-top: 3rem;}
+.marginT4 {margin-top: 4rem;}
+.marginT5 {margin-top: 5rem;}
+
+.marginT1M {margin-top: 0;}
+.marginT2M {margin-top: 0;}
+.marginT3M {margin-top: 0;}
+
+.flexW {display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;}
+.flex {display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;}
+
+.box {border-radius: 10px; overflow: hidden;}
+.box video {display: block; width: 100%; height: 100%; object-fit: cover;}
+.box i {display: block; width: 100%; height: 100%; object-fit: cover;}
+
+.textBox {padding: 1.5rem; border-radius: 10px; background: #fff; border: 2px solid #eee;}
+.bgBox {padding: 1.5rem; border-radius: 10px;}
+
+#overview {padding-top: 5rem;}
+#overview ul li {flex: 0 0 30%;}
+
+#research .bgBox {flex: 0 0 calc(33% - 0.5rem); display: flex; justify-content: space-between; flex-direction: column;}
+#research .emoji {font-size: 5rem; text-align: center;}
+#research .img {margin-top: 1rem; text-align: center;}
+
+.project.science li.click::after {background: #5280c1;} 
+#scrollProgress.science {background-color: #5280c1;}
+/* .science .box {background: linear-gradient(45deg, #f0f0f2, #f6ebeb, #fdf8e4);} */
+
+.science #prototypeControl {position: relative;}
+.science #widthSlider {-webkit-appearance: none; width:70%; position: absolute; left: 30%; top: 0; background: none;}
+.science #widthSlider::-webkit-slider-thumb {-webkit-appearance: none; appearance: none; width: 4rem; height: 3rem; background: url('../images/drag.png') no-repeat center; background-size: 100%; cursor: pointer; margin-top: -15px;}
+.science #prototype {border: 1px solid #eee; display: inline-block; width: 100%; min-width: 300px; height: 800px;}
+.science #myIframe {width: 100%; height: 100%; border: none; display: block;}
+
+.project.coocup li.click::after {background: #e05c26;} 
+#scrollProgress.coocup {background-color: #e05c26;}
+.coocup .box {background: #faf7e6;}
+
+.coocup #research .img {width: 6rem; margin: 1rem auto 0;}
+.coocup #process video {width: 40%;}
+.coocup #branding .flex .box {flex: 0 0 calc(50% - 0.5rem);}
+
+
+@media (max-width: 1200px) {
+  #sideNav {display: none;}
+  #content {display: block;}
+  .workWrap {width: 100%; margin: 0 auto;}
+}
+
+@media (max-width: 767px) {
+  footer .wrap {display: block;}
+  footer ul li:first-child {padding-left: 0;} 
+
+  .marginT1M {margin-top: 1rem;}
+  .marginT2M {margin-top: 2rem;}
+  .marginT3M {margin-top: 3rem;}
+  .flexW {display: block;}
+
+  #research .bgBox {flex-direction: row-reverse; justify-content: left; align-items: center;}
+  #research .emoji {margin-right: 1.5rem;}
+  .coocup #research .img {margin: 0; margin-right: 1.5rem;}
+}
