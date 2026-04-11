@@ -1,0 +1,1317 @@
+<html lang="ko">
+
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Online Science Day Schedule</title>
+	<script src="sub1.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+	<style>
+	@font-face {
+    font-family: 'ONE-Mobile-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+
+	@font-face {
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+
+	html {overflow-y:scroll; font-size: 16px;}
+	body {margin:0;padding:0; font-family: 'Noto Sans KR', sans-serif; background:#fff;}
+	html, h1, h2, h3, h4, h5, h6, form, fieldset, img {margin:0;padding:0;border:0}
+	ul, dl,dt,dd {margin:0;padding:0;list-style:none}
+	select {margin:0}
+	p {margin:0;padding:0;word-break:break-all}
+	a {color:#000;text-decoration:none; cursor: pointer;}
+
+	 
+	 #wrap {width: 1200px; margin: 0 auto; padding: 5%; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; color: #333; font-weight:300; letter-spacing: -0.35px; line-height: 1.3;}
+	
+	 .planTabArea .plan_day {display: none;  margin: 10px 0;}
+	 .planTabArea .plan_day:after {content:""; display: block; clear:both;}
+	 .planTabArea .plan_day > div {float: left; width: 20%;  color: #bbb; font-weight: 500; font-size: 1.25rem; text-align: center;}
+	 .planTabArea > p {margin: 10px; color: #bbb; font-weight: 500; font-size: 1rem;}
+
+	 /* .planTabArea > ul.planTab {border-top: 2px solid #bbb; border-bottom: 2px solid #bbb; display:flex; justify-content: center; align-items: center; flex-wrap: wrap;} */
+	 .planTabArea > ul.planTab {border-top: 2px solid #bbb; border-bottom: 2px solid #bbb; display:flex; justify-content: center; align-items: center; flex-direction: row-reverse;}
+
+	 .planTabArea > ul.planTab li {width: 8.3%;}
+	 .planTabArea > ul.planTab li a {display: inline-block; width:100%; padding: 25px 0; text-align: center; color: #bbb;  font-size: 1.8rem; font-family: 'ONE-Mobile-Title'; position: relative;}
+	 .planTabArea > ul.planTab li a > span {color: #bbb; font-size: 1rem; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);}
+	 .planTabArea > ul.planTab li a::before {content: "";  display:block; width: 10px; height:10px; border-radius: 50px;  background: #fff; position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);}
+	 .planTabArea > ul.planTab li.active a::before {content: ""; background: #2f3160;}
+	 
+	 ul.planTab li a:hover {color: #2f3160;}
+     html ul.planTab li.active a, html ul.planTab li.active a:hover  {color: #2f3160;}
+
+	 .planArea {width: 100%; box-sizing: border-box; margin-top: 40px;}
+	 .planArea .plan {width: 100%; box-sizing: border-box;}
+	 .planArea .plan .planDate {margin-bottom: 40px; text-align: center; font-family: 'ONE-Mobile-Title'; font-size: 30px; color: #2f3160;}
+	 .planArea .plan .planDate span {font-family: 'ONE-Mobile-Regular';}
+	 
+	 .plan_wrap {width: 100%; margin-bottom: 20px; display:flex; justify-content: space-between; align-items: center;}
+	 .plan_wrap > div {width: 79%; border-radius: 20px; height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+	 .plan_wrap > .plan_image {position: relative; width: 20%; height: 100px; overflow: hidden; cursor: pointer;}
+	 .plan_wrap > .plan_image img {transform: scale(1.2);}
+	 .plan_wrap > .plan_image:hover img {transform: scale(1); transition: 0.7s;}
+	 .plan_wrap > .plan_image a {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100px; text-align: center; line-height: 100px; font-family: 'ONE-Mobile-Regular'; font-size: 1rem; display: inline-block; color: #fff; background: rgba(0,0,0,0.4);}
+	 .plan_wrap > .plan_image:hover a {opacity: 0.8; background: rgba(0,0,0,0.1);}
+
+	 .plan_image img {width: 100%; aspect-ratio: 1/1;}
+
+	 .planCT {position: relative; width: 90%; display:flex; justify-content: center; align-items: center;}
+	 .plan_cate p {width:120px; position: relative; bottom: -15px; text-align: center; font-size: 1.1rem; font-weight: 500;}
+	 .plan_cate p::after {padding: 2px 0; width:100px; color:#fff;  font-family: 'ONE-Mobile-Regular'; font-size: 0.9rem;  position: absolute; top: -30px; left:50%; transform: translateX(-50%);}
+	 .plan_title {width: calc(100% - 120px); margin-left: 10%;}
+	 .plan_title .text p {font-size: 1rem; margin-top: 5px;}
+	 .plan_title .text p:first-child {font-size: 1.25rem; font-weight: 500; margin-top: 0;}
+	 .plan_title .text a {display: none;}
+
+	 .plan_title > .plan_image {display: none; width: 80px; height: 80px; border-radius: 500px; overflow: hidden;}
+
+	 .heart_wrap {font-size: 18px; position: absolute; top: 50%; right: 0.25em; transform: translateY(-50%);}
+	 .heart_btn {display: inline-block; width: 1em; height: 1em; background: #ccc; border: none; cursor: pointer; transform: rotate(-45deg);}
+	 .heart_btn::before, .heart_btn::after {content: ""; position: absolute; width: 1em; height: 1em; background: #ccc; border-radius: 50%;}
+	 .heart_btn::before {top: -0.5em; left: 0;}
+	 .heart_btn::after {left: 0.5em; top: 0;}
+	 .heart_btn.active {background: #e47e92;}
+	 .heart_btn.active::before, .heart_btn.active::after {background: #e47e92;}
+
+
+	 .pinkBox {background: #f7edef;}
+	 .pinkBox .plan_cate {color: #e47e92;}
+	 .pinkBox .plan_cate p::after {content: "Grades 6+";  background: #e47e92;}
+
+	 .orangeBox {background: #fef9e5;}
+	 .orangeBox .plan_cate {color: #efa625;}
+	 .orangeBox .plan_cate p::after {content: "Grades 1+"; background: #efa625;}
+
+	 .blueBox {background: #f0f2f5;}
+	 .blueBox .plan_cate {color: #4174ba;}
+	 .blueBox .plan_cate p::after {content: "All Ages"; background: #4174ba;} 
+	 
+	 .pink {color: #e47e92;}
+	 .orange {color: #efa625;}
+	 .blue {color: #4174ba;}
+
+	 @media only screen and (max-width: 1200px) {
+	  #wrap {width: 100%;}
+	 }
+
+	 @media only screen and (max-width: 850px) {
+	 html {font-size: 14px;}
+
+	 .planTabArea .plan_day {display: none; display: block;}
+	 .planTabArea > ul.planTab {justify-content: flex-start; flex-wrap: wrap-reverse;}
+	 .planTabArea > ul.planTab li {width: 20%;}
+
+	 .planArea .plan .planDate {margin-bottom: 30px; font-size: 26px;}
+
+	 .plan_wrap >.plan_image {display: none;}
+	 .plan_wrap > div {width: 100%; height: auto; padding: 2rem 0;}
+
+	 .plan_title {width: 100%; height: 80px; display: flex; flex-direction: row-reverse; justify-content: space-between; margin-left: 20px;}
+	 .plan_title .text {width: calc(100% - 100px);}
+	 .plan_title .text a {display: block; color: #333; margin-top: 10px; text-decoration: underline;}
+	 .plan_title .text:hover a {color: #666;}
+	 .plan_title > .plan_image {display: block; width: 80px; height: 80px;}
+
+	 .heart_wrap {font-size: 18px; position: absolute; top: 0.6em; right: -0.5em;}
+
+	}
+
+	 @media only screen and (max-width: 700px) {
+	 .planCT {display: block;}
+
+	 .plan_cate {position: relative;}
+	 .plan_cate p {width:100px; bottom: 0; margin-left: 100px;}
+	 .plan_cate p::after {font-size: 14px;  top: 0; left: -50px;}
+
+	 .plan_title {flex-direction: row; height: auto; margin-left: 0; margin-top: 20px;}
+
+	 .heart_wrap {font-size: 16px; right: 0.25em;}
+	}
+
+	</style>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+	<div id="wrap">
+		<div class="planTabArea">
+			<div class="plan_day">
+				<div>Mon</div>
+				<div>Tue</div>
+				<div>Wed</div>
+				<div>Thu</div>
+				<div>Fri</div>
+			</div>
+			<ul class="planTab">
+				<li>
+					<a href="#plan13">10</a>
+				</li>
+				<li>
+					<a href="#plan12">09</a>
+				</li>
+				<li>
+					<a href="#plan11">08</a>
+				</li>
+				<li>
+					<a href="#plan10">07</a>
+				</li>
+				<li>
+					<a href="#plan9">06</a>
+				</li>
+				<li>
+					<a href="#plan8">03</a>
+				</li>
+				<li>
+					<a href="#plan7">02</a>
+				</li>
+				<li>
+					<a href="#plan6"><span>Dec</span>01</a>
+				</li>
+				<li>
+					<a href="#plan5">30</a>
+				</li>
+				<li>
+					<a href="#plan4">29</a>
+				</li>
+				<li>
+					<a href="#plan3">26</a>
+				</li>
+				<li class="planOpen">
+					<a href="#plan1"><span>Nov</span>25</a>
+				</li>
+			</ul>
+			<p>Click a date to check the schedule below.</p>
+		</div>
+
+		<div class="planArea">
+			<div id="plan1" class="plan planOpen">				
+				<p class="planDate">11.25  <span>Thursday</span></p>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn active"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>15:00-16:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>				
+			</div>
+
+			<div id="plan3" class="plan">
+				<p class="planDate">11.26  <span>Friday</span></p>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				
+			</div>	
+				
+			<div id="plan4" class="plan">
+				<p class="planDate">11.29  <span>Monday</span></p>
+
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>	
+
+			<div id="plan5" class="plan">
+				<p class="planDate">11.30  <span>Tuesday</span></p>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="plan6" class="plan">
+				<p class="planDate">12.01  <span>Wednesday</span></p>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>11:00-12:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>14:00-15:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				
+			</div>
+
+			<div id="plan7" class="plan">
+				<p class="planDate">12.02  <span>Thursday</span></p>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>14:00-15:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>15:00-16:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>15:00-16:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="plan8" class="plan">
+				<p class="planDate">12.03  <span>Friday</span></p>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>11:00-12:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="plan9" class="plan">
+				<p class="planDate">12.06  <span>Monday</span></p>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>11:00-12:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="plan10" class="plan">
+				<p class="planDate">12.07  <span>Tuesday</span></p>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="plan11" class="plan">
+				<p class="planDate">12.08  <span>Wednesday</span></p>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>11:00-12:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>14:00-15:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>	
+
+			<div id="plan12" class="plan">
+				<p class="planDate">12.09  <span>Thursday</span></p>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>11:00-12:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>12:00-13:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="plan13" class="plan">
+				<p class="planDate">12.10  <span>Friday</span></p>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>12:00-13:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="blueBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>10:00-11:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Create Giant, Long-Lasting Bubbles<br></p>
+									<p>Korean National Science Museum</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science01.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science01.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="orangeBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Solve a Brain Paper Puzzle<br></p>
+									<p>Korea Brain Research Institute</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science02.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science02.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+				<div class="plan_wrap">
+					<div class="pinkBox">
+						<div class="planCT">
+							<div class="plan_cate">
+								<p>13:00-14:30</p>
+							</div>
+							<div class="plan_title">
+								<div class="text">
+									<p>Making a solar-powered fan<br></p>
+									<p> Seogang High School</p>
+									<a>View Detail</a>
+								</div>
+								<div class="plan_image">
+									<img src="scienceImages/science03.png"></img>
+								</div>
+							</div>
+							<div class="heart_wrap"><div class="heart_btn"></div></div>
+						</div>
+					</div>
+					<div class="plan_image">
+						<img src="scienceImages/science03.png"></img>
+						<a>View Details</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- ***이미지 넣는 형식*** -->
+		<!-- <div class="greenBox">
+			<div class="plan_cate">
+				<p>14:00 ~ 15:50</p>
+			</div>
+			<div class="plan_title">
+				<img src="sub1.png"></img>
+				<div class="text">
+					<p>개막식 및 토크콘서트<br><span class="green">강사명</span></p>
+					<p><br>주제입니다.</p>
+				</div>
+			</div>
+			<div class="plan_play">
+				<a>영상 보러가기</a>
+			</div>
+		</div> -->
+	</div>
+
+</div>
+
+<script type="text/javascript">
+		
+	$(document).ready(function() {
+
+		// 시작페이지 설정! 
+		// planOpen 클래스명을 원하는 탭버튼(ul.planTab li) 시작페이지(.plan)에 넣어주시면 돼요!
+		$(".plan").hide();
+		$("ul.planTab li.planOpen").addClass("active").show();
+		$(".planOpen").show();
+
+		// 탭 버튼 눌렀을때!
+		$("ul.planTab li").click(function() {
+
+			$("ul.planTab li").removeClass("active");
+			$(this).addClass("active");
+			$(".plan").hide();
+
+			var activeTab = $(this).find("a").attr("href");
+			$(activeTab).fadeIn();
+			return false;
+		});
+
+	});
+
+</script>
+<script>
+	const hearts = document.querySelectorAll('.heart_btn');
+	hearts.forEach(heart => {
+	heart.addEventListener('click', () => {
+		heart.classList.toggle('active');
+	});
+});
+</script>
+
+</body>
+
+</html>
