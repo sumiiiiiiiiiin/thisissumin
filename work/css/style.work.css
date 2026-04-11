@@ -89,7 +89,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 
 .box {border-radius: 10px; overflow: hidden;}
 .box video {display: block; width: 100%; height: 100%; object-fit: cover;}
-.box i {display: block; width: 100%; height: 100%; object-fit: cover;}
+.box img {display: block; width: 100%; height: 100%; object-fit: cover;}
 
 .textBox {padding: 1.5rem; border-radius: 10px; background: #fff; border: 2px solid #eee;}
 .bgBox {padding: 1.5rem; border-radius: 10px;}
@@ -101,21 +101,20 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 #research .emoji {font-size: 5rem; text-align: center;}
 #research .img {margin-top: 1rem; text-align: center;}
 
+#try a {width: 100%; padding: 2rem 2.5rem; border-radius: 10px; font-size: 1.25rem; font-weight: 600;}
+#try a p {width: calc(100% - 5rem);}
+#try a img {width: 2rem;}
+
 .project.science li.click::after {background: #5280c1;} 
 #scrollProgress.science {background-color: #5280c1;}
 /* .science .box {background: linear-gradient(45deg, #f0f0f2, #f6ebeb, #fdf8e4);} */
-
-.science #prototypeControl {position: relative;}
-.science #widthSlider {-webkit-appearance: none; width:70%; position: absolute; left: 30%; top: 0; background: none;}
-.science #widthSlider::-webkit-slider-thumb {-webkit-appearance: none; appearance: none; width: 4rem; height: 3rem; background: url('../images/drag.png') no-repeat center; background-size: 100%; cursor: pointer; margin-top: -15px;}
-.science #prototype {border: 1px solid #eee; display: inline-block; width: 100%; min-width: 300px; height: 800px;}
-.science #myIframe {width: 100%; height: 100%; border: none; display: block;}
+.science #try a {background: linear-gradient(45deg, #4f7ebf, #e7879b, #edab36); color: #fff;}
 
 .project.coocup li.click::after {background: #e05c26;} 
 #scrollProgress.coocup {background-color: #e05c26;}
 .coocup .box {background: #faf7e6;}
 
-.coocup #research .img {width: 6rem; margin: 1rem auto 0;}
+.coocup #research .bgBox  .img {width: 6rem; margin: 1rem auto 0;}
 .coocup #process video {width: 40%;}
 .coocup #branding .flex .box {flex: 0 0 calc(50% - 0.5rem);}
 
@@ -144,9 +143,10 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
   .marginT3M {margin-top: 3rem;}
   .flexW {display: block;}
 
-  #research .bgBox {flex-direction: row-reverse; justify-content: left; align-items: center;}
+  #research .bgBox {flex-direction: row-reverse; justify-content: space-between; align-items: center;}
   #research .emoji {margin-right: 1.5rem;}
-  .coocup #research .img {margin: 0; margin-right: 1.5rem;}
+  .coocup #research .bgBox .img {margin: 0;}
+  .coocup #research .bgBox .text {width: calc(100% - 7.5rem);}
 }
 
 @media (max-width: 400px) {
