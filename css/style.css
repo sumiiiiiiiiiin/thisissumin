@@ -107,7 +107,8 @@ footer ul li {padding-left: 2rem; text-align: right;}
     #index .imgWrap {margin-top: 4em;}
 
     .work .tag {position: relative; margin-top: 0.75rem;}
-    .work .tag li:first-child {margin-left: 0;}
+    .work .tag li {margin-left: 0; margin-right: 0.25rem;}
+
 
 
     #about {padding: 4rem 0 8rem 0;}
@@ -141,6 +142,7 @@ footer ul li {padding-left: 2rem; text-align: right;}
     #index .imgWrap .img {flex: 0 0 40%; text-align: center;}
     #index .imgWrap .img img {width: 75%;}
 
+    .down {bottom: 2%;}
     .down .text {display: none;}
 
     #about .aboutStar {width: 50%;}
