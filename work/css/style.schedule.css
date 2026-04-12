@@ -96,7 +96,7 @@
 	  #wrap {width: 100%;}
 	 }
 
-	 @media only screen and (max-width: 900px) {
+	 @media only screen and (max-width: 1000px) {
 	 html {font-size: 14px;}
 
 	 .planTabArea .plan_day {display: none; display: block;}
