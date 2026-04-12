@@ -95,48 +95,48 @@
             </div>
 
             <div class="down"><a href="#" data-target="work">
-                <div class="text">VIEW MY PROJECT</div>
-                <div class="img"></div>
-            </a></div>
+                    <div class="text">VIEW MY PROJECT</div>
+                    <div class="img"></div>
+                </a></div>
         </div>
     </section>
 
     <section id="work">
         <div class="wrap">
             <div class="work science"><a href="work/science.html">
-                <div class="box fadeBox">
-                    <video autoplay muted loop playsinline>
-                        <source src="work/images/scienceV01.mp4" type="video/mp4">
-                    </video>
-                    <img src="images/workScience.png" alt="phone">
-                </div>
-                <div class="text">
-                    <h3>Online Science Day</h3>
-                    <p>Easy and Memorable Schedule</p>
-                    <ul class="tag">
-                        <li>Front-End Development</li>
-                        <li>UX/UI Design</li>
-                        <li>User Research</li>
-                    </ul>
-                </div>
-            </a></div>
+                    <div class="box fadeBox">
+                        <video muted loop playsinline preload="metadata">
+                            <source src="work/images/scienceV01.mp4" type="video/mp4">
+                        </video>
+                        <img src="images/workScience.png" alt="phone">
+                    </div>
+                    <div class="text">
+                        <h3>Online Science Day</h3>
+                        <p>Easy and Memorable Schedule</p>
+                        <ul class="tag">
+                            <li>Front-End Development</li>
+                            <li>UX/UI Design</li>
+                            <li>User Research</li>
+                        </ul>
+                    </div>
+                </a></div>
             <div class="work coocup"><a href="work/coocup.html">
-                <div class="box fadeBox">
-                    <video autoplay muted loop playsinline>
-                        <source src="work/images/coocupV01.mp4" type="video/mp4">
-                    </video>
-                    <img src="images/workCoocup.jpg" alt="coocup">
-                </div>
-                <div class="text">
-                    <h3>Coocup</h3>
-                    <p>Interactive AR Measuring Cup</p>
-                    <ul class="tag">
-                        <li>AR Prototyping</li>
-                        <li>UX/UI Design</li>
-                        <li>Branding</li>
-                    </ul>
-                </div>
-            </a></div>
+                    <div class="box fadeBox">
+                        <video muted loop playsinline preload="metadata">
+                            <source src="work/images/coocupV01.mp4" type="video/mp4">
+                        </video>
+                        <img src="images/workCoocup.jpg" alt="coocup">
+                    </div>
+                    <div class="text">
+                        <h3>Coocup</h3>
+                        <p>Interactive AR Measuring Cup</p>
+                        <ul class="tag">
+                            <li>AR Prototyping</li>
+                            <li>UX/UI Design</li>
+                            <li>Branding</li>
+                        </ul>
+                    </div>
+                </a></div>
         </div>
     </section>
 
@@ -203,7 +203,7 @@
                 link.classList.add('active');
             }
 
-            // me.html일 때 ABOUT 활성화
+            // me.html, ABOUT active
             if (
                 link.dataset.page === 'about' &&
                 window.location.pathname.includes('me.html')
@@ -217,7 +217,7 @@
     const sections = document.querySelectorAll('section');
 
     window.addEventListener('scroll', () => {
-        let scrollPosition = window.scrollY + window.innerHeight / 2; // 화면 중간 기준
+        let scrollPosition = window.scrollY + window.innerHeight / 2; // center of the screen
 
         let activeSet = false;
 
@@ -238,24 +238,23 @@
     });
 
 
-    // =====================
-    // #index 커서 "who is sumin"
-    // =====================
+
+    //"who is sumin"
     const indexSection = document.getElementById('index');
 
-    // 커서용 div 생성
+    // div for cursor
     const indexCursor = document.createElement('div');
     indexCursor.classList.add('custom-cursor');
     indexCursor.textContent = 'who is sumin?';
     document.body.appendChild(indexCursor);
 
-    // 마우스 움직임 따라다니기
+    // follow mouse
     document.addEventListener('mousemove', e => {
         indexCursor.style.top = e.clientY + 'px';
         indexCursor.style.left = e.clientX + 'px';
     });
 
-    // #index 영역 hover 시
+    // #index hover
     indexSection.addEventListener('mouseenter', () => {
         indexCursor.style.display = 'block';
         indexSection.style.cursor = 'zoom-in';
@@ -267,9 +266,8 @@
     });
 
 
-    // =====================
-    // hoverBox 커서 + textBox
-    // =====================
+  
+    // hoverBox cursor + textBox
     const hoverTargets = document.querySelectorAll('.hoverBox');
     const textBox = document.querySelector('.subTitle');
 
@@ -283,14 +281,14 @@
         });
 
         target.addEventListener('mouseenter', () => {
-            // 1️⃣ hoverBox cursor 보이기
+            // 1️⃣ hoverBox cursor show
             if (cursor) cursor.style.opacity = 1;
 
-            // 2️⃣ indexCursor 숨기기
+            // 2️⃣ indexCursor hide
             indexCursor.style.display = 'none';
-            indexSection.style.cursor = 'none'; // 마우스 커서 완전히 숨김
+            indexSection.style.cursor = 'none'; // hide cursor
 
-            // 3️⃣ textBox 내용 변경
+            // 3️⃣ textBox content
             if (index === 0) {
                 textBox.innerHTML = '<h2>guitarist 🎸</h2> <p>i play guitar and love rock music!</p>';
             } else if (index === 1) {
@@ -303,18 +301,18 @@
         });
 
         target.addEventListener('mouseleave', () => {
-            // hoverBox cursor 숨기기
+            // hoverBox cursor hide
             if (cursor) cursor.style.opacity = 0;
 
-            // textBox 초기화
+            // textBox reset
             textBox.innerHTML = '';
 
-            // #index 위면 다시 indexCursor 보이게
+            // above #index, indexCursor show again
             if (indexSection.matches(':hover')) {
                 indexCursor.style.display = 'block';
                 indexSection.style.cursor = 'zoom-in';
             } else {
-                // indexSection 벗어나면 기본 커서
+                // outside indexSection, original cursor
                 indexSection.style.cursor = 'default';
             }
         });
@@ -327,12 +325,12 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // 옵션: 한 번만 나타나게 하고 싶으면
+                // only one time happening
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.35 // 화면 35% 보이면 트리거
+        threshold: 0.35 // screen 35% trigger
     });
 
     boxes.forEach(box => {
@@ -361,31 +359,34 @@
     const bg = document.querySelector('.i');
 
     hoverBoxes.forEach(box => {
-        const color = box.dataset.color; // 각 박스에 지정한 색
+        const color = box.dataset.color; //color of each box
 
         box.addEventListener('mouseenter', () => {
             bg.style.fill = color;
         });
 
         box.addEventListener('mouseleave', () => {
-            bg.style.fill = '#111'; // 원래색으로 리셋
+            bg.style.fill = '#111'; // reset color
         });
     });
 
     //video
-    const videos = document.querySelectorAll('.box video');
+    const box = document.querySelectorAll('.box');
 
-    videos.forEach(video => {
-    video.pause();
+    boxes.forEach(box => {
+        const video = box.querySelector('video');
 
-    video.addEventListener('mouseenter', () => {
-        video.play();
-    });
-
-    video.addEventListener('mouseleave', () => {
+        video.muted = true;
         video.pause();
-        video.currentTime = 0;
-    });
+
+        box.addEventListener('mouseenter', () => {
+            video.play().catch(() => {});
+        });
+
+        box.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0;
+        });
     });
 
 </script>
