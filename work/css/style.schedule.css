@@ -96,7 +96,7 @@
 	  #wrap {width: 100%;}
 	 }
 
-	 @media only screen and (max-width: 850px) {
+	 @media only screen and (max-width: 900px) {
 	 html {font-size: 14px;}
 
 	 .planTabArea .plan_day {display: none; display: block;}
@@ -118,7 +118,8 @@
 
 	}
 
-	 @media only screen and (max-width: 700px) {
+	 @media only screen and (max-width: 767px) {
+	  html {font-size: 12px;}
 	 .planCT {display: block;}
 
 	 .plan_cate {position: relative;}
