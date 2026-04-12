@@ -44,7 +44,7 @@
 
 	 .planArea {width: 100%; box-sizing: border-box; margin-top: 40px;}
 	 .planArea .plan {width: 100%; box-sizing: border-box;}
-	 .planArea .plan .planDate {margin-bottom: 40px; text-align: center; font-family: 'ONE-Mobile-Title'; font-size: 30px; color: #2f3160;}
+	 .planArea .plan .planDate {margin-bottom: 40px; text-align: center; font-family: 'ONE-Mobile-Title'; font-size: 2rem; color: #2f3160;}
 	 .planArea .plan .planDate span {font-family: 'ONE-Mobile-Regular';}
 	 
 	 .plan_wrap {width: 100%; margin-bottom: 20px; display:flex; justify-content: space-between; align-items: center;}
@@ -58,8 +58,8 @@
 	 .plan_image img {width: 100%; aspect-ratio: 1/1;}
 
 	 .planCT {position: relative; width: 90%; display:flex; justify-content: center; align-items: center;}
-	 .plan_cate p {width:120px; position: relative; bottom: -15px; text-align: center; font-size: 1.1rem; font-weight: 500;}
-	 .plan_cate p::after {padding: 2px 0; width:100px; color:#fff;  font-family: 'ONE-Mobile-Regular'; font-size: 0.9rem;  position: absolute; top: -30px; left:50%; transform: translateX(-50%);}
+	 .plan_cate p {width:120px; position: relative; bottom: -15px; text-align: center; font-size: 1.125rem; font-weight: 500;}
+	 .plan_cate p::after {padding: 3px 0; width:100px; color:#fff;  font-family: 'ONE-Mobile-Regular'; font-size: 0.9rem;  position: absolute; top: -30px; left:50%; transform: translateX(-50%);}
 	 .plan_title {width: calc(100% - 120px); margin-left: 10%;}
 	 .plan_title .text p {font-size: 1rem; margin-top: 5px;}
 	 .plan_title .text p:first-child {font-size: 1.25rem; font-weight: 500; margin-top: 0;}
@@ -103,7 +103,7 @@
 	 .planTabArea > ul.planTab {justify-content: flex-start; flex-wrap: wrap-reverse;}
 	 .planTabArea > ul.planTab li {width: 20%;}
 
-	 .planArea .plan .planDate {margin-bottom: 30px; font-size: 26px;}
+	 .planArea .plan .planDate {margin-bottom: 30px;}
 
 	 .plan_wrap >.plan_image {display: none;}
 	 .plan_wrap > div {width: 100%; height: auto; padding: 2rem 0;}
@@ -114,19 +114,19 @@
 	 .plan_title .text:hover a {color: #666;}
 	 .plan_title > .plan_image {display: block; width: 80px; height: 80px;}
 
-	 .heart_wrap {font-size: 18px; position: absolute; top: 0.6em; right: -0.5em;}
+	 .heart_wrap {font-size: 16px; position: absolute; top: 0.6em; right: -0.5em;}
 
 	}
 
 	 @media only screen and (max-width: 767px) {
-	  html {font-size: 12px;}
+	  html {font-size: 13px;}
 	 .planCT {display: block;}
 
 	 .plan_cate {position: relative;}
 	 .plan_cate p {width:100px; bottom: 0; margin-left: 100px;}
-	 .plan_cate p::after {font-size: 14px;  top: 0; left: -50px;}
+	 .plan_cate p::after {top: 0; left: -50px;}
 
 	 .plan_title {flex-direction: row; height: auto; margin-left: 0; margin-top: 20px;}
 
-	 .heart_wrap {font-size: 16px; right: 0.25em;}
+	 .heart_wrap {font-size: 14px; right: 0.25em;}
 	}
