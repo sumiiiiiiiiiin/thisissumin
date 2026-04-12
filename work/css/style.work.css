@@ -101,9 +101,16 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 #research .emoji {font-size: 5rem; text-align: center;}
 #research .img {margin-top: 1rem; text-align: center;}
 
-#try a {width: 100%; padding: 2rem 2.5rem; border-radius: 10px; font-size: 1.25rem; font-weight: 600;}
-#try a p {width: calc(100% - 5rem);}
-#try a img {width: 2rem;}
+#try .tryButton {width: 100%; padding: 2rem 2.5rem; border-radius: 10px; font-size: 1.25rem; font-weight: 600;}
+#try .tryButton p {width: calc(100% - 5rem);}
+#try .tryButton img {width: 2rem;}
+
+.page {margin-top: 3rem; display: none;}
+.page .next {text-align: right;}
+.page h2 {margin-bottom: 0;}
+.page svg {width: 0.75rem;}
+.page p {color: #111; font-size: 0.9rem; font-weight: 500;}
+
 
 .project.science li.click::after {background: #5280c1;} 
 #scrollProgress.science {background-color: #5280c1;}
@@ -130,6 +137,8 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
   #sideNav {display: none;}
   #content {display: block;}
   .workWrap {width: 100%; margin: 0 auto;}
+
+  .page {display: block;}
 }
 
 @media (max-width: 767px) {
