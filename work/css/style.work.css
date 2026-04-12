@@ -20,6 +20,7 @@ img, video {user-select: none; pointer-events: none;}
 #nav .nav01 li.svg {width: 4.2rem; margin-top: 10px;}
 #nav .nav02 {display: flex; align-items: center; height: 3rem;}
 #nav .nav02 li {padding-left: 2rem; text-align: right;}
+#nav .nav02 a:hover {font-weight: 500; color: #111;}
 
 #nav .nav01 li.svg:hover .i {fill: #111!important;}
 
