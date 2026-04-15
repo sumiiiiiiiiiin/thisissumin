@@ -51,10 +51,12 @@
     </header>
     <section id="index">
         <div class="wrap">
-            <div class="title">
-                <p>HEY! IAM SUMIN</p>
-                <p>A PRODUCT DESIGNER</p>
-                <p>AND IAM ALSO A...</p>
+            <div class="titleWrap">
+                <div class="title">
+                    <p class="typing" data-text="IAM SUMIN ">HEY! </p>
+                    <p class="typing" data-text="PRODUCT DESIGNER ">A </p>
+                    <p class="typing typingCursor" data-text="ND IAM ALSO... ">A</p>
+                </div>
                 <div class="subTitle"></div>
             </div>
             <div class="imgTitle">
@@ -121,23 +123,23 @@
                     </div>
                 </a></div>
             <div class="work coocup"><a href="work/coocup.html">
-                    <div class="box fadeBox">
-                        <video autoplay muted loop playsinline>
-                            <source src="work/images/coocupV01.mp4" type="video/mp4">
-                        </video>
-                        <img src="images/workCoocup.jpg" alt="coocup">
-                    </div>
-                    <div class="text">
-                        <h3>Coocup</h3>
-                        <p>Interactive AR Measuring Cup</p>
-                        <ul class="tag">
-                            <li>AR Prototyping</li>
-                            <li>UX/UI Design</li>
-                            <li>Branding</li>
-                        </ul>
-                    </div>
-                </a></div>
-        </div>
+                <div class="box fadeBox">
+                    <video autoplay muted loop playsinline>
+                        <source src="work/images/coocupV01.mp4" type="video/mp4">
+                    </video>
+                    <img src="images/workCoocup.jpg" alt="coocup">
+                </div>
+                <div class="text">
+                    <h3>Coocup</h3>
+                    <p>Interactive AR Measuring Cup</p>
+                    <ul class="tag">
+                        <li>AR Prototyping</li>
+                        <li>UX/UI Design</li>
+                        <li>Branding</li>
+                    </ul>
+                </div>
+            </a></div>
+        </div>        
     </section>
 
     <footer>
@@ -387,6 +389,24 @@
             video.pause();
             video.currentTime = 0;
         });
+    });
+
+    //typeText
+    const elements = document.querySelectorAll(".typing");
+
+    elements.forEach((el) => {
+    const text = el.getAttribute("data-text");
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+        el.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 80);
+        }
+    }
+
+    type();
     });
 
 </script>
