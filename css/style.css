@@ -36,8 +36,14 @@ footer ul li {padding-left: 2rem; text-align: right;}
 
 #index {width: 100%; height: 100vh; overflow: hidden; display: flex; align-items: center; cursor: zoom-in;}
 #index .wrap {padding-top: 3rem; box-sizing: border-box;}
-#index .title {position: relative; display: flex; justify-content: space-between;}
-#index .title p {font-size: 1.25rem; font-weight: 400; color: #111;}
+#index .titleWrap {position: relative;}
+#index .title {display: flex; justify-content: space-between;}
+#index .title p {flex: 0 0 33%; text-align: center; font-size: 1.25rem; font-weight: 400; color: #111;}
+#index .title p:first-child {text-align: left;}
+#index .title p:last-child {text-align: right;}
+
+.typingCursor::after {content: "|"; animation: blink 2s infinite;}
+@keyframes blink {0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0; }}
 
 #index .subTitle {position: absolute; top: 3.5rem; left: 0; width: 100%; text-align: center;}
 #index .subTitle h2 {font-weight: 400; font-size: 1.25rem; color: #111;}
@@ -132,7 +138,7 @@ footer ul li {padding-left: 2rem; text-align: right;}
     .cursorBox {display: none;}
 
     #index .title {display: block;}
-    #index .title p {font-size: 1.5rem;}
+    #index .title p {font-size: 1.5rem; text-align: left!important;}
 
     #index .subTitle {display: none;}
     #index .imgTitle p {flex: 50%;}
