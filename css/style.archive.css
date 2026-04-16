@@ -3,7 +3,7 @@
 * {margin:0;  padding:0; box-sizing: border-box;}
 
 html {font: 300 18px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; 
-    font-optical-sizing: auto; font-style: normal; letter-spacing: -0.005em; color: #666; 
+    font-optical-sizing: auto; font-style: normal; letter-spacing: -0.01em; color: #666; 
     background-color:#e8e8ed; overflow-x: hidden; scroll-behavior: smooth;}
 
 body {cursor: default;}
@@ -13,7 +13,7 @@ img {width: 100%; user-select: none; pointer-events: none;}
 
 .wrap {width: 90%; max-width: 1100px; margin: 0 auto;}
 
-#nav {width: 100%; height: 3rem; position: fixed; top: 0; left: 0; z-index: 100; background: #e8e8ed; color: #999; font-weight: 400; font-size: 0.9rem; line-height: 3rem;}
+#nav {width: 100%; height: 3rem; position: fixed; top: 0; left: 0; z-index: 100; color: #999; font-weight: 400; font-size: 0.9rem; line-height: 3rem;}
 #nav .wrap {display: flex; justify-content: space-between;}
 #nav .nav01 {display: flex; align-items: center; height: 3rem;}
 #nav .nav01 li.svg {width: 4.2rem; margin-top: 10px;}
@@ -41,7 +41,7 @@ footer .aWrap a.archive:hover svg {transform: translate(300%, -50%); transition:
 footer .aWrap a.archive span {display: inline-block; position: relative; left: 0;}
 footer .aWrap a.archive:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s;}
 
-section {display: flex; align-items: center; justify-content: center; padding: 5rem 0 3rem; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;}
+section {display: flex; align-items: center; justify-content: center; padding: 5rem 0 3rem;}
 .finder {display: flex; flex-direction: column; height: 80vh; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.25);}
 
 /* ── toolbar ── */
@@ -135,7 +135,7 @@ section {display: flex; align-items: center; justify-content: center; padding: 5
 
 @media (max-width: 1000px) {
 section { align-items: flex-start;}
-.finder { max-width: 100%; height: 85vh; min-height: 500px;}
+.finder { max-width: 100%; height: 85vh; min-height: 600px;}
 .sidebar { display: none; }
 .tag-bar { display: flex; }
 .col-header, .file-row { grid-template-columns: 1fr 90px; }
