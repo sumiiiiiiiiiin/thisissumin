@@ -1,47 +1,60 @@
 @charset "utf-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
-
 * {margin:0;  padding:0; box-sizing: border-box;}
 
-html {font: 18px/1.6 "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; letter-spacing: -0.01em; color: #111; 
-  background-color:#fafafa; overflow-x: hidden; scroll-behavior: smooth;}
+html {font: 300 18px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; 
+    font-optical-sizing: auto; font-style: normal; letter-spacing: -0.005em; color: #111;
+    background-color:#fafafa; overflow-x: hidden; scroll-behavior: smooth;}
 
+body {cursor: default;}
 li {list-style: none; }
-a {text-decoration:none; color:inherit;}
-img {width: 100%;}
-img, video {user-select: none; pointer-events: none;}
+a {text-decoration:none; color:inherit; }
+img {width: 100%; user-select: none; pointer-events: none;}
 
 .wrap {width: 90%; max-width: 1100px; margin: 0 auto;}
 
-#nav {width: 100%; height: 3rem; position: fixed; top: 0; left: 0; z-index: 100; background: #fafafa; color: #666; font-size: 0.9rem; line-height: 3rem;}
+#nav {width: 100%; height: 3rem; position: fixed; top: 0; left: 0; z-index: 100; background: #fafafa; color: #999; font-weight: 400; font-size: 0.9rem; line-height: 3rem;}
 #nav .wrap {display: flex; justify-content: space-between;}
 #nav .nav01 {display: flex; align-items: center; height: 3rem;}
 #nav .nav01 li.svg {width: 4.2rem; margin-top: 10px;}
 #nav .nav02 {display: flex; align-items: center; height: 3rem;}
 #nav .nav02 li {padding-left: 2rem; text-align: right;}
-#nav .nav02 a:hover {font-weight: 500; color: #111;}
+#nav .nav02 a.active {color: #111; transition: ease 0.3s;}
+#nav .nav02 a:hover {color: #111; transition: ease 0.3s;}
 
-#nav .nav01 li.svg:hover .i {fill: #111!important;}
+#nav .nav01 li.svg:hover .i {fill: #111!important; transition: ease 0.3s;}
 
-footer {color: #666; font-size: 0.9rem; padding: 2.5rem 0;}
-footer .wrap {display: flex; justify-content: space-between; align-items:last baseline;}
+footer {color: #111; font-size: 0.9rem; padding: 2.5rem 0;}
+footer .wrap {display: flex; justify-content: space-between; align-items:center; flex-direction: row-reverse;}
 footer .img {width: 4.2rem;}
-footer ul {display: flex; align-items: center; height: 3rem;}
-footer ul li {padding-left: 2rem; text-align: right;}
+footer .text {margin-top: 0.5rem;}
+
+footer .aWrap {display: flex; flex-wrap: wrap; justify-content: space-between; width: 40%;}
+footer .aWrap a {width: calc(28% - 0.5rem); height: 3rem; line-height: 3rem; text-align: center; outline: 2px solid #eee; background: #fff; color: #111; font-weight: 400; border-radius: 10px; padding: 0 1.25rem; box-sizing: border-box; overflow: hidden;}
+footer .aWrap a:hover {background: #111; transition: ease 0.3s; color: #fafafa;}
+
+footer .aWrap a.archive {position: relative; width: calc(44% - 0.5rem); min-width: 8rem; text-align: left; background: #111; color: #fafafa;}
+footer .aWrap a.archive svg {width: 0.9rem; position: absolute; top: 50%; right: 1.5rem; transform: translate(0, -50%);}
+footer .aWrap a.archive:hover svg {transform: translate(300%, -50%); transition: ease 0.5s;}
+
+footer .aWrap a.archive span {display: inline-block; position: relative; left: 0;}
+footer .aWrap a.archive:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s;}
+
 
 .fadeBox {opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;}
 .fadeBox.visible {opacity: 1; transform: translateY(0);}
 
+
 #sideNav {position: fixed; top: 5rem; left: calc(50% - 550px); width: 200px;}
 .project {font-size: 0.9rem; font-weight: 400; color: #999;}
 .project li {position: relative; padding-left: 1rem;}
-.project li.click {font-weight: 500; color: #111;}
+.project li.click {color: #111;}
 .project li::after {content: ""; display: block; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 0.45rem; height: 0.45rem; background: #999;}
 
 .sideNav {font-size: 0.75rem; font-weight: 500; letter-spacing: 0.075rem; color: #999;}
 .sideNav li {padding: 0.5rem 0;}
-.sideNav a.active {font-weight: 600; color: #111;}
+.sideNav a.active {color: #111;}
+
 
 #content {display: flex; flex-direction: row-reverse;}
 .workWrap {width: 100%; max-width: 900px;}
@@ -58,7 +71,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 .underline {text-decoration: underline;}
 .lineThrough {text-decoration:line-through;}
 .italic {font-style: italic;}
-.tag {display: inline-block; padding: 0.25rem 1rem; font-size: 0.75rem; background: #eee; color: #666; margin-left: 0.25rem; margin-bottom: 0.5rem; border-radius: 50px;}
+.tag {display: inline-block; padding: 0.15rem 0.9rem; font-size: 0.75rem; background: #eee; color: #666; margin-left: 0.25rem; margin-bottom: 0.5rem; border-radius: 50px;}
 
 .fontW100 {font-weight: 100;}
 .fontW300 {font-weight: 300;}
@@ -94,6 +107,8 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 
 .textBox {padding: 1.5rem; border-radius: 10px; background: #fff; border: 2px solid #eee;}
 .bgBox {padding: 1.5rem; border-radius: 10px;}
+
+.coocupBG {background: #fde8e1; color: #e05c26;}
 
 #overview {padding-top: 5rem;}
 #overview ul li {flex: 0 0 30%;}
@@ -135,6 +150,10 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 @media (max-width: 1200px) {
   html {font-size: 17px;}
 
+  footer .imgWrap {display: flex; flex-direction: row-reverse; justify-content: space-between;}
+  footer .wrap {display: block;}
+  footer .aWrap {width: 100%; margin-bottom: 2rem;}
+
   #sideNav {display: none;}
   #content {display: block;}
   .workWrap {width: 100%; margin: 0 auto;}
@@ -145,8 +164,8 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 @media (max-width: 767px) {
   html {font-size: 16px;}
 
-  footer .wrap {display: block;}
-  footer ul li:first-child {padding-left: 0;} 
+  footer .imgWrap {display: block;} 
+
 
   .marginT1M {margin-top: 1rem;}
   .marginT2M {margin-top: 2rem;}
@@ -159,7 +178,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
   .coocup #research .bgBox .text {width: calc(100% - 7.5rem);}
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     html {font-size: 14px;}
 
 }
