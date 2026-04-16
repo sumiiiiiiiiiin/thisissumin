@@ -177,6 +177,6 @@ footer .aWrap a.archive:hover span {left: 50%; transform: translateX(-50%); tran
 }
 
 @media (max-width: 480px) {
-    html {font-size: 14px;}
+    html {font-size: 15px;}
     #index .imgWrap .img img {width: 100%;}
 }
