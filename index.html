@@ -59,41 +59,43 @@
                 </div>
                 <div class="subTitle"></div>
             </div>
+
             <div class="imgTitle">
                 <p><a href="me.html?section=me">Guitarist</a></p>
                 <p class="textRM"><a href="me.html?section=me">Curious Explorer</a></p>
                 <p><a href="me.html?section=me">Problem Solver</a></p>
                 <p class="textRM"><a href="me.html?section=me">Collaborator</a></p>
             </div>
+
             <div class="imgWrap">
-                <div class="img hoverBox" data-color="#be2026">
+                <a href="me.html?section=me" class="img hoverBox" data-color="#ff5f57">
                     <img src="images/guitar.png" alt="guitar">
                     <div class="cursorBox">
                         <img src="images/guitarWeezer.jpg">
                         <p>now playing...</p>
                     </div>
-                </div>
-                <div class="img hoverBox" data-color="#13f">
+                </a>
+                <a href="me.html?section=me" class="img hoverBox" data-color="#0071e3">
                     <img src="images/globe.png" alt="travel">
                     <div class="cursorBox">
                         <img src="images/globeTravel.jpg">
                         <p>me at the train station</p>
                     </div>
-                </div>
-                <div class="img hoverBox" data-color="#090">
+                </a>
+                <a href="me.html?section=me" class="img hoverBox" data-color="#28c840">
                     <img src="images/flask.png" alt="chemical engineering">
                     <div class="cursorBox">
                         <img src="images/flaskLab.jpg">
                         <p>my old chemistry lab</p>
                     </div>
-                </div>
-                <div class="img hoverBox" data-color="#fa0">
+                </a>
+                <a href="me.html?section=me" class="img hoverBox" data-color="#ff9f0a">
                     <img src="images/collab.png" alt="group photo">
                     <div class="cursorBox">
                         <img src="images/collabCoffee.jpg">
                         <p>coffee at central perk</p>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="down"><a href="#" data-target="work">
@@ -144,6 +146,29 @@
 
     <footer>
         <div class="wrap">
+            <div class="aWrap">
+                <a class="resume" href="images/Sumin Seo_Resume.pdf" target="_blank">
+                    Resume
+                </a>
+                <a href="https://www.linkedin.com/in/sumiin/" target="_blank">
+                    LinkedIn
+                </a>
+                <a class="archive" href="archive.html">
+                    <span>Archive</span>
+                    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
+                        <defs>
+                            <style>
+                                .nextSVG {
+                                    fill: #fafafa;
+                                }
+                            </style>
+                        </defs>
+                        <path class="nextSVG"
+                            d="M98.88,48.93l-.03-.12c-.03-.12-.06-.23-.12-.42-.04-.13-.08-.25-.11-.35-.09-.26-.21-.46-.3-.62l-.23-.41c-.2-.29-.43-.58-.68-.83L57.16,5.94c-1.94-1.94-5.02-2.11-7.2-.36l-.42.36c-1.01,1.01-1.57,2.37-1.57,3.8s.56,2.77,1.57,3.8l31.08,31.08H6.38c-2.96,0-5.38,2.41-5.38,5.38s2.41,5.38,5.38,5.38h74.25l-31.08,31.08c-1.02,1.01-1.57,2.36-1.57,3.8s.56,2.77,1.57,3.8c.99,1,2.38,1.58,3.81,1.58s2.79-.56,3.8-1.57l40.26-40.26c.26-.26.48-.53.66-.79.08-.13.16-.25.24-.41l.04-.07c.1-.17.18-.33.25-.51.04-.12.08-.24.15-.45l.04-.16c.03-.09.05-.18.1-.36.07-.35.11-.71.11-1.07,0-.38-.09-.91-.12-1.06Z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
             <div class="imgWrap">
                 <div class="img"><a href="index.html">
                         <?xml version="1.0" encoding="UTF-8"?>
@@ -151,11 +176,11 @@
                             <defs>
                                 <style>
                                     .sumnF {
-                                        fill: #666;
+                                        fill: #111;
                                     }
 
                                     .iF {
-                                        fill: #666;
+                                        fill: #111;
                                     }
                                 </style>
                             </defs>
@@ -168,11 +193,7 @@
                     <p>© 2026 Designed and Coded by Sumin. All rights reserved.</p>
                 </div>
             </div>
-            <ul>
-                <li><a href="images/Sumin Seo_Resume.pdf" target="_blank">RESUME</a></li>
-                <li><a href="https://www.linkedin.com/in/sumiin/">LINKED IN</a></li>
-                <li><a href="mailto:emailsumin@gmail.com?subject=hi sumin&body=say hi to sumin">EMAIL</a></li>
-            </ul>
+
         </div>
     </footer>
 </body>
@@ -283,22 +304,22 @@
         });
 
         target.addEventListener('mouseenter', () => {
-            // 1️⃣ hoverBox cursor show
+            // hoverBox cursor show
             if (cursor) cursor.style.opacity = 1;
 
-            // 2️⃣ indexCursor hide
+            // indexCursor hide
             indexCursor.style.display = 'none';
-            indexSection.style.cursor = 'none'; // hide cursor
+            // indexSection.style.cursor = 'none'; // hide cursor
 
-            // 3️⃣ textBox content
+            // textBox content
             if (index === 0) {
-                textBox.innerHTML = '<h2>guitarist 🎸</h2> <p>i play guitar and love rock music!</p>';
+                textBox.innerHTML = '<p>🎸 &nbsp; Guitarist </p>';
             } else if (index === 1) {
-                textBox.innerHTML = '<h2>curious explorer 🔍</h2> <p>i\'ve traveled the world with just my backpack for 18 months!</p>';
+                textBox.innerHTML = '<p>🔍 &nbsp; Curious Explorer </p>';
             } else if (index === 2) {
-                textBox.innerHTML = '<h2>problem solver 🧪</h2> <p>i studied chemical engineering, which shaped my structured thinking and problem-solving approach.</p>';
+                textBox.innerHTML = '<p>🧪 &nbsp; Problem Solver </p>';
             } else {
-                textBox.innerHTML = '<h2>collaborator 👋</h2> <p>let\'s build something together!!</p>';
+                textBox.innerHTML = '<p>👋 &nbsp; Collaborator </p>';
             }
         });
 
@@ -402,7 +423,7 @@
         if (index < text.length) {
         el.textContent += text.charAt(index);
         index++;
-        setTimeout(type, 80);
+        setTimeout(type, 90);
         }
     }
 
