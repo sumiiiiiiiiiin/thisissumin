@@ -166,7 +166,7 @@ transition: height 0.3s ease;
 
 
 @media (max-width: 480px) {
-    html {font-size: 14px;}
+    html {font-size: 15px;}
 
     .col-header, .file-row { grid-template-columns: 1fr; }
     .file-date { display: none; }
