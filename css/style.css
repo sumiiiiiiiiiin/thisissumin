@@ -126,7 +126,7 @@ footer .aWrap a.email:hover span {left: 50%; transform: translateX(-50%); transi
     footer .aWrap {width: 100%; margin-bottom: 2rem;}
 
     #index .title {display: block;}
-    #index .title p {font-size: 1.5rem; text-align: left!important;}
+    #index .title p {font-size: 1.35rem; text-align: left!important;}
     .none1200 {display: none;}
     #index .subTitle {display: none;}
 
@@ -159,12 +159,13 @@ footer .aWrap a.email:hover span {left: 50%; transform: translateX(-50%); transi
     .cursorBox {display: none;}
     .none1200 {display: block;}
 
+    #index .title p {line-height: 1.5;}
+
     #index .imgWrap {margin-top: 3rem; justify-content: space-around;}
     #index .imgWrap .img {flex: 0 0 40%; text-align: center; margin-bottom: 3rem;}
     #index .imgWrap .img img {width: 75%;}
 
-    .down {bottom: 2%;}
-    .down .text {display: none;}
+    .down {bottom: 2%; display: none;}
 
     #about .aboutStar {width: 50%;}
     #me .box {flex: 0 0 100%;}
