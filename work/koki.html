@@ -31,7 +31,7 @@
                                         }
 
                                         .i {
-                                            fill: #e05c26;
+                                            fill: #247e00;
                                         }
                                     </style>
                                 </defs>
@@ -52,46 +52,46 @@
 
     <div id="sideNav">
         <p class="title">PROJECT</p>
-        <ul class="project coocup">
-            <li><a href="koki.html">Koki</a></li>
+        <ul class="project koki">
+            <li class="click"><a href="koki.html">Koki</a></li>
             <li><a href="science.html">Online Science Day</a></li>
-            <li class="click"><a href="coocup.html">Coocup</a></li>
+            <li><a href="coocup.html">Coocup</a></li>
         </ul>
         <ul class="sideNav marginT2">
             <li><a href="#" data-target="overview" class="active">OVERVIEW</a></li>
             <li><a href="#" data-target="problem">PROBLEM</a></li>
             <li><a href="#" data-target="research">RESEARCH</a></li>
+            <li><a href="#" data-target="ai">AI ASSISTANCE</a></li>
             <li><a href="#" data-target="solution">SOLUTION</a></li>
-            <li><a href="#" data-target="process">PROCESS</a></li>
-            <li><a href="#" data-target="branding">BRANDING</a></li>
+            <li><a href="#" data-target="final">FINAL DESIGN</a></li>
         </ul>
     </div>
 
-    <div id="content" class="wrap coocup">
+    <div id="content" class="wrap koki">
         <div class="workWrap">
             <section id="overview">
                 <div class="box fadeBox">
                     <video autoplay muted loop playsinline>
-                        <source src="images/coocupV01.mp4" type="video/mp4">
+                        <source src="images/kokiV01.mp4" type="video/mp4">
                     </video>
                 </div>
-                <h1 class="marginT1">Coocup</h1>
+                <h1 class="marginT1">Koki</h1>
                 <ul class="flexW marginT1">
                     <li>
-                        <p class="title">SCHOOL PROJECT</p>
-                        <p>Creating an App <br class="brW">with Spark AR</p>
+                        <p class="title">SOLO PROJECT</p>
+                        <p>Korean Kitchen <br>Ordering App</p>
                     </li>
                     <li class="marginT2M">
-                        <p class="title">TEAM MEMBERS</p>
-                        <p>Sumin Seo <span class="tag coocupBG">Product Designer</span></p>
-                        <p>Ya Deng <span class="tag">UX Researcher</span></p>
+                        <p class="title">TOOLS</p>
+                        <p>Claude <span class="tag kokiBG">AI Assistance</span></p>
+                        <p>Figma</p>
                     </li>
                     <li class="marginT2M">
                         <p class="title">MY CONTRIBUTION</p>
                         <p class="dot">Concept Ideation</p>
-                        <p class="dot">Branding</p>
+                        <p class="dot">User Research</p>
                         <p class="dot">UX/UI Design</p>
-                        <p class="dot">AR Prototyping</p>
+                        <p class="dot">Prototyping</p>
                     </li>
                 </ul>
             </section>
@@ -99,140 +99,173 @@
             <section id="problem">
                 <h2>PROBLEM</h2>
                 <div class="text">
-                    <p>Coocup is one of my school projects designed to provide immersive assistance to people using
-                        Augmented Reality.</p>
-                    <p class="marginT1"><span class="bold">It started from my memory of wanting to bake but giving up
-                            due to complicated measurements.</span> I also discovered that many international students,
-                        like myself, who have recently moved to Canada do not have basic cooking tools such as measuring
-                        cups or kitchen scales at home. And it leads me to create an <span class="bold">AR product that
-                            allows easy measurements with any cup</span>.</p>
-                </div>
-                <div class="textBox marginT2 fadeBox">
-                    <div class="img"><img src="images/coocupProblem.png" alt="challenge"></div>
+                    <p>While working as a server at a Korean restaurant in Toronto, I noticed that many customers struggled to understand the menu.</p>
+                    <p class="marginT1"><span class="bold">Dish names were unfamiliar</span>, and <span class="bold">menu information was often unclear.</span> As Korean cuisine often involves multiple customization options, <span class="bold">customers needed extra time to decide on additional options</span>, which led to delays and confusion.</p>
+                    <p class="marginT1">This experience led me to explore how UX design could improve menu clarity and support better decision-making.</p>
                 </div>
                 <div class="textBox marginT1 fadeBox">
                     <h4>Challenge</h4>
-                    <p>Simplify the cooking process while making it more enjoyable and accessible for users without
-                        measuring tools.</p>
+                    <p>How might we help customers quickly understand unfamiliar Korean dishes and order with confidence?</p>
                 </div>
             </section>
 
             <section id="research">
                 <h2>RESEARCH</h2>
                 <div class="text">
-                    <p>A survey of 30 participants revealed that many users lack measuring tools and find cooking
-                        measurements complex, especially in baking, often discouraging them from trying it.</p>
+                    <p>While working as a server at a Korean restaurant, I served around 30 tables per shift. I closely observed how customers interacted with the menu and I noticed three key patterns through daily observations for a week.</p>
                 </div>
 
                 <div class="flexW marginT2 fadeBox">
-                    <div class="bgBox" style="background-color: #e05c26;">
+                    <div class="bgBox marginT1M" style="background-color: #E8C4C4;">
                         <div class="text">
-                            <h3>43%</h3>
-                            <p>Do not have measuring tools</p>
+                            <h3>63%</h3>
+                            <p>of customers struggled to decide what to order.</p>
                         </div>
-                        <div class="img"><img src="images/coocupResearch01.png" alt="measuring cup"></div>
+                        <div class="emoji">&#x1F914;</div>
                     </div>
-                    <div class="bgBox marginT1M" style="background-color: #fbd168;">
+                    <div class="bgBox marginT1M" style="background-color: #CED0E1;">
                         <div class="text">
-                            <h3>60%</h3>
-                            <p>Struggle to understand cooking measurements</p>
+                            <h3>26%</h3>
+                            <p>of customers left food unfinished or requested changes due to mismatched expectations.</p>
                         </div>
-                        <div class="img"><img src="images/coocupResearch02.png" alt="cooking chart"></div>
+                        <div class="emoji">&#x1F372;</div>
                     </div>
-                    <div class="bgBox marginT1M" style="background-color: #d4d47a;">
+                    <div class="bgBox" style="background-color: #CBDDC4;">
                         <div class="text">
-                            <h3>70%</h3>
-                            <p>Believe baking is complicated</p>
+                            <h3>36%</h3>
+                            <p>of customers misidentified dishes while placing their orders.</p>
                         </div>
-                        <div class="img"><img src="images/coocupResearch03.png" alt="baking"></div>
+                        <div class="emoji">&#x1F937;</div>
                     </div>
+                    
                 </div>
+
+                <div class="marginT5 text">
+                    <p>To better understand these behaviors, I also summarized the most common questions I heard from customers.</p>
+                </div>
+                <div class="textBox marginT1 fadeBox">
+                    <h4>Most common questions from customers</h4>
+                    <p class="dot">Is this spicy?</p>
+                    <p class="dot">How big is the portion?</p>
+                    <p class="dot">Are there any vegan options?</p>
+                    <p class="dot">What’s in this dish?</p>
+                    <p class="dot">How do I eat this?</p>
+                </div>
+            </section>
+
+            <section id="ai">
+                <h2>AI ASSISTANCE</h2>
+                <div class="text fadeBox">
+                    <p>Based on my research, I used <span class="bold">Claude AI</span> to explore UX structure ideas. Through this process, I gained three key outputs.</p> 
+                </div>
+                <div class="textBox marginT1">
+                    <p><span class="bold">💬 Conversational UX Direction</span><br>A shift from traditional filter-based navigation to a more intuitive, conversational AI chatbot approach.</p>
+                </div>
+                <div class="textBox marginT1">
+                    <p><span class="bold">⏰ Efficient Content Generation</span><br>AI-generated dish descriptions eliminated the need for manual research, allowing faster and more consistent content creation.</p>
+                </div>
+                <div class="textBox marginT1">
+                    <p><span class="bold">📝 Initial High-Fidelity Concept</span><br>AI produced an initial high-fidelity concept reflecting key user needs, which I further refined to improve clarity and usability.</p>
+                </div>
+
             </section>
 
             <section id="solution">
                 <h2>SOLUTION</h2>
                 <div class="text">
-                    <h3>Designing an Easy Way to Measure Volume</h3>
-                    <p>A cylinder can take different shapes by adjusting its height and radius, while <span class="bold">keeping the total
-                        volume constant</span>. Based on this principle, a slider-based UI allows users to adjust a virtual
-                        cylinder and see the volume in real time.</p>
+                    <h3>AI-Powered Menu Assistant</h3>
+                    <p>Introduced a chat-based assistant to help users explore the menu and receive personalized recommendations in a conversational way.</p>
                 </div>
-                <div class="box marginT1 fadeBox" style="border-radius: 0!important;">
+                <div class="box marginT1 fadeBox">
                     <video autoplay muted loop playsinline>
-                        <source src="images/coocupV02.mp4" type="video/mp4">
+                        <source src="images/kokiV02.mp4" type="video/mp4">
                     </video>
                 </div>
 
                 <div class="text marginT5">
-                    <h3>No Page Switching, Faster Workflow</h3>
-                    <p>Users can adjust values, change colors, and view records instantly within a single page, creating
-                        a fast and seamless workflow without interruptions.</p>
+                    <h3>Improved Information Structure & Brand Identity</h3>
+                    <p>Removed redundant information and applied a consistent visual identity to create a clearer and more cohesive experience.</p>
                 </div>
-                <div class="box marginT1 fadeBox">
-                    <video autoplay muted loop playsinline>
-                        <source src="images/coocupV03.mp4" type="video/mp4">
-                    </video>
-                </div>
-
-                <div class="text marginT5">
-                    <h3>Saved Workflows, Instant Measurements</h3>
-                    <p>Saved recipes allow users to instantly measure ingredients. Selecting a recipe automatically
-                        fills a virtual cylinder with the correct volumes, enabling quick and accurate preparation
-                        without manual input.</p>
-                </div>
-                <div class="box marginT1 fadeBox">
-                    <video autoplay muted loop playsinline>
-                        <source src="images/coocupV04.mp4" type="video/mp4">
-                    </video>
-                </div>
-
-                <div class="text marginT5">
-                    <h3>Easy Navigation and Flexible Step Control</h3>
-                    <p>With intuitive menu and step controls, users can quickly return to any previous step to review or
-                        make changes whenever needed.</p>
-                </div>
-                <div class="box marginT1 fadeBox">
-                    <video autoplay muted loop playsinline>
-                        <source src="images/coocupV05.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </section>
-
-            <section id="process">
-                <h2>PROCESS</h2>
-                <div class="textBox fadeBox" style="background-color: #474e50;">
-                    <h4 style="color: #fff;">Spark AR</h4>
-                    <img src="images/coocupSpark.jpg" alt="sparkAR">
-                </div>
-                <div class="textBox marginT1 fadeBox">
-                    <h4>User Flow</h4>
-                    <div class="img marginT1"><img src="images/coocupUserFlow.jpg" alt="user flow"></div>
-                </div>
-                <div class="textBox marginT1 fadeBox">
-                    <h4>UI Design</h4>
-                    <div class="img marginT1"><img src="images/coocupUI.jpg" alt="ui design"></div>
-                </div>
-            </section>
-
-            <section id="branding">
-                <h2>BRANDING</h2>
-                <div class="box fadeBox">
-                    <img src="images/coocupBranding.jpg" alt="branding">
-                </div>
-                <div class="flex marginT1">
-                    <div class="box fadeBox">
+                <div class="marginT1 fadeBox flex">
+                    <div class="box aiImg">
+                        <img src="images/kokiAI03.jpg" alt="claude">
+                        <div class="tag">claude</div>
+                    </div>
+                    <div class="box aiVid">
                         <video autoplay muted loop playsinline>
-                            <source src="images/coocupLogo.mp4" type="video/mp4">
+                            <source src="images/kokiV03.mp4" type="video/mp4">
                         </video>
                     </div>
-                    <div class="box fadeBox"><img src="images/coocupFont.jpg" alt="font"></div>
-                </div>
-                <div class="box marginT1 fadeBox">
-                    <img src="images/coocupColor.jpg" alt="color">
                 </div>
 
+                <div class="text marginT5">
+                    <h3>Enhanced Information Visibility with Smart Tags</h3>
+                    <p>Used tags for key attributes such as spice level, vegan options, and portion size, along with visual indicators to help users quickly understand each dish at a glance.</p>
+                </div>
+                <div class="marginT1 fadeBox flex">
+                    <div class="box aiImg">
+                        <img src="images/kokiAI04.jpg" alt="claude">
+                        <div class="tag">claude</div>
+                    </div>
+                    <div class="box aiVid">
+                        <video autoplay muted loop playsinline>
+                            <source src="images/kokiV04.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <div class="text marginT5">
+                    <h3>Transparent & Editable Cart Experience</h3>
+                    <p>Displayed selected options and special requests directly within the cart, allowing users to review and edit their order without leaving the page, reducing friction and improving control.</p>
+                </div>
+                <div class="marginT1 fadeBox flex">
+                    <div class="box aiImg">
+                        <img src="images/kokiAI05.jpg" alt="claude">
+                        <div class="tag">claude</div>
+                    </div>
+                    <div class="box aiVid">
+                        <video autoplay muted loop playsinline>
+                            <source src="images/kokiV05.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <div class="text marginT5">
+                    <h3>Guided Navigation Flow</h3>
+                    <p>Placed every button to go next step in the bottom right corner to maintain flow and help users move through the process without interruption.</p>
+                </div>
+                <div class="marginT1 fadeBox flex">
+                    <div class="box aiImg">
+                        <img src="images/kokiAI06.jpg" alt="claude">
+                        <div class="tag">claude</div>
+                    </div>
+                    <div class="box aiVid">
+                        <video autoplay muted loop playsinline>
+                            <source src="images/kokiV06.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                 <div class="text marginT5">
+                    <h3>Immediate Visual Feedback</h3>
+                    <p>Designed option selections to provide instant feedback, helping users confirm their choices and reduce uncertainty.</p>
+                </div>
+                <div class="box marginT1 fadeBox">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/kokiV07.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </section>
+
+            <section id="final">
+                <h2>FINAL DESIGN</h2>
+                <div class="box fadeBox">
+                    <div class="img"><img src="images/kokiUI.jpg" alt="user flow"></div>
+                </div>
+
+
                 <div class="page">
-                    <a class="prev" href="koki.html">
+                    <a class="prev" href="science.html">
                         <h2>
                             <?xml version="1.0" encoding="UTF-8"?>
                             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
@@ -246,10 +279,10 @@
                             <path class="prevSVG" d="M1.13,48.93l.03-.12c.03-.12.06-.23.12-.42.04-.13.08-.25.11-.35.09-.26.21-.46.3-.62l.23-.41c.2-.29.43-.58.68-.83L42.85,5.94c1.94-1.94,5.02-2.11,7.2-.36l.42.36c1.01,1.01,1.57,2.37,1.57,3.8s-.56,2.77-1.57,3.8l-31.08,31.08h74.24c2.96,0,5.38,2.41,5.38,5.38s-2.41,5.38-5.38,5.38H19.38l31.08,31.08c1.02,1.01,1.57,2.36,1.57,3.8s-.56,2.77-1.57,3.8c-.99,1-2.38,1.58-3.81,1.58s-2.79-.56-3.8-1.57L2.59,53.81c-.26-.26-.48-.53-.66-.79-.08-.13-.16-.25-.24-.41l-.04-.07c-.1-.17-.18-.33-.25-.51-.04-.12-.08-.24-.15-.45l-.04-.16c-.03-.09-.05-.18-.1-.36-.07-.35-.11-.71-.11-1.07,0-.38.09-.91.12-1.06h.01Z"/>
                             </svg>
                     &nbsp;PREV</h2>
-                        <p>Koki</p>
+                        <p>Online Science Day</p>
                     </a>
 
-                    <a class="next" href="science.html">
+                    <a class="next" href="coocup.html">
                         <h2>NEXT&nbsp;
                             <?xml version="1.0" encoding="UTF-8"?>
                             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
@@ -263,9 +296,10 @@
                             <path class="nextSVG" d="M98.88,48.93l-.03-.12c-.03-.12-.06-.23-.12-.42-.04-.13-.08-.25-.11-.35-.09-.26-.21-.46-.3-.62l-.23-.41c-.2-.29-.43-.58-.68-.83L57.16,5.94c-1.94-1.94-5.02-2.11-7.2-.36l-.42.36c-1.01,1.01-1.57,2.37-1.57,3.8s.56,2.77,1.57,3.8l31.08,31.08H6.38c-2.96,0-5.38,2.41-5.38,5.38s2.41,5.38,5.38,5.38h74.25l-31.08,31.08c-1.02,1.01-1.57,2.36-1.57,3.8s.56,2.77,1.57,3.8c.99,1,2.38,1.58,3.81,1.58s2.79-.56,3.8-1.57l40.26-40.26c.26-.26.48-.53.66-.79.08-.13.16-.25.24-.41l.04-.07c.1-.17.18-.33.25-.51.04-.12.08-.24.15-.45l.04-.16c.03-.09.05-.18.1-.36.07-.35.11-.71.11-1.07,0-.38-.09-.91-.12-1.06Z"/>
                             </svg>
                         </h2>
-                        <p>Online Science Day</p>
+                        <p>Coocup</p>
                     </a>
                 </div>
+                
             </section>
 
         </div>
