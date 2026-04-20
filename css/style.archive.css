@@ -34,12 +34,12 @@ footer .aWrap {display: flex; flex-wrap: wrap; justify-content: space-between; w
 footer .aWrap a {width: calc(28% - 0.5rem); height: 3rem; line-height: 3rem; text-align: center; outline: 2px solid #eee; background: #fff; color: #aaa; font-weight: 400; border-radius: 10px; padding: 0 1.25rem; box-sizing: border-box; overflow: hidden;}
 footer .aWrap a:hover {background: #aaa; transition: ease 0.3s; color: #fafafa;}
 
-footer .aWrap a.archive {position: relative; width: calc(44% - 0.5rem); min-width: 8rem; text-align: left; background: #aaa; color: #fafafa;}
-footer .aWrap a.archive svg {width: 0.9rem; position: absolute; top: 50%; right: 1.5rem; transform: translate(0, -50%);}
-footer .aWrap a.archive:hover svg {transform: translate(300%, -50%); transition: ease 0.5s;}
+footer .aWrap a.email {position: relative; width: calc(44% - 0.5rem); min-width: 8rem; text-align: left; background: #aaa; color: #fafafa;}
+footer .aWrap a.email svg {width: 0.9rem; position: absolute; top: 50%; right: 1.5rem; transform: translate(0, -50%);}
+footer .aWrap a.email:hover svg {transform: translate(300%, -50%); transition: ease 0.5s;}
 
-footer .aWrap a.archive span {display: inline-block; position: relative; left: 0;}
-footer .aWrap a.archive:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s;}
+footer .aWrap a.email span {display: inline-block; position: relative; left: 0;}
+footer .aWrap a.email:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s;}
 
 section {display: flex; align-items: center; justify-content: center; padding: 5rem 0 3rem;}
 .finder {display: flex; flex-direction: column; height: 80vh; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.25);}
