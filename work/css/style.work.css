@@ -33,12 +33,12 @@ footer .aWrap {display: flex; flex-wrap: wrap; justify-content: space-between; w
 footer .aWrap a {width: calc(28% - 0.5rem); height: 3rem; line-height: 3rem; text-align: center; outline: 2px solid #eee; background: #fff; color: #111; font-weight: 400; border-radius: 10px; padding: 0 1.25rem; box-sizing: border-box; overflow: hidden;}
 footer .aWrap a:hover {background: #111; transition: ease 0.3s; color: #fafafa;}
 
-footer .aWrap a.archive {position: relative; width: calc(44% - 0.5rem); min-width: 8rem; text-align: left; background: #111; color: #fafafa;}
-footer .aWrap a.archive svg {width: 0.9rem; position: absolute; top: 50%; right: 1.5rem; transform: translate(0, -50%);}
-footer .aWrap a.archive:hover svg {transform: translate(300%, -50%); transition: ease 0.5s;}
+footer .aWrap a.email {position: relative; width: calc(44% - 0.5rem); min-width: 8rem; text-align: left; background: #111; color: #fafafa;}
+footer .aWrap a.email svg {width: 0.9rem; position: absolute; top: 50%; right: 1.5rem; transform: translate(0, -50%);}
+footer .aWrap a.email:hover svg {transform: translate(300%, -50%); transition: ease 0.5s;}
 
-footer .aWrap a.archive span {display: inline-block; position: relative; left: 0;}
-footer .aWrap a.archive:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s;}
+footer .aWrap a.email span {display: inline-block; position: relative; left: 0;}
+footer .aWrap a.email:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s;}
 
 
 .fadeBox {opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;}
@@ -71,7 +71,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 .underline {text-decoration: underline;}
 .lineThrough {text-decoration:line-through;}
 .italic {font-style: italic;}
-.tag {display: inline-block; padding: 0.15rem 0.9rem; font-size: 0.75rem; background: #eee; color: #666; margin-left: 0.25rem; margin-bottom: 0.5rem; border-radius: 50px;}
+.tag {display: inline-block; padding: 0.15rem 0.75rem; font-size: 0.75rem; background: #eee; color: #666; margin-left: 0.25rem; border-radius: 50px;}
 
 .fontW100 {font-weight: 100;}
 .fontW300 {font-weight: 300;}
@@ -101,6 +101,10 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 .flexW {display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;}
 .flex {display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;}
 
+.aiImg {width: 31%; position: relative;}
+.aiVid {width: calc(69% - 1rem);}
+.aiImg .tag {position: absolute; bottom: 1rem; right: 1rem; background: #111; color: #fff;}
+
 .box {border-radius: 10px; overflow: hidden;}
 .box video {display: block; width: 100%; height: 100%; object-fit: cover;}
 .box img {display: block; width: 100%; height: 100%; object-fit: cover;}
@@ -109,6 +113,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 .bgBox {padding: 1.5rem; border-radius: 10px;}
 
 .coocupBG {background: #fde8e1; color: #e05c26;}
+.kokiBG {background: #fffede; color: #111; border: 1px solid #111;}
 
 #overview {padding-top: 5rem;}
 #overview ul li {flex: 0 0 30%;}
@@ -121,7 +126,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 #try .tryButton p {width: calc(100% - 5rem);}
 #try .tryButton img {width: 2rem;}
 
-.page {margin-top: 3rem; display: none;}
+.page {margin-top: 3rem; display: none; display: flex; justify-content: space-between;}
 .page .next {text-align: right;}
 .page h2 {margin-bottom: 0;}
 .page svg {width: 0.65rem;}
@@ -131,7 +136,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 .project.science li.click::after {background: #5280c1;} 
 #scrollProgress.science {background-color: #5280c1;}
 /* .science .box {background: linear-gradient(45deg, #f0f0f2, #f6ebeb, #fdf8e4);} */
-.science #try a {background: linear-gradient(45deg, #4f7ebf, #e7879b, #edab36); color: #fff;}
+.science #try>a {background: linear-gradient(45deg, #4f7ebf, #e7879b, #edab36); color: #fff;}
 
 .project.coocup li.click::after {background: #e05c26;} 
 #scrollProgress.coocup {background-color: #e05c26;}
@@ -141,6 +146,8 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 .coocup #process video {width: 40%;}
 .coocup #branding .flex .box {flex: 0 0 calc(50% - 0.5rem); background: #faf7e6;}
 
+.project.koki li.click::after {background: #247e00;} 
+.koki #research .bgBox  .img {width: 6rem; margin: 1rem auto 0;}
 
 @media (min-width: 2500px) {
     html {font-size: 20px;}
@@ -158,7 +165,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
   #content {display: block;}
   .workWrap {width: 100%; margin: 0 auto; max-width: none;}
 
-  .page {display: block;}
+  .page {display: flex;}
 }
 
 
@@ -175,8 +182,12 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 
   #research .bgBox {flex-direction: row-reverse; justify-content: space-between; align-items: center;}
   #research .emoji {margin-right: 1.5rem;}
+
   .coocup #research .bgBox .img {margin: 0;}
   .coocup #research .bgBox .text {width: calc(100% - 7.5rem);}
+
+  .koki #research .bgBox .img {margin: 0;}
+  .koki #research .bgBox .text {width: calc(100% - 7.5rem);}
 }
 
 @media (max-width: 480px) {
