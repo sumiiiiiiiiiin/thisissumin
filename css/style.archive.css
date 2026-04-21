@@ -19,11 +19,11 @@ img {width: 100%; user-select: none; pointer-events: none;}
 #nav .nav01 li.svg {width: 4.2rem; margin-top: 10px;}
 #nav .nav02 {display: flex; align-items: center; height: 3rem;}
 #nav .nav02 li {padding-left: 2rem; text-align: right;}
-#nav .nav02 a.active {color: #fff; transition: ease 0.3s;}
-#nav .nav02 a:hover {color: #fff; transition: ease 0.3s;}
+#nav .nav02 a.active {color: #111; transition: ease 0.3s;}
+#nav .nav02 a:hover {color: #111; transition: ease 0.3s;}
 
-#nav .nav01 li.svg:hover .i {fill: #fff!important; transition: ease 0.3s;}
-#nav .nav01 li.svg:hover .sumn {fill: #fff!important; transition: ease 0.3s;}
+#nav .nav01 li.svg:hover .i {fill: #111!important; transition: ease 0.3s;}
+#nav .nav01 li.svg:hover .sumn {fill: #111!important; transition: ease 0.3s;}
 
 footer {color: #aaa; font-size: 0.9rem; padding: 2.5rem 0;}
 footer .wrap {display: flex; justify-content: space-between; align-items:center; flex-direction: row-reverse;}
@@ -155,6 +155,7 @@ transition: height 0.3s ease;
 .preview.hidden { height: 0; border-top: none; }
 .preview.open   { height: 55vh; }
 .preview-img    { max-height: 35vh; }
+
 }
 
 
@@ -162,6 +163,18 @@ transition: height 0.3s ease;
     html {font-size: 16px;}
 
     footer .imgWrap {display: block;}
+
+
+    html {background: rgba(245,245,247,0.97); }
+    #nav {background: rgba(245,245,247,0.97); }
+    .finder.wrap {width: 100%; max-width: 1100px; margin: 0 auto;}
+    .finder {border-radius: 0; box-shadow: none;}
+    .toolbar {display: none;}
+
+    .tag-bar {padding: 8px 5%;}
+    .file-area {padding: 12px 5%;}
+    .preview-top {padding: 12px 5%;}
+    .preview-body {padding: 24px 5%;}
 }
 
 
