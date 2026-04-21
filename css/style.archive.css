@@ -165,6 +165,7 @@ transition: height 0.3s ease;
     footer .imgWrap {display: block;}
 
 
+    
     html {background: rgba(245,245,247,0.97); }
     #nav {background: rgba(245,245,247,0.97); }
     .finder.wrap {width: 100%; max-width: 1100px; margin: 0 auto;}

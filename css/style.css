@@ -54,11 +54,10 @@ footer .aWrap a.email:hover span {left: 50%; transform: translateX(-50%); transi
 
 #index {width: 100%; height: 100vh; overflow: hidden; display: flex; align-items: center; cursor: zoom-in;}
 #index .wrap {padding-top: 5rem; box-sizing: border-box;}
-#index .titleWrap {position: relative;}
-#index .title {display: flex; justify-content: space-between; flex-wrap: wrap;}
-#index .title p {flex: 0 0 33%; text-align: center; font-size: 1.25rem; font-weight: 400; color: #111;}
-#index .title p:first-child {text-align: left;}
-#index .title p:last-child {text-align: right;}
+#index .title p {text-align: center; font-size: 1.25rem; font-weight: 400; color: #111;}
+#index .subTitle {display: inline-block;}
+#index .subTitle p {font-weight: 300;}
+.brM {display: none;}
 
 .typingCursor::after {content: "|"; animation: blink 2s infinite;}
 @keyframes blink {0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0; }}
@@ -66,16 +65,13 @@ footer .aWrap a.email:hover span {left: 50%; transform: translateX(-50%); transi
 #index .imgWrap {display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 7rem;}
 #index .imgWrap .img {flex: 0 0 calc(25% - 20px); display: block; position: relative;}
 
-.imgWrap .tag {position: absolute; left: 50%; bottom: -2.5rem; transform: translateX(-50%); white-space: nowrap;}
-.imgWrap .tag {display: none; padding: 0.25rem 0.8rem; font-size: 0.8rem; background:#eee; color: #666; margin-left: 0.25rem; margin-bottom: 0.5rem; border-radius: 50px;}
-
 .custom-cursor {position: fixed; top: 0; left: 0; pointer-events: none; font-size: 0.75rem; color: #111; transform: translate(10%, -50%); transition: top 0.05s ease, left 0.05s ease; z-index: 1; display: none;}
 
 .cursorBox {position: fixed; width: 8rem; height: 8rem; pointer-events: none; transform: translate(-50%, -50%); opacity: 0; transition: opacity 0.1s ease; z-index: 2;}
 .cursorBox p {position: absolute; bottom: -3em; left: 20%; font-size: 0.75rem; padding: 0.25rem 1rem; background: #111; color: #fff; white-space: nowrap; border-radius: 50px;}
 .cursorBox p::after {content: ""; position: absolute; top: -0.9rem; left: 1rem; width: 0; height: 0; border: 0.5rem solid transparent; border-bottom-color: #111;}
 
-.downWrap {text-align: right; margin-top: 3rem;}
+.downWrap {text-align: right; margin-top: 4rem;}
 a.down {display: inline-block; position: relative; margin: 0 auto; width: 12.5rem; height: 3rem; line-height: 3rem; font-weight: 400; font-size: 0.9rem; text-align: left; background: #111; color: #fafafa; border-radius: 10px; outline: 2px solid #eee; padding: 0 1.25rem; box-sizing: border-box; overflow: hidden;}
 a.down svg {width: 1.5rem; position: absolute; top: 50%; right: 1rem; transform: translate(0, -50%);}
 a.down:hover svg {transform: translate(0, 200%); transition: ease 0.5s;}
@@ -117,6 +113,8 @@ a.down:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s
 #me .box .textBox {padding: 1.25rem 1.5rem; border-radius: 10px; background: #fff; border: 2px solid #eee; margin: 1rem 0 3rem 0;}
 #me .hoverBox:hover {cursor: none;}
 
+h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
+
 @media (min-width: 2500px) {
     html {font-size: 20px;}
 }
@@ -131,8 +129,6 @@ a.down:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s
 
     #index .title {display: block;}
     #index .title p {font-size: 1.35rem; text-align: left!important;}
-    .none1200 {display: none;}
-    #index .subTitle {display: none;}
 
   
     #index .imgWrap {margin-top: 4em;}
@@ -164,9 +160,10 @@ a.down:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s
 
     .textRM {text-align: right;}
     .cursorBox {display: none;}
-    .none1200 {display: block;}
+    .brM {display: block;}
 
     #index .title p {line-height: 1.5;}
+    #index .subTitle {display: none;}
 
     #index .imgWrap {margin-top: 3rem; justify-content: space-around;}
     #index .imgWrap .img {flex: 0 0 40%; text-align: center; margin-bottom: 3rem;}
