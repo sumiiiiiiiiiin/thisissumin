@@ -94,10 +94,23 @@
                 </a>
             </div>
 
-            <div class="down"><a href="#" data-target="work">
-                    <div class="text">VIEW MY PROJECT</div>
-                    <div class="img"></div>
-                </a></div>
+            <div class="downWrap">
+                <a class="down" href="#" data-target="work">
+                    <span>View My Project</span>
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200">
+                    <defs>
+                        <style>
+                        .downSVG {
+                            fill: #fff;
+                        }
+                        </style>
+                    </defs>
+                    <path class="downSVG" d="M28.63,123.34l.05-.21c.03-.12.07-.25.13-.44.03-.12.08-.28.15-.45.12-.33.26-.58.36-.73l.28-.5c.24-.35.51-.69.82-1l41.52-41.54c2.35-2.35,6.07-2.55,8.72-.42l.48.42c1.23,1.23,1.9,2.86,1.9,4.6s-.67,3.35-1.9,4.6l-30.44,30.44h107.81V33.84c0-3.58,2.92-6.5,6.5-6.5s6.5,2.92,6.5,6.5v90.78c0,3.58-2.92,6.5-6.5,6.5H50.7l30.44,30.44c1.23,1.23,1.9,2.86,1.9,4.6s-.67,3.35-1.89,4.59c-1.2,1.22-2.88,1.91-4.61,1.91s-3.37-.67-4.6-1.9l-41.54-41.54c-.31-.31-.58-.63-.81-.99-.1-.15-.18-.3-.28-.49h0c-.14-.23-.25-.45-.33-.67-.06-.16-.12-.33-.19-.58l-.03-.09c-.04-.12-.07-.23-.11-.38l-.03-.12c-.08-.43-.13-.86-.13-1.29,0-.45.09-.99.14-1.27Z"/>
+                    </svg>
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -113,7 +126,7 @@
                         <h3>Koki</h3>
                         <p>AI-Guided Korean Food Ordering</p>
                         <ul class="tag">
-                            <li>Claude</li>
+                            <li>AI-assisted tool</li>
                             <li>UX/UI Design</li>
                             <li>User Research</li>
                         </ul>
@@ -373,7 +386,7 @@
     });
 
     // scroll down nav
-    const downNavLinks = document.querySelectorAll('.down a');
+    const downNavLinks = document.querySelectorAll('.down');
     const downSections = document.querySelectorAll('section');
 
     downNavLinks.forEach(link => {
