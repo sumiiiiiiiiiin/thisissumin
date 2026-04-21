@@ -71,7 +71,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 .underline {text-decoration: underline;}
 .lineThrough {text-decoration:line-through;}
 .italic {font-style: italic;}
-.tag {display: inline-block; padding: 0.15rem 0.75rem; font-size: 0.75rem; background: #eee; color: #666; margin-left: 0.25rem; border-radius: 50px;}
+.tag {display: inline-block; padding: 0.15rem 0.75rem; font-size: 0.8rem; background: #eee; color: #666; margin-left: 0.25rem; border-radius: 50px;}
 
 .fontW100 {font-weight: 100;}
 .fontW300 {font-weight: 300;}
@@ -103,7 +103,7 @@ h4 {font-size: 0.9rem; font-weight: 500; color: #666;}
 
 .aiImg {width: 31%; position: relative;}
 .aiVid {width: calc(69% - 1rem);}
-.aiImg .tag {position: absolute; top: 0.5rem; left: 0.5rem; background: #111; color: #fff;}
+.aiImg .tag {position: absolute; left: 0.25rem; bottom: 0.5rem; background: #111; color: #fff;}
 
 .box {border-radius: 10px; overflow: hidden;}
 .box video {display: block; width: 100%; height: 100%; object-fit: cover;}
