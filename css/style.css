@@ -13,16 +13,16 @@ img {width: 100%; user-select: none; pointer-events: none;}
 
 .wrap {width: 90%; max-width: 1100px; margin: 0 auto;}
 
-#nav {width: 100%; height: 3rem; position: fixed; top: 0; left: 0; z-index: 100; background: #fafafa; color: #999; font-weight: 400; font-size: 0.9rem; line-height: 3rem;}
+#nav {width: 100%; height: 3rem; position: fixed; top: 0; left: 0; z-index: 100; background: #fafafa; color: #111; font-weight: 400; font-size: 1rem; line-height: 3rem;}
 #nav .wrap {display: flex; justify-content: space-between;}
 #nav .nav01 {display: flex; align-items: center; height: 3rem;}
 #nav .nav01 li.svg {width: 4.2rem; margin-top: 10px;}
 #nav .nav02 {display: flex; align-items: center; height: 3rem;}
 #nav .nav02 li {padding-left: 2rem; text-align: right;}
-#nav .nav02 a.active {color: #111; transition: ease 0.3s;}
-#nav .nav02 a:hover {color: #111; transition: ease 0.3s;}
+#nav .nav02 a.active {color: #aaa; transition: ease 0.3s;}
+#nav .nav02 a:hover {color: #aaa; transition: ease 0.3s;}
 
-#nav .nav01 li.svg:hover .i {fill: #ff5f57!important; transition: ease 0.3s;}
+#nav .nav01 li.svg:hover .i {fill: #ac1e2a!important; transition: ease 0.3s;}
 
 footer {color: #111; font-size: 0.9rem; padding: 2.5rem 0;}
 footer .wrap {display: flex; justify-content: space-between; align-items:center; flex-direction: row-reverse;}
@@ -83,8 +83,8 @@ a.down:hover span {left: 50%; transform: translateX(-50%); transition: ease 0.3s
 #work {width: 100%; padding-top: 5rem;}
 .work {width: 100%; margin-bottom: 5rem;}
 .work a {display: block;}
-.work .text {width: 100%; margin-top: 1rem; font-size: 1.25rem; line-height: 1.3; position: relative;}
-.work .text h3 {font-size: 1.25rem; font-weight: 500; color: #111;}
+.work .text {width: 100%; margin-top: 1rem; font-size: 1rem; line-height: 1.3; position: relative; color: #111;}
+.work .text h3 {font-size: 1.25rem; font-weight: 600;}
 
 .work .box {width: 100%; border-radius: 10px; overflow: hidden; position: relative;}
 .work .box video {display: block; width: 100%; height: 100%; object-fit: cover;}
