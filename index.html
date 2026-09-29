@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sumin — Product Designer</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="styles.css" />
+<script src="page-transitions.js"></script>
+<!-- Hold the first paint until script.js has run, so a return from a
+     case study paints straight at the restored scroll position. -->
+<link rel="expect" href="#scriptsDone" blocking="render">
+<script>
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+</script>
+</head>
+<body>
+
+  <!-- Fixed overlay (back-to-top, Work/Playground nav, logo): fades in
+       once you scroll past the hero. On mobile only the nav shows, at the
+       bottom of the screen. -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg class="back-to-top__arrow back-to-top__arrow--up" viewBox="0 0 60 60" aria-hidden="true"><path d="M18.8735 44.6796L39.5131 24.0401L39.5131 39.7694L43.4946 39.7554L43.4946 17.2446L20.9839 17.2446L20.9839 21.2121L36.6992 21.2262L16.0597 41.8657L18.8735 44.6796Z" fill="currentColor"/></svg>
+  </button>
+
+  <nav class="nav-pill" id="navPill">
+    <!-- Logo inside the nav (tablet and smaller only, styles.css) -->
+    <a href="index.html" class="nav-logo" data-home aria-label="Home">
+      <svg class="face" viewBox="0 0 70 70" fill="none" aria-hidden="true">
+        <g clip-path="url(#nav-logo-clip)">
+          <rect width="70" height="70" fill="#161616"/>
+          <ellipse cx="35" cy="33" rx="35" ry="33" transform="matrix(-1 0 0 1 70 4)" fill="#FFE0C4"/>
+          <circle cx="11.4111" cy="11.4111" r="11.4111" transform="matrix(-1 0 0 1 75 14)" fill="#161616"/>
+          <circle cx="18.4334" cy="18.4334" r="18.4334" transform="matrix(-1 0 0 1 61.7112 -6.30566)" fill="#161616"/>
+          <circle cx="13.1667" cy="13.1667" r="13.1667" transform="matrix(-1 0 0 1 28.8665 2.96094)" fill="#161616"/>
+          <circle cx="8.77779" cy="8.77779" r="8.77779" transform="matrix(-1 0 0 1 13.5557 18.0051)" fill="#161616"/>
+          <path d="M36 53C33.2386 53 31 51.2091 31 49C31 46.7909 33.2386 45 36 45" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M41.5778 53.9605C42.0779 56.797 40.0563 59.5243 37.0623 60.0522C34.0683 60.5801 31.2357 58.7087 30.7356 55.8723" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+          <g transform="translate(-1 0)"><g class="face__blink">
+            <path class="face__pupil" data-eye="left" d="M24 37.5C24 39.9853 25.3431 42 27 42C28.6569 42 30 39.9853 30 37.5C30 35.0147 28.6569 33 27 33C25.3431 33 24 35.0147 24 37.5Z" fill="black"/>
+          </g></g>
+          <g transform="translate(1 0)"><g class="face__blink">
+            <path class="face__pupil" data-eye="right" d="M40 37.5C40 39.9853 41.3431 42 43 42C44.6569 42 46 39.9853 46 37.5C46 35.0147 44.6569 33 43 33C41.3431 33 40 35.0147 40 37.5Z" fill="black"/>
+          </g></g>
+          <path class="face__socket" data-eye="left" d="M18 29C13.1589 29 8.82589 30.038 5.73926 31.667C2.60711 33.3201 1 35.4312 1 37.5C1 39.5688 2.60711 41.6799 5.73926 43.333C8.82589 44.962 13.1589 46 18 46C22.8411 46 27.1741 44.962 30.2607 43.333C33.3929 41.6799 35 39.5688 35 37.5C35 35.4312 33.3929 33.3201 30.2607 31.667C27.1741 30.038 22.8411 29 18 29Z" stroke="#AF0000" stroke-width="2.5"/>
+          <path class="face__socket" data-eye="right" d="M52 29C47.1589 29 42.8259 30.038 39.7393 31.667C36.6071 33.3201 35 35.4312 35 37.5C35 39.5688 36.6071 41.6799 39.7393 43.333C42.8259 44.962 47.1589 46 52 46C56.8411 46 61.1741 44.962 64.2607 43.333C67.3929 41.6799 69 39.5688 69 37.5C69 35.4312 67.3929 33.3201 64.2607 31.667C61.1741 30.038 56.8411 29 52 29Z" stroke="#AF0000" stroke-width="2.5"/>
+          <rect y="-4" width="71" height="24" fill="#161616"/>
+          <path d="M45.0724 7.10881C45.3649 7.03041 45.6759 7.13576 45.8607 7.37578L48.9412 11.379L53.9104 10.466C54.2082 10.4113 54.5099 10.5411 54.6749 10.795C54.8399 11.049 54.8366 11.3777 54.6655 11.6276L51.8088 15.795L54.2136 20.2381C54.3577 20.5045 54.328 20.8319 54.1375 21.0673C53.9469 21.3027 53.633 21.4002 53.3424 21.3147L48.4961 19.8866L45.0132 23.5465C44.8043 23.7658 44.4837 23.8383 44.2009 23.7298C43.9182 23.6212 43.7288 23.3525 43.7205 23.0497L43.5806 17.9998L39.0239 15.8187C38.7507 15.6879 38.5835 15.4049 38.5994 15.1024C38.6154 14.8 38.8117 14.5368 39.097 14.4353L43.856 12.7415L44.5231 7.73419L44.5464 7.62483C44.6186 7.3752 44.8162 7.17745 45.0724 7.10881Z" fill="#D9EDEE" stroke="#0272B2" stroke-width="1.5" stroke-linejoin="round"/>
+        </g>
+        <defs><clipPath id="nav-logo-clip"><rect width="70" height="70" fill="white"/></clipPath></defs>
+      </svg>
+    </a>
+    <button type="button" class="nav-pill__item is-active" data-nav-target="work">
+      <span class="nav-dot"></span>
+      <span>Work</span>
+    </button>
+    <button type="button" class="nav-pill__item" data-nav-target="playground">
+      <span class="nav-dot"></span>
+      <span>Playground</span>
+    </button>
+  </nav>
+
+  <a href="index.html" class="logo" id="logoMark" data-home aria-label="Home" data-tip="designed &amp; coded by sumin 💻">
+    <svg class="face" viewBox="0 0 70 70" fill="none" aria-hidden="true">
+      <g clip-path="url(#logo-clip)">
+        <rect width="70" height="70" fill="#161616"/>
+        <ellipse cx="35" cy="33" rx="35" ry="33" transform="matrix(-1 0 0 1 70 4)" fill="#FFE0C4"/>
+        <circle cx="11.4111" cy="11.4111" r="11.4111" transform="matrix(-1 0 0 1 75 14)" fill="#161616"/>
+        <circle cx="18.4334" cy="18.4334" r="18.4334" transform="matrix(-1 0 0 1 61.7112 -6.30566)" fill="#161616"/>
+        <circle cx="13.1667" cy="13.1667" r="13.1667" transform="matrix(-1 0 0 1 28.8665 2.96094)" fill="#161616"/>
+        <circle cx="8.77779" cy="8.77779" r="8.77779" transform="matrix(-1 0 0 1 13.5557 18.0051)" fill="#161616"/>
+        <path d="M36 53C33.2386 53 31 51.2091 31 49C31 46.7909 33.2386 45 36 45" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M41.5778 53.9605C42.0779 56.797 40.0563 59.5243 37.0623 60.0522C34.0683 60.5801 31.2357 58.7087 30.7356 55.8723" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+        <g transform="translate(-1 0)"><g class="face__blink">
+          <path class="face__pupil" data-eye="left" d="M24 37.5C24 39.9853 25.3431 42 27 42C28.6569 42 30 39.9853 30 37.5C30 35.0147 28.6569 33 27 33C25.3431 33 24 35.0147 24 37.5Z" fill="black"/>
+        </g></g>
+        <g transform="translate(1 0)"><g class="face__blink">
+          <path class="face__pupil" data-eye="right" d="M40 37.5C40 39.9853 41.3431 42 43 42C44.6569 42 46 39.9853 46 37.5C46 35.0147 44.6569 33 43 33C41.3431 33 40 35.0147 40 37.5Z" fill="black"/>
+        </g></g>
+        <path class="face__socket" data-eye="left" d="M18 29C13.1589 29 8.82589 30.038 5.73926 31.667C2.60711 33.3201 1 35.4312 1 37.5C1 39.5688 2.60711 41.6799 5.73926 43.333C8.82589 44.962 13.1589 46 18 46C22.8411 46 27.1741 44.962 30.2607 43.333C33.3929 41.6799 35 39.5688 35 37.5C35 35.4312 33.3929 33.3201 30.2607 31.667C27.1741 30.038 22.8411 29 18 29Z" stroke="#AF0000" stroke-width="2.5"/>
+        <path class="face__socket" data-eye="right" d="M52 29C47.1589 29 42.8259 30.038 39.7393 31.667C36.6071 33.3201 35 35.4312 35 37.5C35 39.5688 36.6071 41.6799 39.7393 43.333C42.8259 44.962 47.1589 46 52 46C56.8411 46 61.1741 44.962 64.2607 43.333C67.3929 41.6799 69 39.5688 69 37.5C69 35.4312 67.3929 33.3201 64.2607 31.667C61.1741 30.038 56.8411 29 52 29Z" stroke="#AF0000" stroke-width="2.5"/>
+        <rect y="-4" width="71" height="24" fill="#161616"/>
+        <path d="M45.0724 7.10881C45.3649 7.03041 45.6759 7.13576 45.8607 7.37578L48.9412 11.379L53.9104 10.466C54.2082 10.4113 54.5099 10.5411 54.6749 10.795C54.8399 11.049 54.8366 11.3777 54.6655 11.6276L51.8088 15.795L54.2136 20.2381C54.3577 20.5045 54.328 20.8319 54.1375 21.0673C53.9469 21.3027 53.633 21.4002 53.3424 21.3147L48.4961 19.8866L45.0132 23.5465C44.8043 23.7658 44.4837 23.8383 44.2009 23.7298C43.9182 23.6212 43.7288 23.3525 43.7205 23.0497L43.5806 17.9998L39.0239 15.8187C38.7507 15.6879 38.5835 15.4049 38.5994 15.1024C38.6154 14.8 38.8117 14.5368 39.097 14.4353L43.856 12.7415L44.5231 7.73419L44.5464 7.62483C44.6186 7.3752 44.8162 7.17745 45.0724 7.10881Z" fill="#D9EDEE" stroke="#0272B2" stroke-width="1.5" stroke-linejoin="round"/>
+      </g>
+      <defs><clipPath id="logo-clip"><rect width="70" height="70" fill="white"/></clipPath></defs>
+    </svg>
+  </a>
+
+  <div class="stage" id="stage">
+    <div class="scene-hero" id="hero">
+      <div class="hero hero-card">
+        <div class="hero__top">
+          <div class="hero__identity">
+            <a href="about.html" class="avatar-link" aria-label="About Sumin">
+              <svg class="face avatar" viewBox="0 0 70 70" fill="none" aria-hidden="true">
+                <g clip-path="url(#avatar-clip)">
+                  <rect width="70" height="70" fill="#161616"/>
+                  <ellipse cx="35" cy="33" rx="35" ry="33" transform="matrix(-1 0 0 1 70 4)" fill="#FFE0C4"/>
+                  <circle cx="11.4111" cy="11.4111" r="11.4111" transform="matrix(-1 0 0 1 75 14)" fill="#161616"/>
+                  <circle cx="18.4334" cy="18.4334" r="18.4334" transform="matrix(-1 0 0 1 61.7112 -6.30566)" fill="#161616"/>
+                  <circle cx="13.1667" cy="13.1667" r="13.1667" transform="matrix(-1 0 0 1 28.8665 2.96094)" fill="#161616"/>
+                  <circle cx="8.77779" cy="8.77779" r="8.77779" transform="matrix(-1 0 0 1 13.5557 18.0051)" fill="#161616"/>
+                  <path d="M36 53C33.2386 53 31 51.2091 31 49C31 46.7909 33.2386 45 36 45" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M41.5778 53.9605C42.0779 56.797 40.0563 59.5243 37.0623 60.0522C34.0683 60.5801 31.2357 58.7087 30.7356 55.8723" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                  <g transform="translate(-1 0)"><g class="face__blink">
+                    <path class="face__pupil" data-eye="left" d="M24 37.5C24 39.9853 25.3431 42 27 42C28.6569 42 30 39.9853 30 37.5C30 35.0147 28.6569 33 27 33C25.3431 33 24 35.0147 24 37.5Z" fill="black"/>
+                  </g></g>
+                  <g transform="translate(1 0)"><g class="face__blink">
+                    <path class="face__pupil" data-eye="right" d="M40 37.5C40 39.9853 41.3431 42 43 42C44.6569 42 46 39.9853 46 37.5C46 35.0147 44.6569 33 43 33C41.3431 33 40 35.0147 40 37.5Z" fill="black"/>
+                  </g></g>
+                  <path class="face__socket" data-eye="left" d="M18 29C13.1589 29 8.82589 30.038 5.73926 31.667C2.60711 33.3201 1 35.4312 1 37.5C1 39.5688 2.60711 41.6799 5.73926 43.333C8.82589 44.962 13.1589 46 18 46C22.8411 46 27.1741 44.962 30.2607 43.333C33.3929 41.6799 35 39.5688 35 37.5C35 35.4312 33.3929 33.3201 30.2607 31.667C27.1741 30.038 22.8411 29 18 29Z" stroke="#AF0000" stroke-width="2.5"/>
+                  <path class="face__socket" data-eye="right" d="M52 29C47.1589 29 42.8259 30.038 39.7393 31.667C36.6071 33.3201 35 35.4312 35 37.5C35 39.5688 36.6071 41.6799 39.7393 43.333C42.8259 44.962 47.1589 46 52 46C56.8411 46 61.1741 44.962 64.2607 43.333C67.3929 41.6799 69 39.5688 69 37.5C69 35.4312 67.3929 33.3201 64.2607 31.667C61.1741 30.038 56.8411 29 52 29Z" stroke="#AF0000" stroke-width="2.5"/>
+                  <rect y="-4" width="71" height="24" fill="#161616"/>
+                  <path d="M45.0724 7.10881C45.3649 7.03041 45.6759 7.13576 45.8607 7.37578L48.9412 11.379L53.9104 10.466C54.2082 10.4113 54.5099 10.5411 54.6749 10.795C54.8399 11.049 54.8366 11.3777 54.6655 11.6276L51.8088 15.795L54.2136 20.2381C54.3577 20.5045 54.328 20.8319 54.1375 21.0673C53.9469 21.3027 53.633 21.4002 53.3424 21.3147L48.4961 19.8866L45.0132 23.5465C44.8043 23.7658 44.4837 23.8383 44.2009 23.7298C43.9182 23.6212 43.7288 23.3525 43.7205 23.0497L43.5806 17.9998L39.0239 15.8187C38.7507 15.6879 38.5835 15.4049 38.5994 15.1024C38.6154 14.8 38.8117 14.5368 39.097 14.4353L43.856 12.7415L44.5231 7.73419L44.5464 7.62483C44.6186 7.3752 44.8162 7.17745 45.0724 7.10881Z" fill="#D9EDEE" stroke="#0272B2" stroke-width="1.5" stroke-linejoin="round"/>
+                </g>
+                <defs><clipPath id="avatar-clip"><rect width="70" height="70" fill="white"/></clipPath></defs>
+              </svg>
+            </a>
+            <div class="hero__name">
+              <p class="hero__name-title">Sumin</p>
+              <p class="hero__name-sub">Product Designer</p>
+            </div>
+          </div>
+
+          <div class="hero__links">
+            <a href="assets/Sumin-Seo-Resume-2026.pdf" class="btn btn--outline" target="_blank" rel="noopener">Resume</a>
+            <a href="mailto:emailsumin@gmail.com" class="btn btn--solid">Email</a>
+            <a href="https://www.linkedin.com/in/sumiin" class="btn btn--solid" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="hero__bio">
+          <p>Hi! I&rsquo;m Sumin!</p>
+          <p>From chemical engineering to <strong>Interaction Design</strong>, I&rsquo;ve always been curious about how things work and how to make them better.</p>
+          <p>Today, I bring together <strong>design</strong>, <strong>code,</strong> and <strong class="semibold">AI</strong> to turn ideas into experiences.</p>
+          <a href="about.html" class="hero__about-link">
+            About
+            <span class="icon icon--right" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work tab. Desktop: the viewport sticks while you scroll and the
+         track slides sideways. Mobile (≤768px): cards simply stack. -->
+    <div class="projects-scroll is-active" id="projectsScroll" data-tab="work">
+    <div class="projects-viewport" id="work" aria-label="Projects">
+      <div class="horizontal-track" id="track">
+        <div class="project-card project-card--lg project-card--has-prototype">
+          <div class="project-card__title">
+            <h3>Toast POS</h3>
+            <div class="project-card__subtitle">
+              <p>Easy and Clear UI Restaurant Software</p>
+            </div>
+          </div>
+          <a href="toast-pos.html" class="project-card__case-study" aria-label="View Toast POS case study" data-tip="view case study 👀">
+            <span class="icon icon--diagonal" aria-hidden="true"></span>
+          </a>
+          <div class="iphone-mock-wrap">
+            <div class="tablet-mock">
+              <div class="tablet-mock__screen">
+                <iframe src="assets/prototypes/toast-pos/index.html" title="Toast POS prototype"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card project-card--sm project-card--has-prototype">
+          <div class="project-card__title">
+            <h3>Science Day</h3>
+            <div class="project-card__subtitle">
+              <p>Easy and Memorable Schedule page</p>
+            </div>
+          </div>
+          <a href="science-day.html" class="project-card__case-study" aria-label="View Online Science Day case study" data-tip="view case study 👀">
+            <span class="icon icon--diagonal" aria-hidden="true"></span>
+          </a>
+          <div class="iphone-mock-wrap">
+            <div class="iphone-mock">
+              <div class="iphone-mock__island"></div>
+              <div class="iphone-mock__screen">
+                <iframe src="assets/prototypes/science-day/schedule.html" title="Science Day schedule prototype"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card project-card--sm project-card--has-prototype">
+          <div class="project-card__title">
+            <h3>Koki</h3>
+            <div class="project-card__subtitle">
+              <p>Friendly Korean Kitchen Ordering</p>
+            </div>
+          </div>
+          <a href="koki.html" class="project-card__case-study" aria-label="View Koki case study" data-tip="view case study 👀">
+            <span class="icon icon--diagonal" aria-hidden="true"></span>
+          </a>
+          <div class="iphone-mock-wrap">
+            <div class="iphone-mock iphone-mock--video">
+              <div class="iphone-mock__island"></div>
+              <div class="iphone-mock__screen">
+                <video class="iphone-mock__video" src="assets/videos/koki.mp4" muted loop playsinline preload="metadata"></video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card project-card--lg project-card--has-prototype">
+          <div class="project-card__title">
+            <h3>SMG</h3>
+            <div class="project-card__subtitle">
+              <p>Digital Agency</p>
+            </div>
+          </div>
+          <a href="smg.html" class="project-card__case-study" aria-label="View SMG case study" data-tip="view case study 👀">
+            <span class="icon icon--diagonal" aria-hidden="true"></span>
+          </a>
+          <div class="iphone-mock-wrap">
+            <div class="desktop-mock">
+              <div class="desktop-mock__display">
+                <div class="desktop-mock__screen">
+                  <img src="assets/case-studies/smg-magazine.jpg" alt="Gyeongju web magazine homepage">
+                </div>
+              </div>
+              <div class="desktop-mock__stand" aria-hidden="true"></div>
+              <div class="desktop-mock__base" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizontal-track__end-spacer" aria-hidden="true"></div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Playground tab: same structure as Work. -->
+    <div class="projects-scroll" id="projectsScrollPlayground" data-tab="playground">
+    <div class="projects-viewport" id="playground" aria-label="Playground">
+      <div class="horizontal-track" id="trackPlayground">
+        <div class="playground-item">
+          <div class="project-card project-card--pg">
+            <div class="img-slider">
+              <iframe src="assets/prototypes/ascii-people/index.html" title="Ascii ASCII art animation"></iframe>
+            </div>
+          </div>
+          <div class="playground-item__tags">
+            Ascii &nbsp;<span>Vibe Coding</span>
+          </div>
+        </div>
+
+        <div class="playground-item">
+          <div class="project-card project-card--pg">
+            <div class="photo-widget photo-widget--dots">
+              <div class="photo-widget__track">
+                <div class="photo-widget__slide"><img src="assets/playground/vintage-kitchen-1.jpg" alt="Vintage Kitchen render 1"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/vintage-kitchen-2.jpg" alt="Vintage Kitchen render 2"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/vintage-kitchen-3.jpg" alt="Vintage Kitchen render 3"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/vintage-kitchen-4.jpg" alt="Vintage Kitchen render 4"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/vintage-kitchen-5.jpg" alt="Vintage Kitchen render 5"></div>
+              </div>
+              <nav class="photo-widget__nav" aria-label="Photos">
+                <button type="button" class="photo-widget__dot is-active" data-slide="0" aria-label="Photo 1" aria-current="true"></button>
+                <button type="button" class="photo-widget__dot" data-slide="1" aria-label="Photo 2"></button>
+                <button type="button" class="photo-widget__dot" data-slide="2" aria-label="Photo 3"></button>
+                <button type="button" class="photo-widget__dot" data-slide="3" aria-label="Photo 4"></button>
+                <button type="button" class="photo-widget__dot" data-slide="4" aria-label="Photo 5"></button>
+              </nav>
+            </div>
+          </div>
+          <div class="playground-item__tags">
+            Vintage Kitchen &nbsp;<span>4DX 3D Design</span>
+          </div>
+        </div>
+
+        <div class="playground-item">
+          <div class="project-card project-card--pg">
+            <div class="photo-widget photo-widget--dots">
+              <div class="photo-widget__track">
+                <div class="photo-widget__slide"><img src="assets/playground/just-walk-1.jpg" alt="Just Walk poster 1"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/just-walk-2.jpg" alt="Just Walk poster 2"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/just-walk-3.jpg" alt="Just Walk poster 3"></div>
+              </div>
+              <nav class="photo-widget__nav" aria-label="Photos">
+                <button type="button" class="photo-widget__dot is-active" data-slide="0" aria-label="Photo 1" aria-current="true"></button>
+                <button type="button" class="photo-widget__dot" data-slide="1" aria-label="Photo 2"></button>
+                <button type="button" class="photo-widget__dot" data-slide="2" aria-label="Photo 3"></button>
+              </nav>
+            </div>
+          </div>
+          <div class="playground-item__tags">
+            Just Walk &nbsp;<span>Poster Design</span>
+          </div>
+        </div>
+
+        <div class="playground-item">
+          <div class="project-card project-card--pg">
+            <div class="photo-widget photo-widget--dots">
+              <div class="photo-widget__track">
+                <div class="photo-widget__slide"><img src="assets/playground/movement-1.jpg" alt="Movement timeline 1"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/movement-2.jpg" alt="Movement timeline 2"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/movement-3.jpg" alt="Movement timeline 3"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/movement-4.jpg" alt="Movement timeline 4"></div>
+                <div class="photo-widget__slide"><img src="assets/playground/movement-5.jpg" alt="Movement timeline 5"></div>
+              </div>
+              <nav class="photo-widget__nav" aria-label="Photos">
+                <button type="button" class="photo-widget__dot is-active" data-slide="0" aria-label="Photo 1" aria-current="true"></button>
+                <button type="button" class="photo-widget__dot" data-slide="1" aria-label="Photo 2"></button>
+                <button type="button" class="photo-widget__dot" data-slide="2" aria-label="Photo 3"></button>
+                <button type="button" class="photo-widget__dot" data-slide="3" aria-label="Photo 4"></button>
+                <button type="button" class="photo-widget__dot" data-slide="4" aria-label="Photo 5"></button>
+              </nav>
+            </div>
+          </div>
+          <div class="playground-item__tags">
+            Movement &nbsp;<span>Timeline Design</span>
+          </div>
+        </div>
+
+        <div class="horizontal-track__end-spacer" aria-hidden="true"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="script.js"></script>
+  <div id="scriptsDone" hidden></div>
+</body>
+</html>
