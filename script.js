@@ -368,6 +368,9 @@ window.addEventListener('pageshow', (e) => {
 // 6. Device mocks
 // =====================================================================
 
+// ≤1024px (tablets, phones): video cards autoplay instead of on hover.
+const videoAutoplayQuery = window.matchMedia('(max-width: 1024px)');
+
 document.querySelectorAll('.project-card--has-prototype').forEach((card) => {
   // A one-shot shake when the pointer enters the card, hinting that the
   // device is a live prototype (not for video cards).
@@ -381,10 +384,52 @@ document.querySelectorAll('.project-card--has-prototype').forEach((card) => {
     device.addEventListener('animationend', () => device.classList.remove('is-buzzing'));
   }
 
-  // Video cards (Koki, Coocup): play from the start on hover, reset on leave.
+  // Video cards (Koki, Coocup): on desktop, play from the start on hover
+  // and reset on leave. Tablets and phones autoplay (see below).
   const video = card.querySelector('.iphone-mock__video');
   if (video) {
-    card.addEventListener('mouseenter', () => { video.currentTime = 0; video.play(); });
-    card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    card.addEventListener('mouseenter', () => {
+      if (videoAutoplayQuery.matches) return;
+      video.currentTime = 0;
+      video.play();
+    });
+    card.addEventListener('mouseleave', () => {
+      if (videoAutoplayQuery.matches) return;
+      video.pause();
+      video.currentTime = 0;
+    });
   }
 });
+
+// ≤1024px (tablets, phones): video cards just play, while on screen, so
+// there's no blank phone waiting for a tap.
+const cardVideos = document.querySelectorAll('.project-card--has-prototype .iphone-mock__video');
+const visibleVideos = new Set();
+
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(({ target, isIntersecting }) => {
+    if (isIntersecting) visibleVideos.add(target);
+    else visibleVideos.delete(target);
+    if (!videoAutoplayQuery.matches) return;
+    if (isIntersecting) target.play().catch(() => {});
+    else target.pause();
+  });
+});
+
+cardVideos.forEach((video) => videoObserver.observe(video));
+
+videoAutoplayQuery.addEventListener('change', () => {
+  cardVideos.forEach((video) => {
+    if (videoAutoplayQuery.matches) {
+      video.preload = 'auto';
+      if (visibleVideos.has(video)) video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+});
+
+if (videoAutoplayQuery.matches) {
+  cardVideos.forEach((video) => { video.preload = 'auto'; });
+}
