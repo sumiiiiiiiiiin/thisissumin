@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sumin — Koki Case Study</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="styles.css" />
+<script src="page-transitions.js"></script>
+
+<!-- Page colors: change these to restyle just this case study. -->
+<style>
+  :root {
+    --color-highlight: #ffe0a3; /* highlighter behind the decision titles */
+  }
+</style>
+</head>
+<body class="page-case-study">
+
+  <!-- Always back to the Work section of index.html (index restores the
+       spot you left it at, see script.js). -->
+  <a class="back-to-top is-visible" id="backToTop" href="index.html#back-to-work" aria-label="Back to Work">
+    <svg class="back-to-top__arrow back-to-top__arrow--left" viewBox="0 0 60 60" aria-hidden="true"><path d="M18.8735 44.6796L39.5131 24.0401L39.5131 39.7694L43.4946 39.7554L43.4946 17.2446L20.9839 17.2446L20.9839 21.2121L36.6992 21.2262L16.0597 41.8657L18.8735 44.6796Z" fill="currentColor"/></svg>
+  </a>
+
+  <!-- Case-study switcher: the current study in a pill, the others in
+       a dropdown that opens on hover (tap toggles it on touch). -->
+  <nav class="cs-nav" id="csNav" aria-label="Case studies">
+    <!-- Logo inside the nav (tablet and smaller only, styles.css) -->
+    <a href="index.html" class="nav-logo" data-home aria-label="Home">
+      <svg class="face" viewBox="0 0 70 70" fill="none" aria-hidden="true">
+        <g clip-path="url(#nav-logo-clip)">
+          <rect width="70" height="70" fill="#161616"/>
+          <ellipse cx="35" cy="33" rx="35" ry="33" transform="matrix(-1 0 0 1 70 4)" fill="#FFE0C4"/>
+          <circle cx="11.4111" cy="11.4111" r="11.4111" transform="matrix(-1 0 0 1 75 14)" fill="#161616"/>
+          <circle cx="18.4334" cy="18.4334" r="18.4334" transform="matrix(-1 0 0 1 61.7112 -6.30566)" fill="#161616"/>
+          <circle cx="13.1667" cy="13.1667" r="13.1667" transform="matrix(-1 0 0 1 28.8665 2.96094)" fill="#161616"/>
+          <circle cx="8.77779" cy="8.77779" r="8.77779" transform="matrix(-1 0 0 1 13.5557 18.0051)" fill="#161616"/>
+          <path d="M36 53C33.2386 53 31 51.2091 31 49C31 46.7909 33.2386 45 36 45" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M41.5778 53.9605C42.0779 56.797 40.0563 59.5243 37.0623 60.0522C34.0683 60.5801 31.2357 58.7087 30.7356 55.8723" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+          <g transform="translate(-1 0)"><g class="face__blink">
+            <path class="face__pupil" data-eye="left" d="M24 37.5C24 39.9853 25.3431 42 27 42C28.6569 42 30 39.9853 30 37.5C30 35.0147 28.6569 33 27 33C25.3431 33 24 35.0147 24 37.5Z" fill="black"/>
+          </g></g>
+          <g transform="translate(1 0)"><g class="face__blink">
+            <path class="face__pupil" data-eye="right" d="M40 37.5C40 39.9853 41.3431 42 43 42C44.6569 42 46 39.9853 46 37.5C46 35.0147 44.6569 33 43 33C41.3431 33 40 35.0147 40 37.5Z" fill="black"/>
+          </g></g>
+          <path class="face__socket" data-eye="left" d="M18 29C13.1589 29 8.82589 30.038 5.73926 31.667C2.60711 33.3201 1 35.4312 1 37.5C1 39.5688 2.60711 41.6799 5.73926 43.333C8.82589 44.962 13.1589 46 18 46C22.8411 46 27.1741 44.962 30.2607 43.333C33.3929 41.6799 35 39.5688 35 37.5C35 35.4312 33.3929 33.3201 30.2607 31.667C27.1741 30.038 22.8411 29 18 29Z" stroke="#AF0000" stroke-width="2.5"/>
+          <path class="face__socket" data-eye="right" d="M52 29C47.1589 29 42.8259 30.038 39.7393 31.667C36.6071 33.3201 35 35.4312 35 37.5C35 39.5688 36.6071 41.6799 39.7393 43.333C42.8259 44.962 47.1589 46 52 46C56.8411 46 61.1741 44.962 64.2607 43.333C67.3929 41.6799 69 39.5688 69 37.5C69 35.4312 67.3929 33.3201 64.2607 31.667C61.1741 30.038 56.8411 29 52 29Z" stroke="#AF0000" stroke-width="2.5"/>
+          <rect y="-4" width="71" height="24" fill="#161616"/>
+          <path d="M45.0724 7.10881C45.3649 7.03041 45.6759 7.13576 45.8607 7.37578L48.9412 11.379L53.9104 10.466C54.2082 10.4113 54.5099 10.5411 54.6749 10.795C54.8399 11.049 54.8366 11.3777 54.6655 11.6276L51.8088 15.795L54.2136 20.2381C54.3577 20.5045 54.328 20.8319 54.1375 21.0673C53.9469 21.3027 53.633 21.4002 53.3424 21.3147L48.4961 19.8866L45.0132 23.5465C44.8043 23.7658 44.4837 23.8383 44.2009 23.7298C43.9182 23.6212 43.7288 23.3525 43.7205 23.0497L43.5806 17.9998L39.0239 15.8187C38.7507 15.6879 38.5835 15.4049 38.5994 15.1024C38.6154 14.8 38.8117 14.5368 39.097 14.4353L43.856 12.7415L44.5231 7.73419L44.5464 7.62483C44.6186 7.3752 44.8162 7.17745 45.0724 7.10881Z" fill="#D9EDEE" stroke="#0272B2" stroke-width="1.5" stroke-linejoin="round"/>
+        </g>
+        <defs><clipPath id="nav-logo-clip"><rect width="70" height="70" fill="white"/></clipPath></defs>
+      </svg>
+    </a>
+    <button class="cs-nav__current" id="csNavToggle" aria-expanded="false" aria-controls="csNavMenu">
+      <span class="nav-dot" aria-hidden="true"></span>
+      Koki
+      <span class="icon icon--caret" aria-hidden="true"></span>
+    </button>
+    <ul class="cs-nav__menu" id="csNavMenu">
+      <li><a href="toast-pos.html">Toast POS</a></li>
+      <li><a href="science-day.html">Science Day</a></li>
+      <li><a href="coocup.html">Coocup</a></li>
+      <li><a href="smg.html">SMG</a></li>
+    </ul>
+  </nav>
+
+  <a href="index.html" class="logo is-visible" id="logoMark" data-home aria-label="Home" data-tip="designed &amp; coded by sumin 💻">
+    <svg class="face" viewBox="0 0 70 70" fill="none" aria-hidden="true">
+      <g clip-path="url(#logo-clip)">
+        <rect width="70" height="70" fill="#161616"/>
+        <ellipse cx="35" cy="33" rx="35" ry="33" transform="matrix(-1 0 0 1 70 4)" fill="#FFE0C4"/>
+        <circle cx="11.4111" cy="11.4111" r="11.4111" transform="matrix(-1 0 0 1 75 14)" fill="#161616"/>
+        <circle cx="18.4334" cy="18.4334" r="18.4334" transform="matrix(-1 0 0 1 61.7112 -6.30566)" fill="#161616"/>
+        <circle cx="13.1667" cy="13.1667" r="13.1667" transform="matrix(-1 0 0 1 28.8665 2.96094)" fill="#161616"/>
+        <circle cx="8.77779" cy="8.77779" r="8.77779" transform="matrix(-1 0 0 1 13.5557 18.0051)" fill="#161616"/>
+        <path d="M36 53C33.2386 53 31 51.2091 31 49C31 46.7909 33.2386 45 36 45" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M41.5778 53.9605C42.0779 56.797 40.0563 59.5243 37.0623 60.0522C34.0683 60.5801 31.2357 58.7087 30.7356 55.8723" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+        <g transform="translate(-1 0)"><g class="face__blink">
+          <path class="face__pupil" data-eye="left" d="M24 37.5C24 39.9853 25.3431 42 27 42C28.6569 42 30 39.9853 30 37.5C30 35.0147 28.6569 33 27 33C25.3431 33 24 35.0147 24 37.5Z" fill="black"/>
+        </g></g>
+        <g transform="translate(1 0)"><g class="face__blink">
+          <path class="face__pupil" data-eye="right" d="M40 37.5C40 39.9853 41.3431 42 43 42C44.6569 42 46 39.9853 46 37.5C46 35.0147 44.6569 33 43 33C41.3431 33 40 35.0147 40 37.5Z" fill="black"/>
+        </g></g>
+        <path class="face__socket" data-eye="left" d="M18 29C13.1589 29 8.82589 30.038 5.73926 31.667C2.60711 33.3201 1 35.4312 1 37.5C1 39.5688 2.60711 41.6799 5.73926 43.333C8.82589 44.962 13.1589 46 18 46C22.8411 46 27.1741 44.962 30.2607 43.333C33.3929 41.6799 35 39.5688 35 37.5C35 35.4312 33.3929 33.3201 30.2607 31.667C27.1741 30.038 22.8411 29 18 29Z" stroke="#AF0000" stroke-width="2.5"/>
+        <path class="face__socket" data-eye="right" d="M52 29C47.1589 29 42.8259 30.038 39.7393 31.667C36.6071 33.3201 35 35.4312 35 37.5C35 39.5688 36.6071 41.6799 39.7393 43.333C42.8259 44.962 47.1589 46 52 46C56.8411 46 61.1741 44.962 64.2607 43.333C67.3929 41.6799 69 39.5688 69 37.5C69 35.4312 67.3929 33.3201 64.2607 31.667C61.1741 30.038 56.8411 29 52 29Z" stroke="#AF0000" stroke-width="2.5"/>
+        <rect y="-4" width="71" height="24" fill="#161616"/>
+        <path d="M45.0724 7.10881C45.3649 7.03041 45.6759 7.13576 45.8607 7.37578L48.9412 11.379L53.9104 10.466C54.2082 10.4113 54.5099 10.5411 54.6749 10.795C54.8399 11.049 54.8366 11.3777 54.6655 11.6276L51.8088 15.795L54.2136 20.2381C54.3577 20.5045 54.328 20.8319 54.1375 21.0673C53.9469 21.3027 53.633 21.4002 53.3424 21.3147L48.4961 19.8866L45.0132 23.5465C44.8043 23.7658 44.4837 23.8383 44.2009 23.7298C43.9182 23.6212 43.7288 23.3525 43.7205 23.0497L43.5806 17.9998L39.0239 15.8187C38.7507 15.6879 38.5835 15.4049 38.5994 15.1024C38.6154 14.8 38.8117 14.5368 39.097 14.4353L43.856 12.7415L44.5231 7.73419L44.5464 7.62483C44.6186 7.3752 44.8162 7.17745 45.0724 7.10881Z" fill="#D9EDEE" stroke="#0272B2" stroke-width="1.5" stroke-linejoin="round"/>
+      </g>
+      <defs><clipPath id="logo-clip"><rect width="70" height="70" fill="white"/></clipPath></defs>
+    </svg>
+  </a>
+
+  <main class="case-study">
+    <header class="case-study__intro">
+      <h1 class="case-study__title">
+        Koki
+      </h1>
+      <p>Koki is a solo project exploring how AI can make ordering Korean food easier for people unfamiliar with Korean cuisine.</p>
+      <p>While working as a server at a Korean restaurant in Toronto, I noticed that customers often struggled to understand unfamiliar dishes, choose options, and make decisions. The challenge was to <strong>create a clearer and more guided ordering experience that helps customers understand Korean dishes and make decisions with confidence.</strong></p>
+    </header>
+
+    <section class="case-study__section">
+      <h2>My Role</h2>
+      <p>I worked as the sole product designer, handling the project from concept ideation and user research to UX design, UI design, and prototyping.</p>
+    </section>
+
+    <section class="case-study__section">
+      <h2>Key Design Decisions</h2>
+
+      <div class="case-study__decision">
+        <h3>AI-Powered Menu Assistant</h3>
+        <p>While working as a server at a Korean restaurant, I served around 30 tables per shift. Over one week, I observed how customers interacted with the menu and identified three key patterns. 63% of customers struggled to decide what to order.</p>
+        <p>To make this easier, I introduced a chat-based assistant that helps users explore the menu and get personalized recommendations through a simple conversation.</p>
+        <div class="case-study__video">
+          <video autoplay="" muted="" loop="" playsinline="">
+              <source src="assets/videos/kokiV01.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="case-study__decision">
+        <h3>Immediate Visual Feedback</h3>
+        <p>Some orders were missing selected options or customizations, leading to mistakes during ordering.</p>
+        <p>I designed option selections to provide clear, immediate feedback so users could easily confirm that their choices had been added to the order.</p>
+        <div class="case-study__video">
+          <video autoplay="" muted="" loop="" playsinline="">
+              <source src="assets/videos/kokiV02.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="case-study__decision">
+        <h3>Clearer Information and Order Review</h3>
+        <p>Many customers needed to review their choices and know the exact price before placing an order.</p>
+        <p>I displayed selected options, special requests, and the total price directly in the cart so users could easily review their order before checkout.</p>
+        <p>I also made key dish information and order details easier to understand at a glance.</p>
+        <div class="case-study__video">
+          <video autoplay="" muted="" loop="" playsinline="">
+              <source src="assets/videos/kokiV03.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="case-study__section">
+      <h2>Final Decision</h2>
+      <div class="case-study__final">
+        <video autoplay="" muted="" loop="" playsinline="">
+            <source src="assets/videos/kokiV04.mp4" type="video/mp4">
+        </video>
+        <div class="img"><img src="assets/videos/kokiUI.jpg" alt="user flow"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+  <script src="case-study.js"></script>
+</body>
+</html>
