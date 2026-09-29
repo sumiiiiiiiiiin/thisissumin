@@ -2166,6 +2166,11 @@ strong {
     display: block;
   }
 
+  /* About widgets stack vertically */
+  .about-widgets {
+    grid-template-columns: 1fr;
+  }
+
   :root {
     --nav-pill-width: 280px; /* 236px + the nav logo */
     --side-margin: 20px;
