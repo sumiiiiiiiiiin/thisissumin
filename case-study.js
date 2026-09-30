@@ -82,8 +82,9 @@
 
   // -------------------------------------------------------------------
   // 4. SMG gallery (smg.html). Top tabs show one category panel; inside
-  //    it, project tabs (and the arrows) swap the screenshot, the skill
-  //    chips and the "Go to Website" link.
+  //    it, project tabs swap the screenshot, the skill chips and the
+  //    "Go to Website" link. The arrows run through every project in
+  //    order, moving on to the next (or previous) category at the ends.
   // -------------------------------------------------------------------
   const gallery = document.querySelector('.smg-gallery');
 
@@ -96,14 +97,25 @@
     };
 
     const categoryTabs = [...gallery.querySelectorAll(':scope > .smg-gallery__tabs button')];
-    categoryTabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        selectTab(categoryTabs, tab);
-        categoryTabs.forEach((t) => {
-          document.getElementById(t.getAttribute('aria-controls')).hidden = t !== tab;
-        });
+    const showCategory = (tab) => {
+      selectTab(categoryTabs, tab);
+      categoryTabs.forEach((t) => {
+        document.getElementById(t.getAttribute('aria-controls')).hidden = t !== tab;
       });
-    });
+    };
+    categoryTabs.forEach((tab) => tab.addEventListener('click', () => showCategory(tab)));
+
+    // Every project across all categories, in order: { categoryTab, show }.
+    const projects = [];
+    const step = (dir) => {
+      const current = categoryTabs.find((t) => t.classList.contains('is-active'));
+      const panel = document.getElementById(current.getAttribute('aria-controls'));
+      const active = panel.querySelector('.smg-gallery__tabs--sub button.is-active');
+      const i = projects.findIndex((p) => p.tab === active);
+      const next = projects[(i + dir + projects.length) % projects.length];
+      if (next.categoryTab !== current) showCategory(next.categoryTab);
+      next.show();
+    };
 
     gallery.querySelectorAll('.smg-gallery__panel').forEach((panel) => {
       const tabs = [...panel.querySelectorAll('.smg-gallery__tabs--sub button')];
@@ -111,7 +123,8 @@
       const img = panel.querySelector('.smg-gallery__img');
       const link = panel.querySelector('.smg-gallery__chip--link');
       const meta = panel.querySelector('.smg-gallery__meta');
-      const category = document.querySelector(`[aria-controls="${panel.id}"]`).textContent;
+      const categoryTab = document.querySelector(`[aria-controls="${panel.id}"]`);
+      const category = categoryTab.textContent;
 
       const show = (tab) => {
         selectTab(tabs, tab);
@@ -129,12 +142,10 @@
         if (tab.dataset.href) link.href = tab.dataset.href;
       };
 
-      const step = (dir) => {
-        const i = tabs.findIndex((t) => t.classList.contains('is-active'));
-        show(tabs[(i + dir + tabs.length) % tabs.length]);
-      };
-
-      tabs.forEach((tab) => tab.addEventListener('click', () => show(tab)));
+      tabs.forEach((tab) => {
+        projects.push({ tab, categoryTab, show: () => show(tab) });
+        tab.addEventListener('click', () => show(tab));
+      });
       panel.querySelector('.smg-gallery__arrow--prev').addEventListener('click', () => step(-1));
       panel.querySelector('.smg-gallery__arrow--next').addEventListener('click', () => step(1));
       show(tabs[0]);
