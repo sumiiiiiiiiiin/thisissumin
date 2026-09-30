@@ -2095,6 +2095,7 @@ strong {
 
   .playground-item__tags {
     margin-bottom: 2rem;
+    font-size: 1rem;
   }
 
   /* Device mockups sit a little higher in the stacked cards */
