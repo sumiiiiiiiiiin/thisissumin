@@ -2189,10 +2189,6 @@ strong {
     height: clamp(400px, 172px + 58.7vw, 560px);
   }
 
-  .map-bubble {
-    bottom: 0.75rem;
-  }
-
   .case-study__stats {
     gap: 1rem;
   }
