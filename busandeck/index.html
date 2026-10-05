@@ -184,6 +184,24 @@
     snaps.forEach(function(m){ m.el.style.top = topOf(m.page) + 'px'; m.el.style.height = m.page.offsetHeight + 'px'; });
   }
 
+  // Signature carousel. Only "Gosari Intestine" text comes from Figma; the other two are placeholders.
+  var dishes = [
+    {name:"Gosari Grilled Beef Gopchang", desc:"Grilled beef small intestine and pork belly served with fernbrake and potatoes.", price:51.99},
+    {name:"Signature Aged Pork Set", desc:"Aged pork belly grilled at the table with potatoes and green onion.", price:58.99},
+    {name:"Busan Wheat Noodles", desc:"Chilled wheat noodles with sliced beef, spicy sauce and a boiled egg.", price:15.99}
+  ];
+
+  // The description keeps the height of the longest one (2 or 3 lines), so the Signature page
+  // doesn't change height when you switch dishes on mobile.
+  var desc = document.getElementById('dishDesc');
+  function fitDesc(){
+    var text = desc.textContent, h = 0;
+    desc.style.minHeight = '';
+    dishes.forEach(function(d){ desc.textContent = d.desc; h = Math.max(h, desc.offsetHeight); });
+    desc.textContent = text;
+    desc.style.minHeight = h + 'px';
+  }
+
   // Scale: 1rem = 16 design px. Desktop fits the 1440×1024 canvas inside the screen;
   // portrait/narrow screens use a 720-wide canvas.
   function fit(){
@@ -192,6 +210,7 @@
     root.classList.toggle('m', mobile);
     root.style.setProperty('--s', mobile ? w / 720 : Math.min(w / 1440, h / 1024));
     root.style.setProperty('--home-top', Math.min(0, h - home.offsetHeight) + 'px');
+    fitDesc();
     measure();
     placeSnaps();
     fitMenu();
@@ -273,15 +292,9 @@
   }
 
   fit(); addEventListener('resize', function(){ fit(); onScroll(); });
-  if (document.fonts) document.fonts.ready.then(fitMenu);
+  if (document.fonts) document.fonts.ready.then(fit);
   onScroll();
 
-  // Signature carousel. Only "Gosari Intestine" text comes from Figma; the other two are placeholders.
-  var dishes = [
-    {name:"Gosari Grilled Beef Gopchang", desc:"Grilled beef small intestine and pork belly served with fernbrake and potatoes.", price:51.99},
-    {name:"Signature Aged Pork Set", desc:"Aged pork belly grilled at the table with potatoes and green onion.", price:58.99},
-    {name:"Busan Wheat Noodles", desc:"Chilled wheat noodles with sliced beef, spicy sauce and a boiled egg.", price:15.99}
-  ];
   var plates = document.querySelectorAll('.plate');
   var slots = ['center','right','left'];
   var i = 0, cart = 0;
