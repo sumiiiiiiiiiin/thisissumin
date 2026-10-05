@@ -100,7 +100,6 @@ section, footer { scroll-margin-top: var(--header-h); }   /* menu links land bel
   letter-spacing: -0.02em;
   white-space: nowrap;
   transition: filter .3s, color .3s;
-  filter: brightness(1.05);
 }
 .cta-arrow {                       /* drawn with currentColor, so it changes with the text */
   position: absolute;
@@ -108,7 +107,7 @@ section, footer { scroll-margin-top: var(--header-h); }   /* menu links land bel
   top: 50%;
   transform: translateY(-50%);
 }
-.cta:hover { filter: brightness(1); color: var(--white); }
+.cta:hover { filter: brightness(1.05); color: var(--white); }
 
 /* ----- Header (sticks to the top) ----- */
 .site-header {
