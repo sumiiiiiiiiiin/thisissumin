@@ -100,7 +100,7 @@ section, footer { scroll-margin-top: var(--header-h); }   /* menu links land bel
   letter-spacing: -0.02em;
   white-space: nowrap;
   transition: filter .3s, color .3s;
-  filter: brightness(1.25);
+  filter: brightness(1.05);
 }
 .cta-arrow {                       /* drawn with currentColor, so it changes with the text */
   position: absolute;
