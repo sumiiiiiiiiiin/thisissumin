@@ -275,10 +275,10 @@ a.pill-order:hover img{animation:arrow-dash .8s both}
 .m .plate[data-slot="center"]{left:50%;top:28.02%;width:32rem;height:21.7rem}
 .m .plate[data-slot="right"]{left:108.89%;top:36.21%;width:18rem;height:12.2rem}
 .m .plate[data-slot="left"]{left:-8.89%;top:36.21%;width:18rem;height:12.2rem}
-.m .arrow{top:85.78%;--arrow-gap:38.89%}  /* level with Add Cart: (4.5rem button − 5rem arrow) / 2 above it */
+.m .arrow{top:87%;--arrow-gap:38.89%}  /* level with Add Cart: (4.5rem button − 5rem arrow) / 2 above it */
 .m .dish-name{top:69.74%}
 .m .dish-desc{top:75.34%;width:28.75rem}
-.m .add{top:86.21%;height:4.5rem;padding:0 2rem}
+.m .add{top:87%;height:4.5rem;padding:0 2rem}
 
 /* Mobile story: row 1 = picture area (46.25rem tall; the % positions below are % of this area),
    row 2 = the paragraph in normal flow, so the page ends right after it. */
