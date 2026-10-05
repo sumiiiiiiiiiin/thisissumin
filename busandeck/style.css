@@ -257,8 +257,6 @@ a.pill-order:hover img{animation:arrow-dash .8s both}
 .m .home,.m .sig{position:relative;top:auto}
 .m .sig,.m .story{transform:none}
 .m .home{height:calc(max(6.25rem, var(--nav-h)) + 18rem + 75rem)}
-.m .sig{height:calc(max(6.25rem, var(--nav-h)) + 60rem + 4rem)}
-.m .sig .pos{bottom:4rem}
 .m .c-menu,.m .c-info,.m .c-order{display:none}
 .m .c-logo{flex:1;width:auto;justify-content:flex-start;padding-left:2.5rem;border-left:0}
 .m .nav-logo{width:max(16rem, 140px)}
@@ -270,15 +268,21 @@ a.pill-order:hover img{animation:arrow-dash .8s both}
 .m .box-menu{bottom:37.5rem}
 .m .pill-order,.m .pill-menu{font-size:3rem}
 
-.m .sig .stage{width:45rem;height:58rem}
-.m .sig h2{left:5.56%;top:2.16%;width:40rem;font-size:6.25rem;line-height:1;white-space:normal}
-.m .plate[data-slot="center"]{left:50%;top:28.02%;width:32rem;height:21.7rem}
-.m .plate[data-slot="right"]{left:108.89%;top:36.21%;width:18rem;height:12.2rem}
-.m .plate[data-slot="left"]{left:-8.89%;top:36.21%;width:18rem;height:12.2rem}
-.m .arrow{top:87%;--arrow-gap:38.89%}  /* level with Add Cart: (4.5rem button − 5rem arrow) / 2 above it */
-.m .dish-name{top:69.74%}
-.m .dish-desc{top:75.34%;width:28.75rem}
-.m .add{top:87%;height:4.5rem;padding:0 2rem}
+/* Mobile signature: row 1 = title + plates (40rem tall; the % positions below are % of this area),
+   rows 2–4 = dish name, description and Add Cart in normal flow, so nothing overlaps and the page ends right after them.
+   They stay centered with left:50% + translateX(-50%) (now relative instead of absolute). */
+.m .sig .pos{position:relative;top:auto;padding-top:max(6.25rem, var(--nav-h))}
+.m .sig .stage{width:45rem;height:auto;display:grid;grid-template-rows:40rem auto auto auto;padding-bottom:8rem}
+.m .sig .stage>*{grid-area:1/1/2/2}
+.m .sig h2{left:5.56%;top:3.13%;width:40rem;font-size:6.25rem;line-height:1;white-space:normal}
+.m .plate[data-slot="center"]{left:50%;top:40.63%;width:32rem;height:21.7rem}
+.m .plate[data-slot="right"]{left:108.89%;top:52.5%;width:18rem;height:12.2rem}
+.m .plate[data-slot="left"]{left:-8.89%;top:52.5%;width:18rem;height:12.2rem}
+.m .sig .dish-name,.m .sig .dish-desc,.m .sig .add{position:relative;top:auto;justify-self:start}
+.m .sig .dish-name{grid-area:2/1/3/2}
+.m .sig .dish-desc{grid-area:3/1/4/2;margin-top:1rem;width:28.75rem}
+.m .sig .add{grid-area:4/1/5/2;margin-top:3rem;height:4.5rem;padding:0 2rem}
+.m .sig .arrow{grid-area:4/1/5/2;top:2.75rem;--arrow-gap:38.89%}  /* in the Add Cart row, level with the button: 3rem margin − (5rem arrow − 4.5rem button) / 2 */
 
 /* Mobile story: row 1 = picture area (46.25rem tall; the % positions below are % of this area),
    row 2 = the paragraph in normal flow, so the page ends right after it. */
