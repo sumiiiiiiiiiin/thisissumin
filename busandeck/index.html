@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Busandeck</title>
+<meta name="description" content="Busandeck brings the taste of Busan to North York — signature grills, pork rice soup and Busan wheat noodles at 4914 Yonge St.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@1,400..700&family=Noto+Sans+KR:wght@500;700&family=Noto+Serif+KR:wght@700&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Four full-screen pages from Figma: Home 2:29, Signature 2:34, Description Menu 2:41, Footer 3:67.
+     --s scales design px to the screen (desktop: 1440×1024 canvas, portrait: 720-wide canvas). -->
+
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="cell c-menu" href="#home">Menu</a>
+  <a class="cell c-info" href="#info">Info</a>
+  <a class="cell c-logo" href="index.html" aria-label="Busandeck home"><span class="nav-logo"><img class="logo-dark" src="images/figma/nav-logo.svg" width="201.5" height="24.3017" alt=""><img class="logo-light" src="images/figma/nav-logo-yellow.svg" width="201.5" height="24.3017" alt=""></span></a>
+  <a class="cell c-order" href="#home">Order</a>
+  <a class="cell c-cart" href="#home">Cart<span class="cart-count"></span></a>
+</nav>
+
+<!-- Snap points for the sticky / scaled pages (positions refined by script) -->
+<div class="snap snap-home" id="snapHome" aria-hidden="true"></div>
+<div class="snap snap-sig" id="snapSig" aria-hidden="true"></div>
+<div class="snap snap-story" id="snapStory" aria-hidden="true"></div>
+
+<!-- ===== Page 1 · Home (2:29) ===== -->
+<section class="page home" id="home">
+  <h1 class="sr">Busandeck</h1>
+  <div class="hero-top">
+    <img class="hero-logo" src="images/hero-logo.svg" width="1127" height="135" alt="">
+    <img class="pig" src="images/pig-blink.svg" width="400" height="395.933" alt="">
+  </div>
+
+  <div class="box box-menu">
+    <p class="menu-run" id="menuRun"><em>Signature Grills </em>Grilled Beef Copchang Small Intestine with Fernbrake Signature Aged Pork Set <em>Soups </em>Bean Sprout Soup Busan Pork Rice Soup Meat Kalguksu Noodles Pork Gomtang Yangpyeong haejang Soup <em>Noodles </em>Busan Wheat Noodles Cold Buckwheat Noodles LA Galbi &amp; Bibim Milmyun  <em>Rice and Stew </em>Soybean Paste Soup with Rice Steamed Rice Soybean Paste Stew <em>Sides </em>Boiled Pork Korean Pancakes</p>
+    <div class="z">
+      <a class="pill pill-menu" href="#signature">Our Menu <img src="images/plus.svg" width="58" height="58" alt=""></a>
+    </div>
+  </div>
+
+  <div class="box box-order">
+    <img class="order-union" src="images/figma/order-union.png" width="600" height="300" alt="Grilled intestine and pork belly in a cast-iron pan">
+    <div class="z">
+      <a class="pill pill-order" href="#signature">Order Now <img src="images/figma/arrow.svg" width="70" height="58" alt=""></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Page 2 · Signature (2:34) ===== -->
+<section class="page sig" id="signature" data-nav="dark" aria-labelledby="sigTitle">
+  <div class="pos">
+    <div class="z stage">
+      <h2 id="sigTitle">SIGNIATURE PLATE</h2>
+      <img class="plate" src="images/figma/sig01.png" alt="Gosari Intestine">
+      <img class="plate" src="images/figma/sig02.png" alt="Signature Aged Pork Set">
+      <img class="plate" src="images/figma/sig03.png" alt="Busan Wheat Noodles">
+      <button class="arrow arrow-prev reveal" id="prev" aria-label="Previous dish"><img src="images/figma/circle-arrow-white.svg" width="80" height="80" alt=""></button>
+      <button class="arrow arrow-next reveal" id="next" aria-label="Next dish"><img src="images/figma/circle-arrow-white.svg" width="80" height="80" alt=""></button>
+      <p class="dish-name reveal" id="dishName">Gosari Grilled Beef Gopchang</p>
+      <p class="dish-desc reveal" id="dishDesc">Grilled beef small intestine and pork belly served with fernbrake and potatoes.</p>
+      <button class="add reveal" id="addCart">Add Cart&nbsp; <b id="dishPrice">$51.99</b></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Page 3 · Description Menu (2:41) ===== -->
+<section class="page story" id="story" aria-labelledby="storyTitle">
+  <div class="pos">
+    <div class="z stage">
+      <h2 id="storyTitle"><em class="pop">taste of</em><span class="pop">BUSAN</span></h2>
+      <div class="taste-union pop"><img src="images/figma/taste-union-500.png" width="500" height="500" alt="Friends toasting over a Korean barbecue table"></div>
+      <div class="noodle-card pop"><img src="images/figma/noodles.png" alt="A bowl of Busan wheat noodles"></div>
+      <span class="pill pill-tag pop">Busan Wheat Noodles</span>
+      <div class="explosion pop" aria-hidden="true"><img src="images/figma/explosion.svg" width="261" height="240" alt=""></div>
+      <div class="badge-text pop"><span>ONLY IN<br>BUSANDECK!</span></div>
+      <p class="about pop">Busandek brings the taste of Busan to your table with carefully selected premium meats and authentic Korean dishes. We focus on quality ingredients. Every dish is prepared with care and served with the warmth and comfort of a Korean meal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Page 4 · Footer (3:67) ===== -->
+<footer class="page info" id="info">
+  <div class="foot-logo"><span><img src="images/figma/footer-logo.svg" width="989.5" height="118.2" alt="Busandeck"></span></div>
+
+  <div class="box3 b-hours">
+    <div class="z">
+      <div class="days"><p>Monday</p><p>Tuesday</p><p>Wednesday</p><p>Thursday</p><p>Friday</p><p>Saturday</p><p>Sunday</p></div>
+      <div class="times"><p>11:00AM - 11:00PM</p><p>11:00AM - 11:00PM</p><p>11:00AM - 11:00PM</p><p>11:00AM - 11:00PM</p><p>11:00AM - 11:00PM</p><p>11:00AM - 11:00PM</p><p>11:00AM - 11:00PM</p></div>
+    </div>
+  </div>
+
+  <div class="box3 b-loc">
+    <div class="z">
+      <p class="h">Location</p>
+      <a class="addr" href="https://maps.google.com/?q=4914+Yonge+St,+North+York,+ON+M2N+5N5" target="_blank" rel="noopener"><p>4914 Yonge St, North York, ON</p><p>M2N 5N5</p></a>
+    </div>
+  </div>
+
+  <div class="box3 b-contact">
+    <div class="z">
+      <p class="h">Contact</p>
+      <a class="phone" href="#" target="_blank" role="img" aria-label="Phone"><img src="images/figma/phone.svg" width="75" height="75" alt=""></a>
+      <a class="insta" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+        <img class="ring" src="images/figma/ellipse.svg" width="75" height="75" alt="">
+        <img class="glyph" src="images/figma/instagram.png" width="45" height="45" alt="">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+
+  // Page stack. Home and Signature are sticky (they stay still while the next page grows over them), so their
+  // on-screen boxes don't say where they sit in the scroll; layout tops are summed from page heights instead.
+  var pageEls = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var home = document.getElementById('home'), sig = document.getElementById('signature'), story = document.getElementById('story');
+  var tops = [];
+  function measure(){
+    var t = 0;
+    tops = pageEls.map(function(el){ var top = t; t += el.offsetHeight; return top; });
+  }
+  function topOf(el){ return tops[pageEls.indexOf(el)]; }
+
+  // Nav stays fixed on top; it turns dark while the Signature page (data-nav="dark") is under it.
+  var nav = document.getElementById('nav');
+  function navTheme(){
+    var y = window.scrollY + nav.offsetHeight / 2, current = pageEls[0];
+    pageEls.forEach(function(el, k){ if (tops[k] <= y) current = el; });
+    nav.classList.toggle('nav-dark', current.dataset.nav === 'dark');
+  }
+
+  // Page transitions, driven by scroll progress (0 = next page still below the screen, 1 = it fills the screen):
+  // the page underneath stays still (sticky) and the next one rises from the bottom, growing to full size.
+  // --p: Home → Signature (black), --p2: Signature → Story (yellow).
+  function progress(el){
+    return Math.min(1, Math.max(0, (window.scrollY - (topOf(el) - window.innerHeight)) / window.innerHeight));
+  }
+
+  // Entrance effects replay every visit: a page gets `.in` once it is mostly uncovered on screen and loses it
+  // (resetting its effects) once it is gone. `.settled` drops the entrance delays afterwards.
+  function visibleRatio(el){
+    var top = topOf(el) - window.scrollY, h = el.offsetHeight;
+    var vis = Math.min(window.innerHeight, top + h) - Math.max(0, top);
+    return Math.max(0, vis) / Math.min(h, window.innerHeight);
+  }
+  function entrance(el){
+    var r = visibleRatio(el);
+    if (r >= 0.2 && !el.classList.contains('in')){
+      el.classList.add('in');
+      el._settle = setTimeout(function(){ el.classList.add('settled'); }, 2000);
+    } else if (r <= 0.05 && el.classList.contains('in')){
+      clearTimeout(el._settle);
+      el.classList.remove('in', 'settled');
+    }
+  }
+
+  var ticking = false;
+  function onScroll(){
+    root.style.setProperty('--p', progress(sig));
+    root.style.setProperty('--p2', progress(story));
+    entrance(sig);
+    entrance(story);
+    navTheme();
+    ticking = false;
+  }
+  addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(onScroll); }
+  }, {passive:true});
+
+  // Snap points for the sticky/scaled pages live on plain markers (see CSS .snap).
+  var snaps = [
+    {el: document.getElementById('snapHome'), page: home},
+    {el: document.getElementById('snapSig'), page: sig},
+    {el: document.getElementById('snapStory'), page: story}
+  ];
+  function placeSnaps(){
+    snaps.forEach(function(m){ m.el.style.top = topOf(m.page) + 'px'; m.el.style.height = m.page.offsetHeight + 'px'; });
+  }
+
+  // Scale: 1rem = 16 design px. Desktop fits the 1440×1024 canvas inside the screen;
+  // portrait/narrow screens use a 720-wide canvas.
+  function fit(){
+    var w = root.clientWidth, h = window.innerHeight;
+    var mobile = w <= 1024 || w / h < 0.8;   // mobile layout: 1024px wide or less, or portrait
+    root.classList.toggle('m', mobile);
+    root.style.setProperty('--s', mobile ? w / 720 : Math.min(w / 1440, h / 1024));
+    root.style.setProperty('--home-top', Math.min(0, h - home.offsetHeight) + 'px');
+    measure();
+    placeSnaps();
+    fitMenu();
+  }
+
+  // Home menu list: largest font size that fits the box (inset 2rem on every side),
+  // then line-height spread so the text touches the top and bottom margins exactly.
+  var menu = document.getElementById('menuRun');
+  function fitMenu(){
+    var H = menu.clientHeight, rem = parseFloat(getComputedStyle(root).fontSize);
+    if (!H) return;
+    resetWords();
+    var lo = 0.5, hi = 12;
+    menu.style.lineHeight = '1';
+    for (var n = 0; n < 24; n++){
+      var mid = (lo + hi) / 2;
+      menu.style.fontSize = mid + 'rem';
+      if (menu.scrollHeight <= H) lo = mid; else hi = mid;
+    }
+    menu.style.fontSize = lo + 'rem';
+    var lines = Math.max(1, Math.round(menu.scrollHeight / (lo * rem)));
+    menu.style.lineHeight = (H / lines / rem) + 'rem';
+  }
+
+  // Menu list: random words briefly flip to Korean and back. Each word is its own inline-block; a flipped word keeps
+  // its English text as an invisible placeholder with the Korean laid over it, so the justified lines never move.
+  var KO = {Milmyun:'밀면', Aged:'숙성', Fernbrake:'고사리', Copchang:'곱창', Pork:'돼지', Busan:'부산'};
+
+  function wrapWords(el){
+    Array.prototype.slice.call(el.childNodes).forEach(function(node){
+      if (node.nodeType === 1){ wrapWords(node); return; }
+      if (node.nodeType !== 3) return;
+      var frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(function(part){
+        if (!part) return;
+        if (/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); return; }
+        var w = document.createElement('span');
+        w.className = 'w';
+        w.textContent = part;
+        w.dataset.en = part;
+        if (KO[part]) w.dataset.ko = KO[part];
+        frag.appendChild(w);
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+  wrapWords(menu);
+  var flipWords = Array.prototype.slice.call(menu.querySelectorAll('.w[data-ko]'));
+  function setWord(w, ko){
+    var old = w.querySelector('.ko');
+    if (old) w.removeChild(old);
+    w.classList.toggle('is-ko', ko);
+    if (!ko) return;
+    // The English word stays in place (invisible) to hold the layout; the Korean word sits on top of it.
+    var inner = document.createElement('span');
+    inner.className = 'ko';
+    inner.setAttribute('aria-hidden', 'true');
+    inner.textContent = w.dataset.ko;
+    w.appendChild(inner);
+    var k = Math.min(1, w.getBoundingClientRect().width / inner.getBoundingClientRect().width);
+    if (k < 1) inner.style.scale = k;
+  }
+  function flip(w, ko){
+    w.classList.add('turn');                       // rotate away…
+    setTimeout(function(){ setWord(w, ko); w.classList.remove('turn'); }, 180);  // …swap and rotate back
+  }
+  function resetWords(){
+    flipWords.forEach(function(w){ clearTimeout(w._back); w.classList.remove('turn'); setWord(w, false); });
+  }
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(function(){
+      if (document.hidden || visibleRatio(home) < 0.3) return;
+      var idle = flipWords.filter(function(w){ return !w.classList.contains('is-ko') && !w.classList.contains('turn'); });
+      if (flipWords.length - idle.length >= 3 || !idle.length) return;
+      var w = idle[Math.floor(Math.random() * idle.length)];
+      flip(w, true);
+      w._back = setTimeout(function(){ flip(w, false); }, 1600 + Math.random() * 1400);
+    }, 650);
+  }
+
+  fit(); addEventListener('resize', function(){ fit(); onScroll(); });
+  if (document.fonts) document.fonts.ready.then(fitMenu);
+  onScroll();
+
+  // Signature carousel. Only "Gosari Intestine" text comes from Figma; the other two are placeholders.
+  var dishes = [
+    {name:"Gosari Grilled Beef Gopchang", desc:"Grilled beef small intestine and pork belly served with fernbrake and potatoes.", price:51.99},
+    {name:"Signature Aged Pork Set", desc:"Aged pork belly grilled at the table with potatoes and green onion.", price:58.99},
+    {name:"Busan Wheat Noodles", desc:"Chilled wheat noodles with sliced beef, spicy sauce and a boiled egg.", price:15.99}
+  ];
+  var plates = document.querySelectorAll('.plate');
+  var slots = ['center','right','left'];
+  var i = 0, cart = 0;
+  function render(){
+    plates.forEach(function(p, k){
+      var slot = slots[(k - i + 3) % 3], prev = p.dataset.slot;
+      clearTimeout(p._t);
+      // A plate wrapping from one side to the other fades out in place, moves while hidden, then fades in.
+      var wrap = (prev === 'left' && slot === 'right') || (prev === 'right' && slot === 'left');
+      if (!wrap){ p.classList.remove('out'); p.dataset.slot = slot; return; }
+      p.classList.add('out');
+      p._t = setTimeout(function(){
+        p.classList.add('jump');
+        p.dataset.slot = slot;
+        p.offsetWidth;
+        p.classList.remove('jump', 'out');
+      }, 350);
+    });
+    document.getElementById('dishName').textContent = dishes[i].name;
+    document.getElementById('dishDesc').textContent = dishes[i].desc;
+    document.getElementById('dishPrice').textContent = '$' + dishes[i].price.toFixed(2);
+  }
+  document.getElementById('next').onclick = function(){ i = (i + 1) % 3; render(); };
+  document.getElementById('prev').onclick = function(){ i = (i + 2) % 3; render(); };
+  plates.forEach(function(p, k){ p.onclick = function(){ i = k; render(); }; });
+
+  document.getElementById('addCart').onclick = function(){
+    cart++;
+    document.querySelectorAll('.cart-count').forEach(function(c){ c.textContent = ' (' + cart + ')'; });
+  };
+
+  render();
+})();
+</script>
+</body>
+</html>

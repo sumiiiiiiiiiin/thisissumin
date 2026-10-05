@@ -1,0 +1,320 @@
+/* Four full-screen pages from Figma (Home 2:29, Signature 2:34, Description Menu 2:41, Footer 3:67).
+   Everything is sized in rem: the root font-size is 16 design px × --s (set in script), so 1rem = 16px of the
+   Figma canvas and all type and layout shrink/grow with the screen. Divider and outline strokes stay 2px.
+   Exception: small text on Signature / Story / Info uses fixed px per screen range (see "Text sizes").
+   `html.m` = portrait / narrow screens, laid out on a 720px-wide canvas. */
+:root{
+  --yellow:#ffd832;
+  --ink:#111111;
+  --black:#111;
+  --mist:#999999;
+  --paper:#eeeeee;
+  --white:#ffffff;
+  --sans:"General Sans",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Libre Baskerville",Georgia,serif;
+  --line:2px solid var(--black);
+  --to-yellow:invert(80%) sepia(60%) saturate(800%) hue-rotate(358deg) brightness(104%);
+  --s:1;
+  /* Nav height scales with the screen but never drops below 64px (tablets / phones). */
+  --nav-h:max(4.5rem, 64px);
+  font-size:calc(16px * var(--s));
+  color-scheme:light;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+}
+*{box-sizing:border-box}
+body{position:relative;margin:0;background:var(--yellow);color:var(--ink);font-family:var(--sans);font-size:1rem;font-weight:500;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+p,h1,h2{margin:0}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;padding:0;background:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- Text sizes (px) ----------
+   Home, the big page titles, the ONLY IN BUSANDECK! badge and all pictures scale with the screen (rem).
+   The text below has a fixed px per screen range instead — change the numbers here. */
+:root{
+  --dish-name:24px;   /* Signature: dish name */
+  --dish-desc:20px;   /* Signature: description */
+  --add-cart:24px;    /* Signature: Add Cart button */
+  --tag:24px;         /* Story: Busan Wheat Noodles tag */
+  --about:20px;       /* Story: paragraph */
+  --info-title:36px;  /* Info: Location / Contact */
+  --info-text:20px;   /* Info: hours, address */
+}
+
+/* Small laptops, landscape tablets */
+@media (max-width:1024px){
+  :root{--dish-name:20px;--dish-desc:18px;--add-cart:20px;--tag:20px;--about:18px;--info-title:24px;--info-text:18px}
+}
+/* Phones (html.m = mobile layout, set by the script) */
+
+@media (max-width:768px){
+html.m{--dish-name:18px;--dish-desc:16px;--add-cart:18px;--tag:18px;--about:16px;--info-title:20px;--info-text:16px}
+}
+
+/* ---------- Pages ---------- */
+.page{position:relative;display:block;width:100%;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always}
+.pos{position:absolute;left:0;right:0;top:max(6.25rem, var(--nav-h));bottom:0;display:grid;place-items:center}
+.stage{position:relative;width:90rem;height:57.75rem}
+
+/* ---------- Nav (fixed, turns dark over the Signature page) ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;height:var(--nav-h);background:var(--yellow);border-bottom:var(--line);transition:background .35s,border-color .35s}
+.cell{flex:none;width:18.75%;height:100%;display:flex;align-items:center;justify-content:center;border-left:var(--line);font-size:max(1.5rem, 15px);letter-spacing:-.02em;color:var(--black);white-space:nowrap;transition:background .35s,color .35s,border-color .35s}
+.c-menu{border-left:0}
+.c-logo{width:25%}
+.nav-logo{position:relative;width:max(12.5rem, 130px);aspect-ratio:200/22.802}
+.nav-logo img{position:absolute;left:0;top:-6.58%;width:100.75%;height:106.58%;transition:opacity .35s}
+.nav-logo .logo-light,.nav-dark .nav-logo .logo-dark{opacity:0}
+.nav-dark .nav-logo .logo-light{opacity:1}
+.cell:hover{background:var(--ink);color:var(--yellow)}
+.c-logo:hover img{filter:var(--to-yellow)}
+.nav-dark{background:var(--ink);border-bottom-color:var(--yellow)}
+.nav-dark .cell{border-left-color:var(--yellow);color:var(--yellow)}
+.nav-dark .cell:hover{background:var(--yellow);color:var(--ink)}
+.nav-dark .c-logo:hover img{filter:brightness(0)}
+
+/* ---------- Pills ---------- */
+.pill{position:absolute;display:flex;align-items:center;justify-content:center;gap:.625rem;background:var(--yellow);border:2px solid var(--ink);border-radius:100px;color:var(--ink);white-space:nowrap;line-height:normal;transform:translateX(-50%);transition:background .2s,color .2s}
+a.pill:hover{background:var(--ink);color:var(--yellow)}
+a.pill:hover img{filter:var(--to-yellow)}
+/* Our Menu: the + spins on hover. Order Now: the arrow dashes off to the right once and pops back (clipped by the pill). */
+.pill-menu img{transition:rotate .5s cubic-bezier(.34,1.56,.64,1)}
+a.pill-menu:hover img{rotate:90deg}
+.pill-order{overflow:hidden}
+a.pill-order:hover img{animation:arrow-dash .8s both}
+/* Once per hover: shoots off to the right, then pops back in at its own spot (never crossing the text). */
+@keyframes arrow-dash{
+  0%{translate:0 0;scale:1;opacity:1;animation-timing-function:cubic-bezier(.55,0,1,.45)}
+  45%{translate:250% 0;scale:1;opacity:0}
+  46%{translate:0 0;scale:.3;opacity:0;animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  100%{translate:0 0;scale:1;opacity:1}
+}
+
+/* ---------- Page 1 · Home ---------- */
+.home{background:var(--yellow)}
+.hero-top{position:absolute;left:0;right:0;top:max(6.25rem, var(--nav-h));bottom:37.5rem}
+/* Hero wordmark with the pig nose (as in the footer logo); 5% smaller than Figma so the nose clears the pig. */
+.hero-logo{position:absolute;left:3.125rem;top:calc(50% - 5rem);width:72rem;height:auto}
+.pig{position:absolute;right:-3.3125rem;bottom:-5.6875rem;width:25rem;height:auto}
+
+.box{position:absolute;bottom:0;width:50%;height:37.5rem;background:var(--yellow);border-top:var(--line);overflow:hidden}
+.box-menu{left:0}
+.box-order{right:0;border-left:var(--line)}
+.box>.z{position:absolute;left:50%;top:0;width:45rem;height:37.5rem;transform:translateX(-50%)}
+/* Photo fills the box width (2rem side margins), capped so it stays clear of the Order Now pill. */
+.order-union{position:absolute;left:50%;top:2rem;width:min(calc(100% - 4rem), 44rem);height:auto;aspect-ratio:2/1;transform:translateX(-50%)}
+.pill-order,.pill-menu{top:25.5rem;padding:1rem 3rem;font-size:3.5rem;letter-spacing:-.02em}
+.pill-order{left:50%}
+.pill-order img{width:4.375rem;height:3.625rem}
+.pill-menu img{width:3.625rem;height:3.625rem}
+.pill-menu{left:50%}
+/* Font size and line height are fitted by script so the list fills the box inside an even 2rem margin. */
+.menu-run{position:absolute;inset:2rem;overflow:hidden;font-size:3.125rem;line-height:1;letter-spacing:-.04em;text-align:justify;color:var(--black);word-break:break-word}
+.menu-run em{font-family:var(--serif);font-style:italic;font-weight:600}
+/* Words that flip to Korean (script): each word is an inline-block that turns over on its horizontal axis. */
+.menu-run .w{position:relative;display:inline-block;white-space:nowrap;transition:transform .18s ease-in}
+.menu-run .w.turn{transform:rotateX(90deg)}
+.menu-run .w.is-ko{color:transparent}
+.menu-run .ko{position:absolute;left:50%;top:50%;translate:-50% -50%;color:var(--black);font-family:"Noto Sans KR",var(--sans);font-weight:700;line-height:1;letter-spacing:-.06em;white-space:nowrap}
+.menu-run em .ko{font-family:"Noto Serif KR",var(--serif);font-style:normal}
+
+/* ---------- Page 2 · Signature ---------- */
+.sig{background:var(--ink)}
+.sig h2{position:absolute;left:0;right:0;top:5%;text-align:center;font-weight:700;font-size:8.75rem;line-height:normal;letter-spacing:-.03em;color:#333;white-space:nowrap}
+/* Positions are % of the stage (1440×924 design px; mobile 720×1020), sizes are rem.
+   `left` is each plate's center point (transform shifts it back by half its width), so any size stays centered. */
+.plate{position:absolute;object-fit:cover;cursor:pointer;transform:translateX(-50%);filter:opacity(.75);--ease:cubic-bezier(.65,0,.35,1);transition:left .8s var(--ease),top .8s var(--ease),width .8s var(--ease),height .8s var(--ease),filter .8s ease,translate 1s var(--spring) var(--d,0s),scale 1s var(--spring) var(--d,0s),rotate 1s var(--spring) var(--d,0s),opacity .45s ease var(--d,0s)}
+.plate.out{opacity:0}
+.plate.jump{transition:none}
+.plate[data-slot="center"]{left:50%;top:17%;width:37.5rem;height:25.4375rem;cursor:default;z-index:1;filter:none}
+.plate[data-slot="right"]{left:100%;top:24%;width:25rem;height:16.9375rem}
+.plate[data-slot="left"]{left:.60%;top:24%;width:25rem;height:16.9375rem}
+.arrow{position:absolute;top:35%;width:5rem;height:5rem;border-radius:50%;transform:translateX(-50%);transition:transform .2s;z-index:2;--arrow-gap:27.08%}
+.arrow img{width:5rem;height:5rem}
+.arrow-prev{left:calc(50% - var(--arrow-gap))}
+.arrow-prev img{rotate:180deg}
+.arrow-next{left:calc(50% + var(--arrow-gap))}
+.arrow:hover{transform:translateX(-50%) scale(1.08)}
+.dish-name{position:absolute;left:50%;top:62%;transform:translateX(-50%);font-weight:600;font-size:var(--dish-name);line-height:normal;letter-spacing:-.02em;color:var(--paper);white-space:nowrap}
+.dish-desc{position:absolute;left:50%;top:67%;width:40%; max-width: 400px; transform:translateX(-50%);font-weight:400;font-size:var(--dish-desc);line-height:normal;letter-spacing:-.02em;text-align:center;color:var(--mist)}
+.add{position:absolute;left:50%;top:78%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;padding:.625rem 1.5625rem;border-radius:100px;background:var(--yellow);color:var(--black);font-weight:500;font-size:var(--add-cart);line-height:normal;letter-spacing:-.02em;white-space:pre;transition:background .2s}
+.add b{font-family:var(--serif);font-style:italic;font-weight:700}
+.add:hover{transform:translateX(-50%) scale(1.06)}
+.add:active{transform:translateX(-50%) scale(.96)}
+
+/* Home → Signature transition (--p 0→1 set by script on scroll).
+   Home is sticky so it stays still underneath; Signature rises from the bottom and grows to full size over it.
+   --home-top keeps a Home taller than the screen (portrait) pinned by its bottom edge. */
+.home{position:sticky;top:var(--home-top,0px);z-index:0}
+/* Snap points for Home and Signature live on untransformed, non-sticky markers placed by script:
+   a sticky or scaled page would report a moving snap position and the scroll would stop off-target. */
+.home,.sig,.story{scroll-snap-align:none}
+.snap{position:absolute;left:0;width:1px;pointer-events:none;scroll-snap-align:start;scroll-snap-stop:always}
+.snap-home{top:0;height:100vh;height:100dvh}
+.snap-sig{top:100vh;top:100dvh;height:100vh;height:100dvh}
+.snap-story{top:200vh;top:200dvh;height:100vh;height:100dvh}
+.sig{position:sticky;top:0;z-index:1;transform-origin:50% 100%;transform:scale(calc(.8 + .2 * var(--p,1)));will-change:transform}
+/* Signature → Story: same growth, yellow over black (--p2). */
+.story{z-index:2;transform-origin:50% 100%;transform:scale(calc(.8 + .2 * var(--p2,1)));will-change:transform}
+.info{z-index:3}
+
+/* Signature entrance, in the same springy style as the Story page: the title drops in with a tilt, the side plates
+   spin in from small (the selected center plate stays put), then the dish info pops in one by one.
+   `.in` is added each time the page is mostly on screen and removed when it leaves; `.settled` clears the delays. */
+.sig{--spring:cubic-bezier(.34,1.56,.64,1)}
+.sig h2{opacity:0;translate:0 -25rem;rotate:-6deg}
+.sig.in h2{opacity:1;translate:0 0;rotate:0deg;transition:opacity .5s ease,translate 1s var(--spring),rotate 1s var(--spring)}
+.sig:not(.in) .plate:not([data-slot="center"]){opacity:0;scale:.3}
+.sig:not(.in) .plate[data-slot="left"]{translate:-20rem 0;rotate:-40deg}
+.sig:not(.in) .plate[data-slot="right"]{translate:20rem 0;rotate:40deg}
+.sig.in:not(.settled) .plate[data-slot="left"]{--d:.3s}
+.sig.in:not(.settled) .plate[data-slot="right"]{--d:.45s}
+.sig .reveal{opacity:0;transition:transform .2s,background .2s}
+.sig:not(.in) .dish-name{translate:0 3rem;scale:.7}
+.sig:not(.in) .dish-desc{translate:0 2rem}
+.sig:not(.in) .add{translate:0 -6rem}
+.sig:not(.in) .arrow{scale:0}
+.sig .dish-name{--d:.6s}
+.sig .dish-desc{--d:.75s}
+.sig .add{--d:.9s}
+.sig .arrow{--d:1.05s}
+.sig.in .reveal{opacity:1;transition:opacity .6s ease var(--d),translate 1s var(--spring) var(--d),scale 1s var(--spring) var(--d),transform .2s,background .2s}
+.sig.in.settled .reveal{--d:0s}
+
+/* ---------- Page 3 · Description Menu ---------- */
+/* Positions are % of the stage (1440×924 design px; mobile 720×1056), sizes are rem. */
+.story{background:var(--yellow)}
+.story h2{position:absolute;right:58.75%;top:7.9%;font-weight:700;font-size:8.75rem;letter-spacing:-.03em;text-align:right;color:var(--ink);white-space:nowrap}
+.story h2 em,.story h2 span{display:block;line-height:1}
+.story h2 em{font-family:var(--serif);font-style:italic;font-weight:500}
+.taste-union{position:absolute;left:55%;top:5%;width:31.25rem;height:31.25rem;rotate:-90deg}
+.taste-union img{width:100%;height:100%}
+.noodle-card{position:absolute;left:11.39%;top:46.1%;width:25rem;height:20rem;background:var(--ink);border:2px solid var(--ink);border-radius:1.5625rem;overflow:hidden}
+.noodle-card img{position:absolute;left:-9.625rem;top:-2.4375rem;width:45rem;height:24.5625rem;object-fit:cover}
+.pill-tag{left:20%;top:42%;padding: 1rem 1.5rem;font-size:var(--tag);letter-spacing:-.02em}
+.explosion{position:absolute;left:26.84%;top:59.55%;width:22.1379rem;height:21.9761rem;display:flex;align-items:center;justify-content:center}
+.explosion img{width:16.3125rem;height:15rem;rotate:-40deg}
+.badge-text{position:absolute;left:39.06%;top:74.26%;width:8.5836rem;height:4.4293rem;transform:translateX(-50%);display:flex;align-items:center;justify-content:center}
+.badge-text span{display:block;width:8.25rem;height:2.375rem;rotate:-15deg;font-weight:700;font-size:1.25rem;line-height:1;letter-spacing:-.02em;text-align:center;color:var(--white)}
+.about{position:absolute;left:50%;top:65%;width:37.5rem;font-size:var(--about);line-height:normal;letter-spacing:-.02em;color:var(--black)}
+
+/* Story entrance (`.in` set by script each time the page comes on screen; removed again when it leaves).
+   Without `.in` the pieces sit in their start pose with no transition, so they reset instantly off-screen. */
+.story{--spring:cubic-bezier(.34,1.3,.64,1)}
+.story .pop{opacity:0}
+.story.in .pop{opacity:1;transition:opacity .6s ease var(--d,0s),translate 1s var(--spring) var(--d,0s),scale 1s var(--spring) var(--d,0s),rotate 1s var(--spring) var(--d,0s),transform 1.2s var(--spring) var(--d,0s)}
+.story.in.settled .pop{--d:0s}
+.story:not(.in) h2 em{translate:-14rem 0;rotate:-5deg}
+.story:not(.in) h2 span{translate:0 3rem;scale:.8}
+.story:not(.in) .taste-union{transform:scale(.7) rotate(20deg)}
+.story:not(.in) .noodle-card{translate:0 6rem;rotate:-4deg}
+.story:not(.in) .pill-tag{translate:0 -6rem}
+.story:not(.in) .about{translate:0 2rem}
+.story:not(.in) .explosion{scale:.4;rotate:-90deg}
+.story:not(.in) .badge-text{scale:.5}
+.story h2 span{--d:.15s}
+.story .taste-union{--d:.3s}
+.story .noodle-card{--d:.45s}
+.story .pill-tag{--d:.65s}
+.story .about{--d:.8s}
+.story .explosion{--d:.95s}
+.story .badge-text{--d:1.15s}
+
+/* ---------- Page 4 · Footer ---------- */
+.info{background:var(--yellow)}
+.foot-logo{position:absolute;left:2.4375rem;top:calc(max(6.25rem, var(--nav-h)) + (100% - max(6.25rem, var(--nav-h)) - 28.125rem) / 2 - 3.50625rem);width:61.46875rem;height:7.0125rem}
+.foot-logo span{position:absolute;inset:0}
+.foot-logo img{position:absolute;left:0;top:-5.35%;width:100.61%;height:105.35%}
+.box3{position:absolute;bottom:0;height:28.125rem;width:33.3334%;background:var(--yellow);border-top:var(--line);overflow:hidden;color:var(--ink);white-space:nowrap}
+.b-hours{left:0}
+.b-loc{left:33.3333%;border-left:var(--line)}
+.b-contact{left:66.6667%;right:0;width:auto;border-left:var(--line)}
+.box3>.z{position:absolute;left:0;top:0;width:30rem;height:28.125rem}
+.days,.times{font-size:var(--info-text);letter-spacing:-.04em}
+.days p,.times p{line-height:1.5}
+.days{font-family:var(--serif);font-style:italic;font-weight:700}
+/* Store hours (desktop): days + times as one group, centered in the box */
+.b-hours>.z{inset:0;width:auto;height:auto;display:flex;align-items:center;justify-content:center;gap:2.5rem}
+.box3 .h{position:absolute;top:5.375rem;font-family:var(--serif);font-style:italic;font-size:var(--info-title);line-height:1;letter-spacing:-.04em}
+.b-loc .h{left:3.5rem;font-weight:700}
+.b-contact .h{left:3.875rem;font-weight:600}
+.addr{position:absolute;left:3.5rem;right:1rem;top:8.875rem;font-size:var(--info-text);letter-spacing:-.04em;white-space:normal}  /* wraps if the fixed-px text is wider than the box */
+.addr p{line-height:1.5}
+.addr:hover{text-decoration:underline}
+.phone{position:absolute;left:3.875rem;top:8.875rem;width:4.6875rem;height:4.6875rem}
+.phone img{width:100%;height:100%}
+.insta{position:absolute;left:9.1875rem;top:8.875rem;width:4.6875rem;height:4.6875rem;transition:transform .2s}
+.insta .ring{position:absolute;inset:0;width:100%;height:100%}
+.insta .glyph{position:absolute;left:.9375rem;top:.9375rem;width:2.8125rem;height:2.8125rem;object-fit:contain}
+.b-contact .z a:hover{transform:rotate(-12deg) scale(1.06)}
+
+/* ---------- Mobile layout: 1024px wide or less, or portrait (720px canvas) ---------- */
+/* Pages are not locked to the screen height on phones: each page is as tall as its content,
+   scrolling is free (no snapping) and the sticky/grow page transitions are off. */
+.m{scroll-snap-type:none}
+.m .page{height:auto}
+.m .home,.m .sig{position:relative;top:auto}
+.m .sig,.m .story{transform:none}
+.m .home{height:calc(max(6.25rem, var(--nav-h)) + 18rem + 75rem)}
+.m .sig{height:calc(max(6.25rem, var(--nav-h)) + 60rem + 4rem)}
+.m .sig .pos{bottom:4rem}
+.m .c-menu,.m .c-info,.m .c-order{display:none}
+.m .c-logo{flex:1;width:auto;justify-content:flex-start;padding-left:2.5rem;border-left:0}
+.m .nav-logo{width:max(16rem, 140px)}
+.m .c-cart{width:30%;font-size:max(1.75rem, 16px)}
+.m .hero-top{bottom:75rem}
+.m .hero-logo{left:2.5rem;top:calc(50% - 2.041rem);width:32.12rem}
+.m .pig{right:-1.875rem;bottom:-3.75rem;width:12.5rem}
+.m .box{left:0;right:0;width:auto;border-left:0}
+.m .box-menu{bottom:37.5rem}
+.m .pill-order,.m .pill-menu{font-size:3rem}
+
+.m .sig .stage{width:45rem;height:58rem}
+.m .sig h2{left:5.56%;top:2.16%;width:40rem;font-size:6.25rem;line-height:1;white-space:normal}
+.m .plate[data-slot="center"]{left:50%;top:28.02%;width:32rem;height:21.7rem}
+.m .plate[data-slot="right"]{left:108.89%;top:36.21%;width:18rem;height:12.2rem}
+.m .plate[data-slot="left"]{left:-8.89%;top:36.21%;width:18rem;height:12.2rem}
+.m .arrow{top:85.78%;--arrow-gap:38.89%}  /* level with Add Cart: (4.5rem button − 5rem arrow) / 2 above it */
+.m .dish-name{top:69.74%}
+.m .dish-desc{top:75.34%;width:28.75rem}
+.m .add{top:86.21%;height:4.5rem;padding:0 2rem}
+
+/* Mobile story: row 1 = picture area (46.25rem tall; the % positions below are % of this area),
+   row 2 = the paragraph in normal flow, so the page ends right after it. */
+.m .story .pos{position:relative;top:auto;padding-top:max(6.25rem, var(--nav-h))}
+.m .story .stage{width:45rem;height:auto;display:grid;grid-template-rows:46.25rem auto;padding-bottom:4rem}
+.m .story .stage>*{grid-area:1/1/2/2}
+.m .story h2{right:auto;left:5.56%;top:1.36%;font-size:6.875rem;text-align:left}
+.m .taste-union{left:70%;top:-7.14%;width:24rem;height:24rem}
+.m .pill-tag{left:5%;top:43%;transform:none}
+.m .noodle-card{left:9.72%;top:47.29%}
+.m .explosion{left:40.28%;top:63.52%}
+.m .badge-text{left:64.86%;top:82.44%}
+.m .story .about{grid-area:2/1/3/2;position:relative;left:auto;top:auto;margin-left:2.5rem;width:40rem}
+
+
+/* ---------- Info, mobile layout (html.m) ----------
+   No fixed heights: the logo and the three boxes sit in normal flow, and each box is as tall as its content + padding.
+   Sizes are vw on the 720px mobile canvas (1 mobile design px = 100vw / 720). */
+.m .foot-logo{position:relative;left:auto;top:auto;width:88.89vw;height:10.14vw;margin:20.83vw 5.56vw 10.7vw}
+.m .box3{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:auto;height:auto;border-left:0;padding:6.94vw 5.56vw}
+.m .box3>.z{position:static;width:auto;height:auto;display:flex;flex-direction:column;align-items:flex-start;gap:4vw}
+.m .box3 .h,.m .addr{position:static}
+/* Hours: days and times side by side */
+.m .b-hours>.z{flex-direction:row;justify-content:flex-start;gap:0}
+.m .days{width:26.38vw}
+/* Contact: title on top, the two icons in a row */
+.m .b-contact>.z{display:grid;grid-template-columns:auto auto;justify-content:start;column-gap:1.38vw;row-gap:4vw}
+.m .b-contact .h{grid-column:1 / -1}
+.m .phone,.m .insta{position:relative;left:auto;top:auto;width:10.42vw;height:10.42vw}
+.m .insta .glyph{left:2.08vw;top:2.08vw;width:6.25vw;height:6.25vw}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+  a.pill-order:hover img{animation:none}
+  .story .pop,.sig h2,.sig .reveal,.sig .plate{opacity:1!important;translate:none!important;scale:none!important;rotate:none!important}
+  .story .taste-union{transform:none!important}
+  .sig,.story{transform:none}
+  :root{scroll-behavior:auto}
+}

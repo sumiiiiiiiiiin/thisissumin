@@ -1,0 +1,48 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="400" height="395.934" viewBox="0 0 400 395.934" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+.eye {
+  transform-box: fill-box;
+  transform-origin: 50% 70%;
+  animation: blink 4.5s infinite;
+}
+
+@keyframes blink {
+  /* 처음 3초 동안 가만히 */
+  0%, 20% {
+    transform: scaleY(1);
+  }
+
+  /* 첫 번째 blink */
+  22% {
+    transform: scaleY(.06);
+  }
+
+  24% {
+    transform: scaleY(.06);
+  }
+
+  30% {
+    transform: scaleY(1);
+  }
+
+  /* 7초 정도 기다림 */
+  30%, 100% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eye {
+    animation: none;
+  }
+}
+</style>
+<g id="Group 23">
+<path id="Union" d="M312.471 80.3906L313.496 81.8701L315.108 82.6719C339.698 94.897 360.43 113.521 374.541 137.961C417.056 211.598 383.783 312.176 297.522 361.979C211.261 411.781 107.521 390.307 65.0068 316.67C50.9564 292.334 45.182 265.195 46.8184 237.907L46.9258 236.118L46.1602 234.498L10.6436 159.311L72.6758 154.194L75.9648 153.924L77.8486 151.213C93.7536 128.326 115.397 108.027 142.026 92.6523C168.625 77.2955 196.992 68.704 224.734 66.3613L228.021 66.084L229.899 63.373L265.29 12.291L312.471 80.3906Z" stroke="black" stroke-width="14"/>
+<path id="Ellipse 7" d="M317.449 210.785C334.544 240.392 312.398 285.181 267.986 310.822C223.575 336.463 173.714 333.247 156.62 303.639C139.526 274.032 161.671 229.243 206.083 203.602C250.495 177.961 300.355 181.177 317.449 210.785Z" stroke="#111111" stroke-width="14"/>
+<circle id="Ellipse 8" cx="210.23" cy="272.688" r="20.1344" transform="rotate(-30 210.23 272.688)" fill="#111111" stroke="#111111"/>
+<circle id="Ellipse 9" cx="263.84" cy="241.736" r="20.1344" transform="rotate(-30 263.84 241.736)" fill="#111111" stroke="#111111"/>
+<g transform="rotate(-30 155.056 189.606)"><g class="eye"><ellipse id="Ellipse 11" cx="155.056" cy="189.606" rx="14.8053" ry="22.208" fill="#111111"/></g></g>
+<g transform="rotate(-30 219.387 152.464)"><g class="eye"><ellipse id="Ellipse 12" cx="219.387" cy="152.464" rx="14.8053" ry="22.208" fill="#111111"/></g></g>
+</g>
+</svg>
