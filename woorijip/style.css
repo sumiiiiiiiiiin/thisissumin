@@ -1,0 +1,737 @@
+/* =========================================================
+   Woorijip — styles
+   Mobile first. Breakpoints: 768px (tablet), 1024px, 1240px (desktop = Figma layout).
+   Font sizes are in rem, so they all follow the html font size set below
+   (and changed per breakpoint in the media queries).
+   ========================================================= */
+
+/* ----- Tokens ----- */
+:root {
+  --cream: #FCFBF7;
+  --mint: #ade2e3;
+  --coral: #ff6060;
+  --green: #6c8a4e;
+  --black: #000;
+  --white: #fff;
+  --line: 1.5px solid var(--black);   /* every border on the page */
+  --header-h: 52px;                  /* sticky header height on phones (tablet + desktop: see 768px block) */
+  --gutter: 1.5rem;
+
+  /* big display text gets its own size per breakpoint */
+  --fs-hero: 3rem; 
+  --fs-title: 2.5rem;  
+  --fs-faq: 5rem;     
+  --fs-qmark: 9rem;   
+}
+
+/* ----- Base ----- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  font-size: 14px;
+}
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--black);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: none; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, dl, dd, address { margin: 0; font-weight: inherit; font-style: normal; }
+button { font: inherit; color: inherit; }
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: calc(1200px + var(--gutter) * 2);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+section, footer { scroll-margin-top: var(--header-h); }   /* menu links land below the sticky header */
+
+/* ----- Shared pieces ----- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: var(--line);
+  border-radius: 100px;
+  background: var(--white);
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.pill--mint { background: var(--mint); }
+.pill--white { border: 0; }
+
+/* white text with a black outline (stroke painted under the fill, so it shows 1.5px) */
+.outlined {
+  color: var(--white);
+  -webkit-text-stroke: 3px var(--black);
+  paint-order: stroke fill;
+}
+
+.section-title {
+  font-size: var(--fs-title);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* coral button with the round arrow */
+.cta {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 70px;
+  line-height: 70px;
+  padding-left: 2rem;
+  background: var(--coral);
+  border: var(--line);
+  color: var(--black);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition: filter .3s, color .3s;
+  filter: brightness(1.25);
+}
+.cta-arrow {                       /* drawn with currentColor, so it changes with the text */
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cta:hover { filter: brightness(1); color: var(--white); }
+
+/* ----- Header (sticks to the top) ----- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  transition: box-shadow .2s;
+}
+.site-header.is-scrolled { box-shadow: 0 1.5px 0 var(--black); }   /* line under it once you scroll */
+.header-inner {
+  height: var(--header-h);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;   /* logo | menu boxes | INFO */
+  align-items: center;
+  gap: 10px;
+}
+.site-menu { display: contents; }        /* on wide screens its links sit straight in the grid */
+.menu-toggle { display: none; }
+.logo, .nav-info { font-size: 1.25rem; letter-spacing: -0.02em; white-space: nowrap; }
+.nav-info { justify-self: end; }
+.nav { display: flex; gap: 0.75rem; }
+.nav-box {
+  padding: 6px 10px;
+  border: var(--line);
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.nav-box:hover { background: var(--mint); }
+
+/* phones: links fold into a hamburger menu that drops down under the header */
+@media (max-width: 767px) {
+  .header-inner { display: flex; justify-content: space-between; }
+  .menu-toggle {                   /* the ☰ button; its three bars turn into an ✕ when open */
+    display: block;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: var(--cream);
+    cursor: pointer;
+  }
+  .menu-toggle span,
+  .menu-toggle span::before,
+  .menu-toggle span::after {
+    position: absolute;
+    width: 20px;
+    height: 1.5px;
+    background: var(--black);
+    transition: translate .3s, rotate .3s, background .2s;
+  }
+  .menu-toggle span { left: 50%; top: 50%; translate: -50% -50%; }
+  .menu-toggle span::before,
+  .menu-toggle span::after { content: ""; left: 0; }
+  .menu-toggle span::before { translate: 0 -6px; }
+  .menu-toggle span::after  { translate: 0 6px; }
+  .is-menu-open .menu-toggle span { background: transparent; }
+  .is-menu-open .menu-toggle span::before { translate: 0; rotate: 45deg; }
+  .is-menu-open .menu-toggle span::after  { translate: 0; rotate: -45deg; }
+
+  .site-menu {                     /* the drop-down panel */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px var(--gutter) 24px;
+    background: var(--cream);
+    border-bottom: var(--line);
+    opacity: 0;
+    translate: 0 -12px;
+    visibility: hidden;
+    transition: opacity .25s, translate .3s, visibility 0s .3s;
+  }
+  .is-menu-open .site-menu {
+    opacity: 1;
+    translate: none;
+    visibility: visible;
+    transition: opacity .25s, translate .3s;
+  }
+  .site-menu .nav { flex-direction: column; gap: 12px; }
+  .site-menu .nav-box,
+  .site-menu .nav-info { padding: 12px 16px; font-size: 1.25rem; }
+  .site-menu .nav-info { justify-self: auto; border: var(--line); }
+}
+
+/* ----- Hero (header + hero fill the first screen) ----- */
+.intro {                           /* first screen = viewport minus the header */
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+}
+.hero { flex: 1; display: flex; }
+.hero-inner {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 60px;
+  container-type: inline-size;   /* lets .house use 100cqw = content width */
+}
+
+/*
+  House: the video is cut into a house shape (Figma: 1200 x 800, roof 356.7px tall).
+  Everything is sized from --house-w so the roof and icons keep their proportions.
+*/
+.house {
+  --house-w: 100cqw;
+  --roof: calc(var(--house-w) * 0.2972);
+  --icon-scale: 1.6;               /* icons are a bit bigger on small screens */
+  position: relative;
+  width: var(--house-w);
+  min-height: calc(var(--roof) + 300px);
+  flex: none;
+}
+.house-shape {                     /* black layer that shows as the outline */
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+  clip-path: polygon(50% 0, 100% var(--roof), 100% 100%, 0 100%, 0 var(--roof));
+}
+.house-photo {                     /* the video, 1.5px inside the outline */
+  position: absolute;
+  inset: 1.5px;
+  width: calc(100% - 3px);
+  height: calc(100% - 3px);
+  object-fit: cover;
+  background: #ccc;
+  clip-path: polygon(50% 0, 100% calc(var(--roof) - 1.75px), 100% 100%, 0 100%, 0 calc(var(--roof) - 1.75px));
+}
+.hero-title {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--roof) + (100% - var(--roof)) * 0.45);
+  transform: translate(-50%, -50%);
+  font-size: var(--fs-hero);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Hero icons: --x / --y = centre, --w = width, all as a fraction of the house width (Figma px / 1200) */
+.hi {
+  position: absolute;
+  left: calc(var(--house-w) * var(--x));
+  top: calc(var(--house-w) * var(--y));
+  width: calc(var(--house-w) * var(--w) * var(--icon-scale));
+  height: auto;
+  transform: translate(-50%, -50%) rotate(var(--r, 0deg));
+}
+.hi--bottom {                      /* measured from the bottom edge (--b) instead */
+  top: auto;
+  bottom: calc(var(--house-w) * var(--b));
+  transform: translate(-50%, 50%) rotate(var(--r, 0deg));
+}
+.hi-rice   { /* sits on the bowl: offset from the bowl grows with the icon size, so it never sinks in */
+  --x: calc(.13917 + .01154 * var(--icon-scale));
+  --y: calc(.22525 - .04354 * var(--icon-scale));
+  --w: .11895; --r: 15deg;
+}
+.hi-bowl   { --x: .13917; --y: .22525; --w: .125;   --r: 15deg; }
+.hi-fork   { --x: .66183; --y: .10125; --w: .0375;  --r: -15deg; }
+.hi-spoon  { --x: .70708; --y: .11904; --w: .04083; }
+.hi-bottle { --x: .90925; --y: .243;   --w: .06;    --r: -15deg; }
+.hi-pot    { --x: .89858; --b: .034;   --w: .117;   --r: 15deg; }
+.hi-kimchi { --x: .12258; --b: .01275; --w: .12667; --r: -15deg; }
+
+/* ----- Menu ----- */
+.menu { position: relative; overflow-x: clip; }
+
+/* "Local Favorite" star, pinned to the left edge of the screen */
+.burst {
+  position: absolute;
+  left: -13rem;
+  top: 0;
+  width: 40rem;
+  height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 13rem 0;   /* = screen edge / section top */
+  transform: scale(.5);
+  pointer-events: none;
+}
+.burst-shape { position: absolute; width: 30rem; height: auto; transform: rotate(-30deg); }
+.burst-text {
+  position: relative;
+  width: 25rem;
+  transform: rotate(-30deg);
+  font-size: 5.5rem;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 5rem;
+  text-align: center;
+}
+
+.menu-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 240px;
+  padding-bottom: 80px;
+}
+.menu-title { text-align: right; }
+.cards { display: grid; gap: 2rem; }
+.card {
+  background: var(--white);
+  border: var(--line);
+  transition: transform .2s;
+  cursor: pointer;
+}
+.card:hover { transform: translateY(-6px); }
+.card-img {
+  position: relative;
+  margin: -1.5px -1.5px 0;         /* image border sits on the card border */
+  aspect-ratio: 380 / 245;
+  border: var(--line);
+  overflow: hidden;
+}
+.card-img img {
+  position: absolute;
+  left: -29%;
+  top: -9.82%;
+  width: 158%;
+  height: 133.67%;
+}
+.card-body { padding: 20px 30px; }
+.card-body h3, .card-body p { font-size: 1.25rem; letter-spacing: -0.02em; }
+.card-body h3 { margin-top: 0.8rem; margin-bottom: 0.25rem; font-weight: 600;}
+.card-body p  { font-weight: 400; }
+.menu-cta { align-self: flex-end; }
+
+/* ----- Meal kit ----- */
+.mealkit-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+/* food illustration groups: children placed in % of the group, so they scale together */
+.foods { position: relative; flex: none; }
+.foods img { position: absolute; height: auto; }
+.foods-a { align-self: center; width: min(300px, 100%); aspect-ratio: 455 / 285; }
+.fa-fish { left: 2.651%;  top: 55.102%; width: 21.978%; transform: rotate(15deg); }
+.fa-broc { left: 26.637%; top: 4.484%;  width: 28.571%; transform: rotate(-30deg); }
+.fa-meat { left: 73.626%; top: 29.832%; width: 26.374%; }
+.fa-egg  { left: 40.659%; top: 68.428%; width: 22.418%; }
+
+.foods-b { align-self: center; width: min(200px, 70%); aspect-ratio: 235 / 215; }
+.fb-fish { left: 17.455%; top: 5.098%;  width: 42.553%; transform: rotate(15deg); }
+.fb-broc { left: 4.485%;  top: 18.991%; width: 55.319%; transform: rotate(30deg); }
+.fb-meat { left: 39.574%; top: 11.609%; width: 51.064%; transform: rotate(-75deg); }
+.fb-egg  { left: 28.085%; top: 16.288%; width: 43.404%; }
+.fb-pack { left: 2.553%;  top: 35.753%; width: 94.468%; }
+
+.kit { max-width: 500px; }
+.kit p {
+  margin-top: 0.8rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.kit--single { align-self: flex-start; }
+.kit-row { display: contents; }    /* only becomes a real row on desktop */
+.kit-cta { align-self: flex-end; }
+
+/* ----- FAQ ----- */
+.faq { position: relative; overflow: hidden; }
+
+/* floating question marks, placed in % of the screen width */
+.qmark {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.7935em;
+  height: 1.2885em;
+  font-size: var(--fs-qmark);
+  pointer-events: none;
+}
+.qmark span { font-weight: 300; letter-spacing: -0.02em; }
+.qmark--1 { left: 76%; bottom: 10px; width: 1.033em; }
+.qmark--1 span { transform: rotate(30deg); }
+.qmark--2 { left: 67.358%; top: 20px; }
+.qmark--2 span { transform: rotate(15deg); }
+.qmark--3 { left: 3%; top: 40px; }
+.qmark--3 span { transform: rotate(-15deg); }
+
+.faq-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 150px;
+}
+.faq-head { position: relative; width: min(500px, 100%); aspect-ratio: 5 / 3; }
+.faq-head img { width: 100%; height: auto; }
+.faq-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34.667%;
+  font-size: var(--fs-faq);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-align: center;
+}
+.faq-list {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin-top: -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq-q {
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+  padding: 1.25rem 4rem;
+  background: var(--white);
+  border: var(--line);
+  border-radius: 100px;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+.faq-icon {                         /* + / − : circle with two bars */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  translate: 0 -50%;
+  border: var(--line);
+  border-radius: 50%;
+  background: var(--white);
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46%;
+  height: 8%;
+  translate: -50% -50%;
+  background: var(--black);
+  transition: rotate .35s cubic-bezier(.4, 0, .2, 1);
+}
+.faq-icon::after { rotate: 90deg; }                                  /* vertical bar = "+" */
+.faq-q[aria-expanded="true"] .faq-icon::after { rotate: 0deg; }     /* lies down onto the other = "−" */
+
+/* answer: grid row grows from 0fr to 1fr, so the height animates smoothly */
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: 0;
+  opacity: 0;
+  transition: grid-template-rows .4s cubic-bezier(.4, 0, .2, 1), margin-top .4s cubic-bezier(.4, 0, .2, 1), opacity .3s;
+}
+.faq-a.is-open { grid-template-rows: 1fr; margin-top: 10px; opacity: 1; }
+.faq-a-clip { min-height: 0; overflow: hidden; }
+.faq-a-box {
+  padding: 1.5rem;
+  background: var(--white);
+  border: var(--line);
+  border-radius: 0.75rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+/* ----- Footer ----- */
+.footer-wrap {                     /* clips the footer while it springs up; room above for the overshoot */
+  overflow: clip;
+  padding-top: 100px;
+  margin-top: -100px;
+}
+.footer {
+  container-type: inline-size;     /* lets the tagline use cqw */
+  padding: 4rem 0;
+  background: var(--green);
+  border-radius: 2rem 2rem 0 0;
+  color: var(--white);
+  overflow: hidden;
+}
+.footer-grid { display: grid; gap: 40px; }
+.f-col { display: flex; flex-direction: column; align-items: flex-start; }
+.f-col .pill { color: var(--green); font-weight: 600;}
+.hours, .f-text {
+  margin-top: 24px;
+  font-size: 1.25rem;
+  letter-spacing: -0.04em;
+}
+.hours { display: grid; grid-template-columns: 9.5625rem auto; white-space: nowrap; }
+.f-buttons { display: flex; gap: 10px; margin-top: 20px; }
+.icon-btn {                        /* round outline button; fills white on hover */
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--white);
+  border-radius: 50%;
+  color: var(--white);
+  transition: background .2s, color .2s;
+}
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-btn:hover { background: var(--white); color: var(--green); }
+.footer-tagline {
+  margin-top: 70px;
+  font-size: 9.5cqw;             /* the line is 9.825em wide -> fills the footer width */
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Tablet (768px+)
+   ========================================================= */
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2rem;
+    --header-h: 64px;                /* a bit taller on tablet + desktop (phones: 52px) */
+  }
+
+  html {
+  scroll-behavior: smooth;
+  font-size: 15.5px;
+  }
+
+  .nav { gap: 0.75rem; }
+  .house { --icon-scale: 1.2; }
+
+  .burst { transform: scale(.75); }
+  .menu-inner { padding-top: 120px; }
+  .cards { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: start; }
+  .card--1 { margin-top: 100px; }
+  .card--3 { margin-top: 50px; }
+  .card-body { padding-left: 1rem; padding-right: 1rem; }
+
+  /* meal kit: 2-column grid */
+  .mealkit-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px 40px;
+    align-items: center;
+  }
+  .mealkit-title { grid-area: 1 / 1; }
+  .foods-a       { grid-area: 1 / 2; }
+  .foods-b       { grid-area: 2 / 1; justify-self: center; }
+  .kit--single   { grid-area: 2 / 2; align-self: center; }
+  .kit--weekly   { grid-area: 3 / 1; }
+  .kit-cta       { grid-area: 3 / 2; justify-self: end; align-self: start; }
+
+  .qmark--3 { left: 5%; }
+  .faq-q { min-height: 70px;}
+  .faq-icon { width: 50px; height: 50px; }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid { grid-template-columns: repeat(3, auto); }
+}
+
+/* =========================================================
+   Desktop (1240px+): Figma layout, 1200px content on a 1440px canvas
+   ========================================================= */
+@media (min-width: 1240px) {
+  :root {
+    --gutter: 0px;
+    --fs-hero: 5rem;
+    --fs-title: 4rem;
+    --fs-qmark: 10rem; 
+  }
+
+  html {
+  scroll-behavior: smooth;
+  font-size: 17px;
+  }
+
+  /* Hero: house is 1200 x 800, 44px under the header, 100px above the fold */
+  .hero-inner { padding: 44px 0 100px; }
+  .house {
+    --house-w: min(1200px, (100svh - var(--header-h) - 144px) * 1.5);   /* 144 = 44 above + 100 below */
+    --icon-scale: 1;
+    height: calc(var(--house-w) / 1.5);
+    min-height: 0;
+    align-self: center;
+  }
+  .hero-title { top: 59.5%; }
+
+  /* Menu */
+  .burst { transform: scale(.85); }   /* slightly smaller so "Favorite" clears the first card */
+  .menu-inner { display: block; height: 1024px; padding: 0; }
+  .menu-title { position: absolute; right: 0; top: 120px; }
+  .cards { display: block; }
+  .card { position: absolute; width: 380px; height: 500px; margin: 0; }
+  .card--1 { left: 0;     top: 400px; }
+  .card--2 { left: 410px; top: 250px; }
+  .card--3 { left: 820px; top: 300px; }
+  .card-body { padding: 1.5rem; }
+  .menu-cta { position: absolute; right: 0; top: 850px; }
+
+  /* Meal kit */
+  .mealkit-inner { display: block; height: 1024px; padding: 0; }
+  .mealkit-title { position: absolute; left: 0; top: 120px; }
+  .foods { position: absolute; }
+  .foods-a { right: 0; top: 150px; width: 455px; }
+  .foods-b { left: 0; top: 485px; width: 235px; }
+  .kit { position: absolute; width: 500px; }
+  .kit--single { right: 0; top: 500px;}
+  .kit-row {                          /* weekly kit + subscribe button, bottoms aligned */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 730px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .kit--weekly { position: relative; }
+  .kit-cta { align-self: flex-end; }
+
+  /* FAQ */
+  .qmark--1 { left: 80%; top: 600px; bottom: auto; }
+  .qmark--2 { left: 70%; top: 50px; }
+  .qmark--3 { left: 10%; top: 255px;}
+  .faq-inner { display: block; height: 1024px; padding: 0; }
+  .faq-head { position: absolute; left: 350px; top: 130px; width: 500px; }
+  .faq-title { top: 100px; line-height: normal; }
+  .faq-list { position: absolute; left: 200px; top: 400px; width: 800px; margin: 0; }
+  .faq-q {white-space: nowrap; }
+
+  /* Footer */
+  .footer { position: relative; height: 700px; padding: 100px 0 0; }
+  .footer-grid { grid-template-columns: 450px 450px auto; gap: 2rem; justify-content: start; }
+  .hours, .f-text { margin-top: 32.2px; }
+  .footer-tagline {                   /* centred on the Figma line, 593px from the top */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 500px;
+    height: 114px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: normal;
+  }
+}
+
+/* =========================================================
+   Scroll reveal
+   The script in index.html adds data-reveal to elements; they start hidden and
+   animate in when .is-visible is added. Uses translate/scale (not transform),
+   so existing rotations keep working. --delay staggers the elements.
+   Kept at the end of the file so it isn't overridden by other `transition` rules.
+   ========================================================= */
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity .7s ease var(--delay, 0ms),
+    translate .9s cubic-bezier(.22, 1, .36, 1) var(--delay, 0ms),
+    scale .8s cubic-bezier(.34, 1.56, .64, 1) var(--delay, 0ms),   /* slight overshoot = bouncy */
+    transform .2s, filter .3s, color .3s, background .15s;          /* keep hover effects */
+}
+[data-reveal="up"]   { translate: 0 48px; }
+[data-reveal="left"] { translate: -80px 0; }
+[data-reveal="pop"]  { scale: .4; }
+[data-reveal="card"] {           /* menu cards: soft rise, no bounce */
+  translate: 0 60px;
+  transition:
+    opacity .8s ease var(--delay, 0ms),
+    translate .9s cubic-bezier(.16, 1, .3, 1) var(--delay, 0ms),
+    transform .2s;
+}
+[data-reveal="stamp"] {          /* FAQ ? marks: quick, hard-landing pop */
+  scale: 0;
+  transition:
+    opacity .1s linear var(--delay, 0ms),
+    scale .45s cubic-bezier(.3, 1.9, .5, 1) var(--delay, 0ms);
+}
+[data-reveal="stamp"]:not(.is-visible) {   /* reset: quick fade, then shrink while invisible */
+  transition: opacity .2s, scale 0s .2s;
+}
+[data-reveal="drop"] {           /* grocery bag: food falls in from above, tilting, and lands with a bounce */
+  translate: 0 -180%;
+  rotate: -25deg;
+  transition:
+    opacity .2s ease var(--delay, 0ms),
+    translate .7s cubic-bezier(.3, 1.4, .5, 1) var(--delay, 0ms),
+    rotate .7s cubic-bezier(.3, 1.4, .5, 1) var(--delay, 0ms);
+}
+[data-reveal="drop"]:not(.is-visible) {    /* reset: fade out, then jump back up while invisible */
+  transition: opacity .2s, translate 0s .2s, rotate 0s .2s;
+}
+[data-reveal="drop"].is-visible { rotate: none; }
+[data-reveal="rise"] {           /* footer: glides down out of view when you scroll back up */
+  opacity: 1;
+  translate: 0 100%;
+  transition: translate .7s cubic-bezier(.55, 0, .45, 1);
+}
+[data-reveal="rise"].is-visible {  /* ...and springs up past its spot, then settles */
+  transition: translate 1s cubic-bezier(.3, 1.35, .5, 1);
+}
+[data-reveal].is-visible { opacity: 1; translate: none; scale: none; }
