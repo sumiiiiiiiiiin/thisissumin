@@ -274,6 +274,12 @@
     });
   }
 
+  // Footer covers the FAQ: main sticks once its bottom meets the bottom of the screen (see `main` in style.css).
+  const main = document.querySelector('main');
+  const setStick = () => main.style.setProperty('--main-stick', `${innerHeight - main.offsetHeight}px`);
+  new ResizeObserver(setStick).observe(main);   // FAQ answers opening, images loading...
+  addEventListener('resize', setStick);
+
   // Header: hamburger menu on phones + a line under the header once the page is scrolled.
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.menu-toggle');
