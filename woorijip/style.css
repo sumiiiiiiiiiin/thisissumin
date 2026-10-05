@@ -439,7 +439,7 @@ section, footer { scroll-margin-top: var(--header-h); }   /* menu links land bel
   position: relative;
   width: 100%;
   min-height: 60px;
-  padding: 1.25rem 4rem;
+  padding: 1.25rem 4rem 1.25rem 1.25rem;
   background: var(--white);
   border: var(--line);
   border-radius: 100px;
